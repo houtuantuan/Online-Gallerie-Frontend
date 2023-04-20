@@ -8,7 +8,7 @@
 }
 
 //All josein Fonts
-@include font-face("josefin_sans","../fonts/josefin_sans/JosefinSans-VariableFont_wght.ttf");
+@include font-face("josefin_sans","../fonts/josefin_sans/JosefinSans-VariableFont_wght.ttf",300);
 @include font-face("josefin_sans","../fonts/josefin_sans/JosefinSans-Italic-VariableFont_wght.ttf",normal,italic);
 
 // all Nobile fonts
