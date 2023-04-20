@@ -6,7 +6,7 @@
 }
 
 $primary-color: rgb(255, 250, 238);
-$secondary-color: rgb(215,220,178);
+$secondary-color: rgb(218, 224, 175);
 $contrast-color: rgb(89, 90, 159);
 $contrast-color2: rgb(118,65,61);
 $font-color: #141414;
@@ -14,31 +14,16 @@ $font-color2: rgb(215,220,178);
 
 body{
     background-color: $primary-color;
-    
     .header{
-        background-color: $contrast-color;
+        background-color: $secondary-color;
         display: flex;
         padding: 1rem;
         align-items: center;
         justify-content: space-between;  
-        
         h1{
             width: 20%;
         } 
-        .navBar{
-                    ul{
-                        display: flex;
-                        list-style:none;
-                        justify-content: space-between;
-                        li{
-                            margin-left: 1rem;
-                            &:hover{
-                                color: white;
-                            }
-                            
-                        }
-                    }
-        }
+        
     }
 
     h1{
@@ -51,4 +36,23 @@ body{
     font-size: 1rem;
     margin-bottom: 0.5rem;
 }
+}
+
+.headline{
+    font-family: "josefin_sans"; 
+}
+
+.navBar{
+    ul{
+        display: flex;
+        list-style:none;
+        justify-content: space-between;
+        li{
+            margin-left: 1rem;
+            &:hover{
+                color: white;
+            }
+            
+        }
+    }
 }
