@@ -1,0 +1,27 @@
+@mixin font-face($name, $path, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: url($path) + format("truetype");
+	}
+}
+
+//All josein Fonts
+@include font-face("josefin_sans","../fonts/josefin_sans/JosefinSans-VariableFont_wght.ttf");
+@include font-face("josefin_sans","../fonts/josefin_sans/JosefinSans-Italic-VariableFont_wght.ttf",normal,italic);
+
+// all Nobile fonts
+
+@include font-face("nobile","../fonts/nobile/Nobile-Bold.ttf",bold);
+@include font-face("nobile","../fonts/nobile/Nobile-BoldItalic.ttf",bold,italic);
+@include font-face("nobile","../fonts/nobile/Nobile-Italic.ttf",normal,italic);
+
+@include font-face("nobileMed","../fonts/nobile/Nobile-Medium.ttf");
+// @include font-face("nobileMed","../fonts/nobile/Nobile-Medium-Italic.ttf",normal,italic);
+// @include font-face("nobileReg","../fonts/nobile/Nobile-Regular.ttf");
+
+//All playfair
+
+@include font-face("playfair","../fonts/playfair/PlayfairDisplay-Italic-VariableFont_wght.ttf",normal,italic);
+@include font-face("playfair","../fonts/playfair/PlayfairDisplay-VariableFont_wght.ttf");
