@@ -1,5 +1,16 @@
 @import "./font.scss";
 
+$primary-color: rgb(255,245,224);
+$secondary-color: rgb(215,220,178);
+$third-color: rgb(251,200,168);
+$warm-color: rgb(255,175,127);
+$contrast-color: rgb(118,65,61);
+$font-color: #232323;
+
+h1{
+    font-family: "josefin_sans";
+}
+
 body{
-    font-family: josefin_sans;
+    font-family: "noman";
 }
