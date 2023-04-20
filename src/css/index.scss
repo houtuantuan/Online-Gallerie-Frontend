@@ -1,16 +1,58 @@
 @import "./font.scss";
 
-$primary-color: rgb(255,245,224);
-$secondary-color: rgb(215,220,178);
-$third-color: rgb(251,200,168);
-$warm-color: rgb(255,175,127);
-$contrast-color: rgb(118,65,61);
-$font-color: #232323;
-
-h1{
-    font-family: "josefin_sans";
+*{
+    padding: 0;
+    margin: 0;
 }
 
+$primary-color: rgb(255, 250, 238);
+$secondary-color: rgb(218, 224, 175);
+$contrast-color: rgb(89, 90, 159);
+$contrast-color2: rgb(118,65,61);
+$font-color: #141414;
+$font-color2: rgb(215,220,178);
+
 body{
+    background-color: $primary-color;
+    .header{
+        background-color: $secondary-color;
+        display: flex;
+        padding: 1rem;
+        align-items: center;
+        justify-content: space-between;  
+        h1{
+            width: 20%;
+        } 
+        
+    }
+
+    h1{
+        font-family: "josefin_sans";
+        font-size: 2rem;
+    }
+
+    p{
     font-family: "noman";
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+}
+
+.headline{
+    font-family: "josefin_sans"; 
+}
+
+.navBar{
+    ul{
+        display: flex;
+        list-style:none;
+        justify-content: space-between;
+        li{
+            margin-left: 1rem;
+            &:hover{
+                color: white;
+            }
+            
+        }
+    }
 }
