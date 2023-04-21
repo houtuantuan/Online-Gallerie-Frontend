@@ -1,6 +1,7 @@
 import './App.css';
+import ExploreTime from './components/ExploreTime';
 import Header from './components/header';
-import { red } from '@mui/material/colors';
+import red from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
      <ThemeProvider theme={theme}>
      <Header theme={theme}></Header>
+     <ExploreTime theme={theme}></ExploreTime>
      </ThemeProvider>
     </div>
   );
