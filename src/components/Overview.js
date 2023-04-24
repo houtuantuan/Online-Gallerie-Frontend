@@ -1,4 +1,5 @@
 import React from 'react'
+import ScrollToTop from "react-scroll-to-top";
 
 import { useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -9,11 +10,11 @@ import ListSubheader from '@mui/material/ListSubheader'
 import IconButton from '@mui/material/IconButton'
 import InfoIcon from '@mui/icons-material/Info'
 import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box';
-
+import Box from '@mui/material/Box'
+import '../css/overview.css'
 
 export default function Overview () {
-  const [itemOffset, setItemOffset] = useState(0)
+  
   const [items, setItems] = useState([
     {
       _id: '64413a00a6fc01658c4a31d2',
@@ -327,22 +328,7 @@ export default function Overview () {
   ])
   const [hasMore, setHasMore] = useState(true)
 
-  const itemsPerPage = 18
 
-  //   const fetchData = async () => {
-  //     try {
-  //       const getData = await fetch(
-  //         `http://localhost:4000/gallery?itemOffset=0&limit=1`
-  //       )
-  //       const data = await getData.json()
-  //       setItems(data)
-  //       console.log(data)
-
-  //       return data
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //   }
   console.log(111)
   const getMorePost = async () => {
     const res = await fetch(
@@ -357,6 +343,7 @@ export default function Overview () {
   return (
     <>
       <div>Overview</div>
+      <ScrollToTop smooth />
 
       <InfiniteScroll
         dataLength={items.length}
@@ -366,37 +353,71 @@ export default function Overview () {
         endMessage={<h4>Nothing more to show</h4>}
       >
         {/* <ImageList sx={{ width: 500, height: 450 }}> */}
-        <Box m={5}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 6, md: 12 }}
-        >
-          {items.map(item => (
-            <Grid item key={item._id} xs={2} sm={2} md={3} >
-              <ImageListItem>
-                <img
-                  src={item.primaryImage}
-                  //   srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading='lazy'
-                />
-                <ImageListItemBar
-                  title={item.title}
-                  //   subtitle={item.author}
-                  actionIcon={
-                    <IconButton
-                      sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                      aria-label={`info about ${item.title}`}
-                    >
-                      <InfoIcon />
-                    </IconButton>
-                  }
-                />
-              </ImageListItem>
-            </Grid>
-          ))}
-        </Grid>
+        <Box margin={{ xs: 5, sm: 5, md: 5 }}>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 2, xl: 2 }}
+            columns={{ xs: 4, sm: 8, md: 10, lg: 12 }}
+            sx={{ display: 'flex', justifyContent: 'center' }}
+          >
+            {items.map(item => (
+              <Grid
+                item
+                key={item._id}
+                // xs={12}
+                // sm={12}
+                // md={6}
+                // lg={4}
+                // xl={3}
+                columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+                sx={{ display: 'flex', justifyContent: 'center' }}
+              >
+                <ImageListItem className='infoParent'>
+                  <Box
+                    xs={6}
+                    sm={5}
+                    md={4}
+                    lg={3}
+                    className='center-cropped'
+                    sx={{
+                      backgroundImage: `url(${item.primaryImageSmall})`,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      boxShadow: 'grey 0px 7px 29px 0px',
+                      borderRadius: '25px'
+                    }}
+                  >
+                    {/* <img
+                      src={item.primaryImageSmall}
+                      //   srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={item.title}
+                      loading='lazy'
+                    /> */}
+                  </Box>
+                  <ImageListItemBar
+                    sx={{ borderRadius: '0 0 25px 25px' }}
+                    className='imageInfo'
+                    xs={6}
+                    sm={4}
+                    md={4}
+                    xl={3}
+                    title={item.title}
+                    //   subtitle={item.author}
+                    actionIcon={
+                      <IconButton
+                        sx={{
+                          color: 'rgba(255, 255, 255, 0.54)'
+                        }}
+                        aria-label={`info about ${item.title}`}
+                      >
+                        <InfoIcon />
+                      </IconButton>
+                    }
+                  />
+                </ImageListItem>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
         {/* </ImageList> */}
       </InfiniteScroll>
