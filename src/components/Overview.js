@@ -402,7 +402,7 @@ export default function Overview () {
                     md={4}
                     xl={3}
                     title={item.title}
-                    //   subtitle={item.author}
+                      subtitle={item.artistDisplayName}
                     actionIcon={
                       <IconButton
                         sx={{
