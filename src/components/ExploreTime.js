@@ -2,7 +2,59 @@ import React from 'react'
 import { Avatar, Stack, Typography, Container, Grid } from '@mui/material'
 
 export default function ExploreTime () {
-  const AvatarImages = []
+  const AvatarImages = [
+    {
+      period: '1200',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP-19549-001.jpg'
+    },
+    {
+      period: '1430',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP234678.jpg'
+    },
+    {
+      period: '1510',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP-17396-001.jpg'
+    },
+    {
+      period: '1550',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP119115.jpg'
+    },
+    {
+      period: '1600',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP349564.jpg'
+    },
+    {
+      period: '1705',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP-14286-009.jpg'
+    },
+    {
+      period: '1750',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP-24221-001.jpg'
+    },
+    {
+      period: '1805',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DT2138.jpg'
+    },
+    {
+      period: '1850',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DT1502_cropped2.jpg'
+    },
+    {
+      period: '1899',
+      imageUrl:
+        'https://images.metmuseum.org/CRDImages/ep/web-large/DP243354.jpg'
+    },
+
+  ]
   return (
     <>
       <Container>
@@ -22,11 +74,11 @@ export default function ExploreTime () {
             justifyContent: 'center',
             display: 'flex',
             marginTop: '2em',
-            
+
             width: '80vw'
           }}
         >
-          {Array.from(Array(10)).map((_, index) => (
+          {AvatarImages.map((el, index) => (
             <Grid
               item
               xs={4}
@@ -41,6 +93,7 @@ export default function ExploreTime () {
               }}
             >
               <Avatar
+              src={el.imageUrl}
                 sx={{
                   width: '100px',
                   height: '100px',
@@ -49,7 +102,7 @@ export default function ExploreTime () {
                   boxShadow: 5
                 }}
               ></Avatar>
-              <Typography>1400</Typography>
+              <Typography>{el.period}</Typography>
             </Grid>
           ))}
         </Grid>
