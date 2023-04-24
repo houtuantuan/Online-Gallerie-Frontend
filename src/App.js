@@ -8,9 +8,9 @@ import CanvasComp from './components/CanvasComp'
 import { Routes, Route } from 'react-router-dom'
 
 function App () {
-  
-
+ 
   return (
+
     <div className='App'>
       <ThemeProvider theme={theme}>
         <Header></Header>

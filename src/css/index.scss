@@ -55,4 +55,12 @@ body{
             
         }
     }
+
+    .container{
+        border: solid black 1px;
+    }
+}
+
+#canvas{
+    touch-action: none !important;
 }
