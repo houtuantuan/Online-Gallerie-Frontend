@@ -1,4 +1,5 @@
 import './App.css';
+import ExploreTime from './components/ExploreTime';
 import Header from './components/header';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import theme from './util/themes';
@@ -13,7 +14,7 @@ function App() {
       <Routes>
      <Route path="canvas" element={<CanvasComp/>}/>
      </Routes>
-     </ThemeProvider>
+     <ExploreTime theme={theme}></ExploreTime>     </ThemeProvider>
     </div>
   );
 }
