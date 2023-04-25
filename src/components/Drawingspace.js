@@ -1,26 +1,32 @@
 import {useEffect} from 'react';
+// import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
 
-export default () => {
+export default ({brushOptions}) => {
 
-    useEffect(() => {
 
+  useEffect(() => {
+    return () => {
+    };
+  },[]);
+
+  useEffect(() => {
+
+      const ongoingTouches = [];
+            
       function setCtx(){
         const el = document.getElementById("canvas");
         const ctx = el.getContext("2d");
         return ctx;
       }
-
+   
       const canvas = document.querySelector('canvas');
         const ctx = setCtx();
         canvas.width = 808;
         canvas.height = 576;
         ctx.strokeRect(0,0,canvas.width,canvas.height);
 
-        const ongoingTouches = [];
-
-
         function copyTouch(touch) {
-          console.log(touch);
+          // console.log(touch);
           return {
             identifier: touch.pointerId,
             pageX: touch.clientX,
@@ -31,14 +37,7 @@ export default () => {
         }
           
           function colorForTouch(touch) {
-            let r = touch.identifier % 16;
-            let g = Math.floor(touch.identifier / 3) % 16;
-            let b = Math.floor(touch.identifier / 7) % 16;
-            r = r.toString(16); // make it a hex digit
-            g = g.toString(16); // make it a hex digit
-            b = b.toString(16); // make it a hex digit
-            // const color = `#${r}${g}${b}`;
-            const color ='#000000';
+            const color = brushOptions.brushColor;
             return color;
           }
 
@@ -64,28 +63,29 @@ export default () => {
           }
         
           function handleMove(evt) {
+
             evt.preventDefault();
           
           const ctx = setCtx();
             const color = colorForTouch(evt);
             const idx = ongoingTouchIndexById(evt.pointerId);
 
-            console.log(evt);
-
             if (idx >= 0) {
               const y = evt.target.parentNode.offsetTop;
               const x = evt.target.parentNode.offsetLeft;
-         
+
               ctx.beginPath();
               ctx.moveTo(ongoingTouches[idx].layerX -x, ongoingTouches[idx].layerY -y);
-              ctx.lineTo(evt.layerX -x, evt.layerY -y);
-              ctx.lineWidth = 1;
+              ctx.lineTo(evt.layerX -x, evt.layerY -y +brushOptions.brushSize -1);
+              ctx.lineWidth = brushOptions.brushSize;
+              
               ctx.strokeStyle = color;
               ctx.stroke();
           
               ongoingTouches.splice(idx, 1, copyTouch(evt)); // swap in the new touch record
             } else {
             }
+            
           }
         
           function handleEnd(evt) {
@@ -101,8 +101,10 @@ export default () => {
               const y = evt.target.parentNode.offsetTop;
               const x = evt.target.parentNode.offsetLeft;
               
-              ctx.lineWidth = 4;
+              ctx.lineWidth = brushOptions.brushSize;
+              
               ctx.fillStyle = color;
+              // ctx.lineCap = "round";
               ctx.beginPath();
               ctx.moveTo(ongoingTouches[idx].layerX -x, ongoingTouches[idx].layerY-y);
               ctx.lineTo(evt.layerX -x, evt.layerY -y);
@@ -112,23 +114,33 @@ export default () => {
           }
         
           function handleCancel(evt) {
-            evt.preventDefault();
-          
+            evt.preventDefault();         
             const idx = ongoingTouchIndexById(evt.pointerId);
             ongoingTouches.splice(idx, 1); // remove it; we're done
           }
 
+                
         canvas.addEventListener('pointerdown',handleStart,false);
-        canvas.addEventListener('pointerup',handleEnd,false);
-        canvas.addEventListener('pointermove',handleMove,false);
+        canvas.addEventListener('pointerup',handleEnd.bind(brushOptions),false);
+        canvas.addEventListener('pointermove',handleMove.bind(brushOptions),false);
         canvas.addEventListener('pointercancel', handleCancel,false);
-        
+
+       
+
         document.addEventListener("keydown", clearlastline);
         
         function clearlastline() {
             ctx.clearRect(1, 1, canvas.width -1, canvas.height -1); 
         }
-    
+        
+        return () => {
+          canvas.removeEventListener('pointerdown',handleStart,false);
+          canvas.removeEventListener('pointerup',handleEnd.bind(brushOptions),false);
+          canvas.removeEventListener('pointermove',handleMove.bind(brushOptions),false);
+          canvas.removeEventListener('pointercancel', handleCancel,false);
+  
+        };
+       
     })
 
     return(<div>

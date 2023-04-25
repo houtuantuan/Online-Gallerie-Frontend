@@ -52,7 +52,6 @@ body{
             &:hover{
                 color: white;
             }
-            
         }
     }
 
@@ -63,4 +62,8 @@ body{
 
 #canvas{
     touch-action: none !important;
+}
+
+#brushSize{
+    width: 1.6rem;
 }
