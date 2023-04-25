@@ -15,11 +15,11 @@ import '../css/overview.css'
 import { useEffect } from 'react'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import 'react-tabs/style/react-tabs.css'
+// import 'react-tabs/style/react-tabs.css'
 import OverviewByTime from './OverviewByTime'
+import { Typography } from '@mui/material'
 
 export default function Overview () {
-
   const yearRanges = [
     {
       beginYear: 1200,
@@ -65,20 +65,34 @@ export default function Overview () {
 
   return (
     <>
-      <div>Overview</div>
+      {/* <Typography variant='h4'>Explore in Timeline</Typography> */}
       <Tabs>
-        <TabList>
-          {yearRanges.map((el, i) => {
-            return <Tab key={i}>{el.beginYear.toString()}</Tab>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 2, xl: 2 }}
+          
+        //   columns={{ xs: 4, sm: 8, md: 10, lg: 12 }}
+          sx={{ display: 'flex', justifyContent: 'center' }}
+        >
+          <TabList className='tabList'  >
+            {yearRanges.map((el, i) => {
+              return (
+                
+                  <Tab  
+                  
+                  key={i}>{el.beginYear.toString()}</Tab>
+                
+              )
+            })}
+          </TabList>
+          {yearRanges.map((yearRange, i) => {
+            return (
+              <TabPanel key={i} index={i}>
+                <OverviewByTime yearRange={yearRange} />
+              </TabPanel>
+            )
           })}
-        </TabList>
-        {yearRanges.map((yearRange,i) => {
-          return (
-            <TabPanel  key={i} index={i}>
-              <OverviewByTime yearRange={yearRange} />
-            </TabPanel>
-          )
-        })}
+        </Grid>
       </Tabs>
     </>
   )

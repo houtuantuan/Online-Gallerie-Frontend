@@ -12,6 +12,8 @@ import InfoIcon from '@mui/icons-material/Info'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
+import '../css/overview.css'
+
 
 export default function OverviewByTime ({ yearRange }) {
   const [items, setItems] = useState([])
@@ -45,12 +47,7 @@ export default function OverviewByTime ({ yearRange }) {
       >
         <ScrollToTop smooth />
 
-        <Box
-          sx={{
-            maxWidth: { xs: 320, sm: 1200 },
-            bgcolor: 'background.paper'
-          }}
-        ></Box>
+        
 
         <Box margin={{ xs: 5, sm: 5, md: 5 }}>
           <Grid
