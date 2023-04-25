@@ -18,7 +18,7 @@ function App () {
           <Route path='canvas' element={<CanvasComp />} />
           <Route path="gallery" element={<Overview/>} />
         </Routes>
-        <ExploreTime theme={theme}></ExploreTime>{' '}
+        {/* <ExploreTime theme={theme}></ExploreTime>{' '} */}
       </ThemeProvider>
     </div>
   )
