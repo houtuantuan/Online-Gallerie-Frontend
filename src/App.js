@@ -6,7 +6,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import theme from './muiutils/themes'
 import CanvasComp from './components/CanvasInterface'
 import { Routes, Route } from 'react-router-dom'
-import ReactCardSlider from 'react-card-slider-component'
 
 function App () {
  
