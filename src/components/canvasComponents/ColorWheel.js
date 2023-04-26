@@ -1,13 +1,29 @@
 import { useEffect } from "react";
 
 
-export default () => {
+export default ({brushOptions,setbrushOptions}) => {
 
 useEffect(() => {
 
+    function pickColor(evt){
 
+        const canvas = this;
+        const ctx = canvas.getContext("2d");
+        
+        // const pixel = ctx.getImageData(evt.layerX,evt.layerY,1,1)
 
-
+        const offsetY = evt.target.offsetTop;
+        const offsetX = evt.target.offsetLeft;
+  
+  
+        const pixel = ctx.getImageData(evt.layerX -offsetX,evt.layerY -offsetY,1,1)
+        const data =  pixel.data;
+        const rgba = 'rgba(' + data[0] + ',' + data[1] +
+             ',' + data[2] + ',' + (data[3] / 255) + ')';
+             
+        const newBrushOptions = {...brushOptions,brushColor: rgba}
+        setbrushOptions(newBrushOptions);
+    }
 
     function clamp(min, max, val)
 {
@@ -87,10 +103,7 @@ var hsv2rgb = function(hsv) {
     }
 
     const strip = createCanvas();
-
-
-
-    
+    strip.addEventListener('pointerdown',pickColor,false);
 
 
 

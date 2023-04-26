@@ -2,9 +2,7 @@ import ColorWheel from "./canvasComponents/ColorWheel";
 
 export default ({brushOptions, setbrushOptions}) => {
 
-   
  const increaseSize = () => {
-    console.log(setbrushOptions);
     const newSize = brushOptions.brushSize +1;
     const newBrushOptions = {...brushOptions,brushSize: newSize}
     setbrushOptions(newBrushOptions);
@@ -27,7 +25,6 @@ const decreaseSize = () => {
     return(
 <div className="setting">
 
-{/* Space for Toggling Size */}
 <div className="sizeToggle">
 brushsize: 
     <button onClick={()=>decreaseSize()}>&lt;</button>
@@ -35,11 +32,9 @@ brushsize:
     <button onClick={()=>increaseSize()}>&gt;</button>
 </div>
 
-{/* Space for Colorwheel */}
-
-      <ColorWheel/>
-   
-
+      <ColorWheel
+      brushOptions={brushOptions}
+      setbrushOptions={setbrushOptions}/>
 
 </div>)   
 }

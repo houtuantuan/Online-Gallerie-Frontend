@@ -1,4 +1,4 @@
-export const stroke = (evt,ctx,color,idx,ongoingTouches,brushOptions) => {
+export const stroke = (evt,ctx,idx,ongoingTouches,brushOptions) => {
 
   const y = evt.target.parentNode.offsetTop;
   const x = evt.target.parentNode.offsetLeft;
@@ -9,6 +9,6 @@ export const stroke = (evt,ctx,color,idx,ongoingTouches,brushOptions) => {
 
   ctx.lineWidth = brushOptions.brushSize;
   
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = brushOptions.brushColor;
   ctx.stroke();
 }

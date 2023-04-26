@@ -5,20 +5,32 @@ import { setCtx } from '../canvasutils/canvas';
 
 export default ({brushOptions}) => {
   useEffect(() => {
+    const canvas = document.querySelector('canvas');
+    canvas.width = 808;
+    canvas.height = 576;
+    const ctx = setCtx();
+    ctx.strokeRect(0,0,canvas.width,canvas.height);
+
+
     return () => {
     };
   },[]);
 
   useEffect(() => {
 
+    const canvas = document.querySelector('canvas');
+    const ctx = setCtx();
+
       const ongoingTouches = []; 
 
-      const canvas = document.querySelector('canvas');
-      canvas.width = 808;
-        canvas.height = 576;
-   
-      const ctx = setCtx();
-        ctx.strokeRect(0,0,canvas.width,canvas.height);
+      // const canvas = document.querySelector('canvas');
+      // canvas.width = 808;
+      // canvas.height = 576;
+      // const ctx = setCtx();
+
+      console.log("new Canvas");
+
+
 
         function copyTouch(touch) {
           // console.log(touch);
@@ -31,7 +43,7 @@ export default ({brushOptions}) => {
           };
         }
           
-          function colorForTouch(touch) {
+          function colorForTouch() {
             const color = brushOptions.brushColor;
             return color;
           }
@@ -59,15 +71,16 @@ export default ({brushOptions}) => {
         
           function handleMove(evt) {
 
+            // const color = colorForTouch(evt);
+          
             evt.preventDefault();
           
           const ctx = setCtx();
-            const color = colorForTouch(evt);
             const idx = ongoingTouchIndexById(evt.pointerId);
 
             if (idx >= 0) {
 
-              stroke(evt,ctx,color,idx, ongoingTouches,brushOptions);
+              stroke(evt,ctx,idx, ongoingTouches,brushOptions);
           
               ongoingTouches.splice(idx, 1, copyTouch(evt)); // swap in the new touch record
             } else {
@@ -79,7 +92,6 @@ export default ({brushOptions}) => {
             evt.preventDefault();
           
           const ctx = setCtx();
-            const color = colorForTouch(evt);
             const idx = ongoingTouchIndexById(evt.pointerId);
             
             if (idx >= 0) {
@@ -89,7 +101,7 @@ export default ({brushOptions}) => {
               
               ctx.lineWidth = brushOptions.brushSize;
               
-              ctx.fillStyle = color;
+              ctx.fillStyle = brushOptions.brushColor;
               // ctx.lineCap = "round";
               ctx.beginPath();
               ctx.moveTo(ongoingTouches[idx].layerX -x, ongoingTouches[idx].layerY-y);
@@ -105,7 +117,6 @@ export default ({brushOptions}) => {
             ongoingTouches.splice(idx, 1); // remove it; we're done
           }
 
-                
         canvas.addEventListener('pointerdown',handleStart,false);
         canvas.addEventListener('pointerup',handleEnd.bind(brushOptions),false);
         canvas.addEventListener('pointermove',handleMove.bind(brushOptions),false);
@@ -122,7 +133,6 @@ export default ({brushOptions}) => {
           canvas.removeEventListener('pointerup',handleEnd.bind(brushOptions),false);
           canvas.removeEventListener('pointermove',handleMove.bind(brushOptions),false);
           canvas.removeEventListener('pointercancel', handleCancel,false);
-  
         };
        
     })
