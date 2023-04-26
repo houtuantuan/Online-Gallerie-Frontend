@@ -8,14 +8,9 @@ import ReactCardSlider from "./components/CardSlider"
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
-const slides = ReactDOM.createRoot(document.getElementById('carousel'))
-slides.render(
     <BrowserRouter>
-      <ReactCardSlider />
+    <App />
+    <ReactCardSlider/>
     </BrowserRouter>
 );
 
