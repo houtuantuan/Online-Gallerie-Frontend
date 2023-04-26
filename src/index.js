@@ -12,7 +12,7 @@ root.render(
     <App />
   </BrowserRouter>
 );
-const slides = ReactDOM.createRoot(document.getElementById('carousel'))
+const slides = ReactDOM.createRoot(document.getElementById('root'))
 slides.render(
     <BrowserRouter>
       <ReactCardSlider />
