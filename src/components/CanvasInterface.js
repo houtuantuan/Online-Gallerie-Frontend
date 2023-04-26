@@ -5,6 +5,11 @@ import CanvasSettings from './CanvasSettings';
 
 export default () => {
 
+    const style ={
+        background: 'repeating-linear-gradient(45deg,rgba(255,255,255,0.5), rgba(0,0,0,0.2) 1px)'
+    }
+
+    
     const initialState ={
         brushSize: 1,
         brushColor: "#000000",
@@ -12,7 +17,6 @@ export default () => {
     }
 
     const [brushOptions,setbrushOptions] = useState(initialState);
-
 
     useEffect(() =>{
    
@@ -28,8 +32,8 @@ export default () => {
     >
         Drawing Board</Typography>
 <Grid container>
-    <Grid container md={9} border="solid black 1px">
-            <Drawingspace brushOptions={brushOptions}/>
+    <Grid container md={9} border="solid black 1px" style={style}>
+            <Drawingspace brushOptions={brushOptions} />
         </Grid>
         <Grid container md={3} direction="column">
             <Grid item>InterfaceRef</Grid>

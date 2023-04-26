@@ -57,6 +57,7 @@ body{
 
     .container{
         border: solid black 1px;
+        
     }
 }
 
@@ -67,3 +68,20 @@ body{
 #brushSize{
     width: 1.6rem;
 }
+
+.pattern1{
+    background: repeating-linear-gradient(36deg, rgba(255,255,255, 0.1), rgba(255,255,255, 0.1) 1px, transparent 0px, transparent 2px) !important;
+}
+
+.pattern2 {
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.1), rgba(255,255,255, 0.1) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+}
+
+.setting{
+    margin: 1rem;
+    border: solid black 1px;
+    border-radius: 5px;
+}
+
+.colorwheel{border:solid black 1px}
