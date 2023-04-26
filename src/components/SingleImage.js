@@ -19,6 +19,8 @@ export default function SingleImage () {
   const { _id } = useParams()
 
   const [image, setImage] = useState()
+  const [colorUrl, setColorUrl] = useState(null)
+
   const fetchData = async () => {
     try {
       const getData = await fetch(`http://localhost:4000/gallery/${_id}`)
@@ -34,12 +36,18 @@ export default function SingleImage () {
 
   const fetchUrl = async () => {
     try {
-      const getData = await fetch(`http://localhost:4000/gallery/color?url=${image.primaryImage}`)
-      if (!getData)
-        throw new Error(`Request failes with a status of ${getData.status}`)
-      const parseData = await getData.json()
-      
-      console.log(parseData)
+      const data = await fetch('http://localhost:4000/gallery/color', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          url: image && image.primaryImage
+        })
+      })
+      const blob = await data.blob()
+      const colorUrl = URL.createObjectURL(blob)
+      setColorUrl(colorUrl)
     } catch (e) {
       console.log(e)
     }
@@ -47,8 +55,11 @@ export default function SingleImage () {
   // console.log(image)
   useEffect(() => {
     fetchData()
-    fetchUrl()
   }, [])
+
+  useEffect(() => {
+    fetchUrl()
+  }, [image])
 
   const Loading = () => <div>Loading...</div>
 
@@ -156,9 +167,9 @@ export default function SingleImage () {
           border: 'solid grey'
         }}
       >
-        {image && (
+        {colorUrl && (
           <Grid item xs={12} sm={6}>
-            <Color src={image.primaryImageSmall} crossOrigin='Anonymous'>
+            <Color src={colorUrl} crossOrigin='Anonymous' format='hex'>
               {({ data, loading, error }) => {
                 console.log(error)
                 if (loading) return <Loading />
@@ -170,19 +181,18 @@ export default function SingleImage () {
               }}
             </Color>
             <Palette
-              src={image.primaryImageSmall}
+              src={colorUrl}
               crossOrigin='Anonymous'
               colorCount={5}
               format='hex'
             >
               {({ data, loading, error }) => {
-                console.log(error)
                 if (loading) return <Loading />
                 return (
-                  <ul sx={{ color: data }}>
+                  <ul style={{ color: data }}>
                     {data &&
                       data.map(color => (
-                        <li key={color} sx={{ backgroundColor: color }}>
+                        <li key={color} style={{ backgroundColor: color }}>
                           {color}
                         </li>
                       ))}
