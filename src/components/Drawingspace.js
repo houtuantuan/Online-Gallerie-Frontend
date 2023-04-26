@@ -1,9 +1,9 @@
 import {useEffect} from 'react';
+import { stroke } from '../canvasutils/drawFunctions';
+import { setCtx } from '../canvasutils/canvas';
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
 
 export default ({brushOptions}) => {
-
-
   useEffect(() => {
     return () => {
     };
@@ -11,18 +11,13 @@ export default ({brushOptions}) => {
 
   useEffect(() => {
 
-      const ongoingTouches = [];
-            
-      function setCtx(){
-        const el = document.getElementById("canvas");
-        const ctx = el.getContext("2d");
-        return ctx;
-      }
-   
+      const ongoingTouches = []; 
+
       const canvas = document.querySelector('canvas');
-        const ctx = setCtx();
-        canvas.width = 808;
+      canvas.width = 808;
         canvas.height = 576;
+   
+      const ctx = setCtx();
         ctx.strokeRect(0,0,canvas.width,canvas.height);
 
         function copyTouch(touch) {
@@ -71,16 +66,8 @@ export default ({brushOptions}) => {
             const idx = ongoingTouchIndexById(evt.pointerId);
 
             if (idx >= 0) {
-              const y = evt.target.parentNode.offsetTop;
-              const x = evt.target.parentNode.offsetLeft;
 
-              ctx.beginPath();
-              ctx.moveTo(ongoingTouches[idx].layerX -x, ongoingTouches[idx].layerY -y);
-              ctx.lineTo(evt.layerX -x, evt.layerY -y +brushOptions.brushSize -1);
-              ctx.lineWidth = brushOptions.brushSize;
-              
-              ctx.strokeStyle = color;
-              ctx.stroke();
+              stroke(evt,ctx,color,idx, ongoingTouches,brushOptions);
           
               ongoingTouches.splice(idx, 1, copyTouch(evt)); // swap in the new touch record
             } else {
@@ -94,7 +81,6 @@ export default ({brushOptions}) => {
           const ctx = setCtx();
             const color = colorForTouch(evt);
             const idx = ongoingTouchIndexById(evt.pointerId);
-            
             
             if (idx >= 0) {
               
@@ -124,8 +110,6 @@ export default ({brushOptions}) => {
         canvas.addEventListener('pointerup',handleEnd.bind(brushOptions),false);
         canvas.addEventListener('pointermove',handleMove.bind(brushOptions),false);
         canvas.addEventListener('pointercancel', handleCancel,false);
-
-       
 
         document.addEventListener("keydown", clearlastline);
         
