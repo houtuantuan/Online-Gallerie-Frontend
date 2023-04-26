@@ -1,7 +1,9 @@
 import React from 'react'
 import { Avatar, Stack, Typography, Container, Grid } from '@mui/material'
 
-export default function ExploreTime () {
+
+export default function HomePage() {
+
   const AvatarImages = [
     {
       period: '1200',
@@ -57,6 +59,7 @@ export default function ExploreTime () {
   ]
   return (
     <>
+    {/* explore in timeline */}
       <Container>
         <Typography
           wrap
