@@ -5,12 +5,17 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import theme from './muiutils/themes'
 import CanvasComp from './components/CanvasInterface'
 import { Routes, Route } from 'react-router-dom'
+
 import HomePage from './components/HomePage'
 import SingleImage from './components/SingleImage'
+
+
+
 
 function App () {
  
   return (
+
 
     <div className='App'>
       <ThemeProvider theme={theme}>
@@ -20,12 +25,11 @@ function App () {
           <Route path='canvas' element={<CanvasComp />} />
           <Route path="gallery" element={<Overview/>} />
           <Route path="gallery/:_id" element={<SingleImage/>} />
-
         </Routes>
-        
       </ThemeProvider>
     </div>
   )
+
 }
 
 export default App

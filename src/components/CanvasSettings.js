@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import ColorWheel from "./canvasComponents/ColorWheel";
 
 export default ({brushOptions, setbrushOptions}) => {
 
+   
  const increaseSize = () => {
     console.log(setbrushOptions);
     const newSize = brushOptions.brushSize +1;
@@ -24,8 +25,9 @@ const decreaseSize = () => {
  }
  
     return(
- <div>
+<div className="setting">
 
+{/* Space for Toggling Size */}
 <div className="sizeToggle">
 brushsize: 
     <button onClick={()=>decreaseSize()}>&lt;</button>
@@ -33,6 +35,11 @@ brushsize:
     <button onClick={()=>increaseSize()}>&gt;</button>
 </div>
 
+{/* Space for Colorwheel */}
 
- </div>)   
+      <ColorWheel/>
+   
+
+
+</div>)   
 }
