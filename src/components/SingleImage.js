@@ -189,14 +189,14 @@ export default function SingleImage () {
               {({ data, loading, error }) => {
                 if (loading) return <Loading />
                 return (
-                  <ul style={{ color: data }}>
+                  <List sx={{ color: data }}>
                     {data &&
                       data.map(color => (
-                        <li key={color} style={{ backgroundColor: color }}>
+                        <ListItem key={color} sx={{ backgroundColor: color }}>
                           {color}
-                        </li>
+                        </ListItem>
                       ))}
-                  </ul>
+                  </List>
                 )
               }}
             </Palette>
