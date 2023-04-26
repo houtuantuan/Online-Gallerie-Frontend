@@ -3,12 +3,14 @@ import { stroke } from '../canvasutils/drawFunctions';
 import { setCtx } from '../canvasutils/canvas';
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
 
-export default ({brushOptions,color}) => {
+export default ({brushOptions}) => {
   useEffect(() => {
     const canvas = document.querySelector('canvas');
     canvas.width = 808;
     canvas.height = 576;
     const ctx = setCtx();
+    ctx.strokeRect(0,0,canvas.width,canvas.height);
+
 
     return () => {
     };
@@ -16,17 +18,19 @@ export default ({brushOptions,color}) => {
 
   useEffect(() => {
 
-    console.log(brushOptions);
+    const canvas = document.querySelector('canvas');
+    const ctx = setCtx();
+
       const ongoingTouches = []; 
 
-      const canvas = document.querySelector('canvas');
-      canvas.width = 808;
-        canvas.height = 576;
-      const ctx = setCtx();
+      // const canvas = document.querySelector('canvas');
+      // canvas.width = 808;
+      // canvas.height = 576;
+      // const ctx = setCtx();
+
+      console.log("new Canvas");
 
 
-
-        ctx.strokeRect(0,0,canvas.width,canvas.height);
 
         function copyTouch(touch) {
           // console.log(touch);
@@ -88,7 +92,6 @@ export default ({brushOptions,color}) => {
             evt.preventDefault();
           
           const ctx = setCtx();
-            const color = colorForTouch(evt);
             const idx = ongoingTouchIndexById(evt.pointerId);
             
             if (idx >= 0) {
@@ -126,7 +129,6 @@ export default ({brushOptions,color}) => {
         }
         
         return () => {
-          console.log("unmount");
           canvas.removeEventListener('pointerdown',handleStart,false);
           canvas.removeEventListener('pointerup',handleEnd.bind(brushOptions),false);
           canvas.removeEventListener('pointermove',handleMove.bind(brushOptions),false);
