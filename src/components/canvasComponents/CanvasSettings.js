@@ -1,4 +1,4 @@
-import ColorWheel from "./canvasComponents/ColorWheel";
+import ColorWheel from "./ColorWheel";
 
 export default ({brushOptions, setbrushOptions}) => {
 

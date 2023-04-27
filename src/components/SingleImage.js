@@ -14,12 +14,17 @@ import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import { useDispatch } from 'react-redux'
+import { addImage } from '../redux/itemSlice'
+
 
 export default function SingleImage () {
   const { _id } = useParams()
 
   const [image, setImage] = useState()
   const [colorUrl, setColorUrl] = useState(null)
+  const dispatch = useDispatch();
+  
 
   const fetchData = async () => {
     try {
@@ -28,6 +33,8 @@ export default function SingleImage () {
         throw new Error(`Request failes with a status of ${getData.status}`)
       const parseData = await getData.json()
       setImage(parseData)
+      dispatch(addImage(parseData || ""))
+  
       console.log(parseData)
     } catch (error) {
       console.log(error.message)

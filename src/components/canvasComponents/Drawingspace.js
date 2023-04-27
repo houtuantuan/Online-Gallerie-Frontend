@@ -1,12 +1,15 @@
 import {useEffect} from 'react';
-import { stroke } from '../canvasutils/drawFunctions';
-import { setCtx } from '../canvasutils/canvas';
+import { stroke } from '../../canvasutils/drawFunctions';
+import { setCtx } from '../../canvasutils/canvas';
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
 
 export default ({brushOptions}) => {
   useEffect(() => {
+
+
+    
     const canvas = document.querySelector('canvas');
-    canvas.width = 808;
+    canvas.width = 620;
     canvas.height = 576;
     const ctx = setCtx();
     ctx.strokeRect(0,0,canvas.width,canvas.height);
@@ -27,10 +30,6 @@ export default ({brushOptions}) => {
       // canvas.width = 808;
       // canvas.height = 576;
       // const ctx = setCtx();
-
-      console.log("new Canvas");
-
-
 
         function copyTouch(touch) {
           // console.log(touch);

@@ -17,11 +17,32 @@ useEffect(() => {
   
   
         const pixel = ctx.getImageData(evt.layerX -offsetX,evt.layerY -offsetY,1,1)
+
         const data =  pixel.data;
         const rgba = 'rgba(' + data[0] + ',' + data[1] +
              ',' + data[2] + ',' + (data[3] / 255) + ')';
              
         const newBrushOptions = {...brushOptions,brushColor: rgba}
+
+        createCanvas();
+        ctx.beginPath();
+
+        ctx.arc(evt.layerX -offsetX,evt.layerY -offsetY, 5, 0, 2 * Math.PI);
+        ctx.lineWidth = brushOptions.brushSize;
+        
+        ctx.strokeStyle = "#ffffff";
+        ctx.stroke();
+
+        ctx.beginPath();
+
+        ctx.arc(evt.layerX -offsetX,evt.layerY -offsetY, 4, 0, 2 * Math.PI);
+        ctx.lineWidth = brushOptions.brushSize;
+        
+        ctx.strokeStyle = "#000000";
+        ctx.stroke();
+      
+      
+
         setbrushOptions(newBrushOptions);
     }
 

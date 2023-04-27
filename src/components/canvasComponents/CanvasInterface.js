@@ -1,8 +1,10 @@
 import { Avatar, Stack, Typography, Container, Grid} from '@mui/material'
 import Drawingspace from './Drawingspace'
 import { useContext,useState,useEffect } from 'react'
-import CanvasSettings from './CanvasSettings';
+import Reference from './Reference'
+import CanvasSettings from './CanvasSettings' 
 
+ 
 export default () => {
     
     const initialState ={
@@ -23,13 +25,13 @@ export default () => {
     >
         Drawing Board</Typography>
 <Grid container>
-    <Grid container md={9} border="solid black 1px">
+    <Grid container md={7}>
             <Drawingspace 
             brushOptions={brushOptions} 
         />
         </Grid>
         <Grid container md={3} direction="column">
-            <Grid item>InterfaceRef</Grid>
+            <Grid item><Reference/></Grid>
             <Grid item><CanvasSettings
            brushOptions={brushOptions}
            setbrushOptions={setbrushOptions}/>

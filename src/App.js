@@ -3,7 +3,7 @@ import Overview from "./components/Overview"
 import Header from './components/header'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import theme from './muiutils/themes'
-import CanvasComp from './components/CanvasInterface'
+import CanvasComp from './components/canvasComponents/CanvasInterface'
 import { Routes, Route } from 'react-router-dom'
 
 import HomePage from './components/HomePage'
@@ -20,6 +20,7 @@ function App () {
         <Routes>
           <Route path="" element={<HomePage/>}/>
           <Route path='canvas' element={<CanvasComp />} />
+          <Route path='canvas/:_id' element={<CanvasComp />} />
           <Route path="gallery" element={<Overview/>} />
           <Route path="gallery/:_id" element={<SingleImage/>} />
         </Routes>

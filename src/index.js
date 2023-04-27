@@ -5,12 +5,15 @@ import App from './App'
 import './css/index.scss'
 import { BrowserRouter } from 'react-router-dom'
 import ReactCardSlider from "./components/CardSlider"
+import { Provider } from 'react-redux'
+import {store} from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <BrowserRouter>
+    <Provider store={store}>
     <App />
-    
+    </Provider>
     </BrowserRouter>
 );
 
