@@ -13,13 +13,21 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
 import '../css/overview.css'
+<<<<<<< HEAD
 import { Outlet, Link, NavLink } from 'react-router-dom'
+=======
+import { useDispatch } from 'react-redux'
+import { addImage } from '../redux/itemSlice'
+
+
+>>>>>>> 14c0037e76d4292f786f7366bb2e84dd754443c4
 
 
 
 export default function OverviewByTime ({ yearRange }) {
   const [items, setItems] = useState([])
   const [hasMore, setHasMore] = useState(true)
+  const dispatch = useDispatch();
   console.log(yearRange)
 
   const getMorePost = async () => {
@@ -31,7 +39,7 @@ export default function OverviewByTime ({ yearRange }) {
     if(!newItems.length){
         setHasMore(false);
     }
-
+    
     setItems(prevItems => [...prevItems, ...newItems])
   }
   useEffect(() => {
