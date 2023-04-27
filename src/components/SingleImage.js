@@ -46,7 +46,6 @@ export default function SingleImage () {
       const parseData = await getData.json()
       setImage(parseData)
       dispatch(addImage(parseData || ''))
-
       console.log(parseData)
     } catch (error) {
       console.log(error.message)
@@ -70,6 +69,10 @@ export default function SingleImage () {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  const pickRef = (image) => {
+    dispatch(addImage(image || ""))
   }
   // console.log(image)
   useEffect(() => {
@@ -318,11 +321,12 @@ export default function SingleImage () {
                   display: 'flex',
                   justifyContent: 'center'
                 }}
-              >
-                <Link to='/canvas'>
-                  <Button variant='outlined' sx={{ color: 'black' }}>
-                    Draw it!
-                  </Button>
+              ><Link to="/canvas">
+                <Button 
+                onclick={pickRef(image)}
+                variant='outlined' sx={{color:"black"}}>
+                  Draw it!
+                </Button>
                 </Link>
               </Container>
             </Box>
