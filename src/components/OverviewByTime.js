@@ -13,10 +13,14 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
 import '../css/overview.css'
+<<<<<<< HEAD
+import { Outlet, Link, NavLink } from 'react-router-dom'
+=======
 import { useDispatch } from 'react-redux'
 import { addImage } from '../redux/itemSlice'
 
 
+>>>>>>> 14c0037e76d4292f786f7366bb2e84dd754443c4
 
 
 
@@ -71,6 +75,7 @@ export default function OverviewByTime ({ yearRange }) {
                 sx={{ display: 'flex', justifyContent: 'center'}}
               >
                 <ImageListItem className='infoParent'>
+                  <Link to={item._id}>
                   <Box
                     xs={6}
                     sm={5}
@@ -85,8 +90,9 @@ export default function OverviewByTime ({ yearRange }) {
                       borderRadius: '25px'
                     }}
                   >
-                    
+                  
                   </Box>
+                  </Link>  
                   <ImageListItemBar
                     sx={{ borderRadius: '0 0 25px 25px' }}
                     className='imageInfo'
@@ -103,7 +109,7 @@ export default function OverviewByTime ({ yearRange }) {
                         }}
                         aria-label={`info about ${item.title}`}
                       >
-                        <InfoIcon />
+                        
                       </IconButton>
                     }
                   />

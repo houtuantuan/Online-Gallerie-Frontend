@@ -88,7 +88,7 @@ const navItems = [
   { name: 'Sign Up', pathName: 'signup' }
 ]
 
-function DrawerAppBar (props) {
+function Header (props) {
   const { window } = props
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
@@ -189,4 +189,4 @@ function DrawerAppBar (props) {
   )
 }
 
-export default DrawerAppBar
+export default Header;

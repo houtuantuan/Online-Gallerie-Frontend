@@ -1,6 +1,6 @@
 import './App.css'
 import Overview from "./components/Overview"
-import Header from './components/Header'
+import Header from './components/Header.js'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import theme from './muiutils/themes'
 import CanvasComp from './components/canvasComponents/CanvasInterface'
