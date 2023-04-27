@@ -4,15 +4,14 @@ import './index.css'
 import App from './App'
 import './css/index.scss'
 import { BrowserRouter } from 'react-router-dom'
-import ReactCardSlider from "./components/CardSlider"
+import ReactCardSlider from './components/CardSlider'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <BrowserRouter>
+  <BrowserRouter>
     <App />
-    
-    </BrowserRouter>
-);
+  </BrowserRouter>
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
