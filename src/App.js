@@ -10,12 +10,9 @@ import HomePage from './components/HomePage'
 import SingleImage from './components/SingleImage'
 
 
-
-
 function App () {
  
   return (
-
 
     <div className='App'>
       <ThemeProvider theme={theme}>
