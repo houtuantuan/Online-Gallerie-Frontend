@@ -1,8 +1,52 @@
 import React from 'react'
 import { Avatar, Stack, Typography, Container, Grid } from '@mui/material'
+import ReactCardSlider from 'react-card-slider-component'
 
-
-export default function HomePage() {
+export default function HomePage () {
+  const slides = [
+    {
+      image: 'https://picsum.photos/200/300',
+      title: 'This is a title',
+      description: 'This is a description'
+      // clickEvent: sliderClick
+    },
+    {
+      image: 'https://picsum.photos/600/500',
+      title: 'This is a second title',
+      description: 'This is a second description'
+      // clickEvent: sliderClick
+    },
+    {
+      image: 'https://picsum.photos/700/600',
+      title: 'This is a third title',
+      description: 'This is a third description'
+      // clickEvent: sliderClick
+    },
+    {
+      image: 'https://picsum.photos/500/400',
+      title: 'This is a fourth title',
+      description: 'This is a fourth description'
+      // clickEvent: sliderClick
+    },
+    {
+      image: 'https://picsum.photos/200/300',
+      title: 'This is a fifth title',
+      description: 'This is a fifth description'
+      // clickEvent: sliderClick
+    },
+    {
+      image: 'https://picsum.photos/800/700',
+      title: 'This is a sixth title',
+      description: 'This is a sixth description'
+      // clickEvent: sliderClick
+    },
+    {
+      image: 'https://picsum.photos/800/900',
+      title: 'This is a seventh title',
+      description: 'This is a seventh description'
+      // clickEvent: sliderClick
+    }
+  ]
 
   const AvatarImages = [
     {
@@ -42,8 +86,7 @@ export default function HomePage() {
     },
     {
       period: '1805',
-      imageUrl:
-        'https://images.metmuseum.org/CRDImages/ep/web-large/DT2138.jpg'
+      imageUrl: 'https://images.metmuseum.org/CRDImages/ep/web-large/DT2138.jpg'
     },
     {
       period: '1850',
@@ -54,12 +97,11 @@ export default function HomePage() {
       period: '1899',
       imageUrl:
         'https://images.metmuseum.org/CRDImages/ep/web-large/DP243354.jpg'
-    },
-
+    }
   ]
   return (
     <>
-    {/* explore in timeline */}
+      {/* explore in timeline */}
       <Container>
         <Typography
           wrap
@@ -96,7 +138,7 @@ export default function HomePage() {
               }}
             >
               <Avatar
-              src={el.imageUrl}
+                src={el.imageUrl}
                 sx={{
                   width: '100px',
                   height: '100px',
@@ -109,6 +151,9 @@ export default function HomePage() {
             </Grid>
           ))}
         </Grid>
+      </Container>
+      <Container sx={{ marginTop: '5em',display:"flex",justifyContent:"center" }}>
+        <ReactCardSlider slides={slides} />
       </Container>
     </>
   )
