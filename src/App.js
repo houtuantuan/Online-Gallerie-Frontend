@@ -1,6 +1,6 @@
 import './App.css'
 import Overview from "./components/Overview"
-import Header from './components/header'
+import Header from './components/Header'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import theme from './muiutils/themes'
 import CanvasComp from './components/canvasComponents/CanvasInterface'
@@ -16,13 +16,13 @@ function App () {
 
     <div className='App'>
       <ThemeProvider theme={theme}>
-        <Header></Header>
+        <Header theme={theme}></Header>
         <Routes>
           <Route path="" element={<HomePage/>}/>
           <Route path='canvas' element={<CanvasComp />} />
           <Route path='canvas/:_id' element={<CanvasComp />} />
           <Route path="gallery" element={<Overview/>} />
-          <Route path="gallery/:_id" element={<SingleImage/>} />
+          <Route path="gallery/:_id" element={<SingleImage/>} theme={theme}/>
         </Routes>
       </ThemeProvider>
     </div>
