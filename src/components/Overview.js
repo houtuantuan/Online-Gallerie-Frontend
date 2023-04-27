@@ -13,79 +13,41 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import '../css/overview.css'
 import { useEffect } from 'react'
-
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 // import 'react-tabs/style/react-tabs.css'
 import OverviewByTime from './OverviewByTime'
 import { Typography } from '@mui/material'
+import {LOCAL_STORAGE_YEAR_RANGE_KEY, YEAR_RANGES} from '../utils/constants'
 
-export default function Overview () {
-  const yearRanges = [
-    {
-      beginYear: 1200,
-      endYear: 1430
-    },
-    {
-      beginYear: 1430,
-      endYear: 1510
-    },
-    {
-      beginYear: 1510,
-      endYear: 1550
-    },
-    {
-      beginYear: 1550,
-      endYear: 1600
-    },
-    {
-      beginYear: 1600,
-      endYear: 1705
-    },
-    {
-      beginYear: 1705,
-      endYear: 1750
-    },
-    {
-      beginYear: 1750,
-      endYear: 1805
-    },
-    {
-      beginYear: 1805,
-      endYear: 1850
-    },
-    {
-      beginYear: 1850,
-      endYear: 1899
-    },
-    {
-      beginYear: 1899,
-      endYear: 1920
-    }
-  ]
+export default function Overview () {  
+
+  const previousYearRangeIndex = localStorage.getItem(
+    LOCAL_STORAGE_YEAR_RANGE_KEY
+  )
+
+  const handleSelect = index => {
+    localStorage.setItem(LOCAL_STORAGE_YEAR_RANGE_KEY, index)
+  }
 
   return (
     <>
       {/* <Typography variant='h4'>Explore in Timeline</Typography> */}
-      <Tabs>
+      <Tabs
+        onSelect={handleSelect}
+        defaultIndex={previousYearRangeIndex ? previousYearRangeIndex : 0}
+      >
         <Grid
           container
           spacing={{ xs: 2, md: 2, xl: 2 }}
-          
-        //   columns={{ xs: 4, sm: 8, md: 10, lg: 12 }}
+          //   columns={{ xs: 4, sm: 8, md: 10, lg: 12 }}
           sx={{ display: 'flex', justifyContent: 'center' }}
         >
-          <TabList className='tabList'  >
-            {yearRanges.map((el, i) => {
-              return (
-                
-                  <Tab  
-                  
-                  key={i}>{el.beginYear.toString()}</Tab>
-                
-              )
+          <TabList className='tabList'>
+            {YEAR_RANGES.map((el, i) => {
+              return <Tab key={i}>{el.beginYear.toString()}</Tab>
             })}
           </TabList>
-          {yearRanges.map((yearRange, i) => {
+          {YEAR_RANGES.map((yearRange, i) => {
             return (
               <TabPanel key={i} index={i}>
                 <OverviewByTime yearRange={yearRange} />
