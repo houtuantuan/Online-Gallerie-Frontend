@@ -13,6 +13,8 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
 import '../css/overview.css'
+import { Outlet, Link, NavLink } from 'react-router-dom'
+
 
 
 export default function OverviewByTime ({ yearRange }) {
@@ -65,6 +67,7 @@ export default function OverviewByTime ({ yearRange }) {
                 sx={{ display: 'flex', justifyContent: 'center'}}
               >
                 <ImageListItem className='infoParent'>
+                  <Link to={item._id}>
                   <Box
                     xs={6}
                     sm={5}
@@ -79,8 +82,9 @@ export default function OverviewByTime ({ yearRange }) {
                       borderRadius: '25px'
                     }}
                   >
-                    
+                  
                   </Box>
+                  </Link>  
                   <ImageListItemBar
                     sx={{ borderRadius: '0 0 25px 25px' }}
                     className='imageInfo'
@@ -97,7 +101,7 @@ export default function OverviewByTime ({ yearRange }) {
                         }}
                         aria-label={`info about ${item.title}`}
                       >
-                        <InfoIcon />
+                        
                       </IconButton>
                     }
                   />

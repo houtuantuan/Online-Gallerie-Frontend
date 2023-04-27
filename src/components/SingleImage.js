@@ -11,7 +11,8 @@ import {
   Grid,
   Box,
   Button,
-  Divider
+  Divider,
+  Container
 } from '@mui/material'
 import ShareIcon from '@mui/icons-material/Share'
 import FavoriteIcon from '@mui/icons-material/Favorite'
@@ -21,6 +22,8 @@ import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import { Outlet, Link, NavLink } from 'react-router-dom'
+
 
 export default function SingleImage () {
   const { _id } = useParams()
@@ -101,7 +104,7 @@ export default function SingleImage () {
               maxWidth: 300,
               maxHeight: 400,
               border: 'solid',
-              borderColor: 'white',
+              borderColor: '#F1F6F9',
               borderWidth: '15px'
             }}
           >
@@ -200,9 +203,7 @@ export default function SingleImage () {
         </Grid>
         {/* color panel */}
         {colorUrl && (
-          <Grid item 
-          xs={12} md={6} lg={4} xl={3} 
-          >
+          <Grid item xs={12} md={6} lg={4} xl={3}>
             {/* <Color src={colorUrl} crossOrigin='Anonymous' format='hex'>
               {({ data, loading, error }) => {
                 console.log(error)
@@ -218,7 +219,7 @@ export default function SingleImage () {
                 )
               }}
             </Color> */}
-            <Box sx={{  maxWidth: 600 }}>
+            <Box sx={{ maxWidth: 600 }}>
               {/* <Typography>Predominant colors:</Typography> */}
               <Palette
                 src={colorUrl}
@@ -233,20 +234,18 @@ export default function SingleImage () {
                     <List
                       sx={{
                         color: data,
-                        border: '1em solid white',
-                        borderRadius:"5%",
+                        border: '1em solid #F1F6F9',
+                        borderRadius: '5%',
                         height: 'auto',
                         padding: '0',
-                        marginTop:"4em"
-                       
-
+                        marginTop: '4em'
                       }}
                     >
                       {data &&
                         data.map(color => (
                           <ListItem
                             key={color}
-                            sx={{ backgroundColor: color, height: 50 }}
+                            sx={{ backgroundColor: color, height: 50,color:"white" }}
                           >
                             {color}
                           </ListItem>
@@ -255,12 +254,23 @@ export default function SingleImage () {
                   )
                 }}
               </Palette>
+              <Container
+                sx={{
+                 
+                  marginTop: '1em',
+                  display: 'flex',
+                  justifyContent: 'center'
+                }}
+              ><Link to="/canvas">
+                <Button 
+                variant='outlined' sx={{color:"black"}}>
+                  Draw it!
+                </Button>
+                </Link>
+              </Container>
             </Box>
           </Grid>
         )}
-      </Grid>
-      <Grid item>
-        <Button></Button>
       </Grid>
     </Box>
   )
