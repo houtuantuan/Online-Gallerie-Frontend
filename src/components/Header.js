@@ -99,7 +99,8 @@ function Header (props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant='h6' sx={{ my: 2 }}>
-        Gallery Art
+       <Link to="/">Gallery Art</Link>
+        
       </Typography>
       <Divider />
       <List>
@@ -137,12 +138,13 @@ function Header (props) {
             component='div'
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Gallery Art
+            <Link className="navLink" to="/"> Gallery Art</Link>
+           
           </Typography>
           <Box sx={{ display: { xs:"none",sm: 'none', md: 'block' } }}>
             {navItems.map(item => (
               <NavLink className='navLink' to={item.pathName}>
-                <Button key={item.name} style={{ color: 'black',fontWeight:"1000" }}>
+                <Button key={item.name} style={{ color: 'white',fontWeight:"1000" }}>
                   {item.name}
                 </Button>
               </NavLink>
@@ -155,7 +157,7 @@ function Header (props) {
         
           <Search>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon sx={{color:"white"}}/>
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"

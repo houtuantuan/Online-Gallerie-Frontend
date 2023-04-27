@@ -17,13 +17,10 @@ import { Outlet, Link, NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addImage } from '../redux/itemSlice'
 
-
-
-
 export default function OverviewByTime ({ yearRange }) {
   const [items, setItems] = useState([])
   const [hasMore, setHasMore] = useState(true)
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   console.log(yearRange)
 
   const getMorePost = async () => {
@@ -32,10 +29,10 @@ export default function OverviewByTime ({ yearRange }) {
     )
     const newItems = await res.json()
     console.log(newItems)
-    if(!newItems.length){
-        setHasMore(false);
+    if (!newItems.length) {
+      setHasMore(false)
     }
-    
+
     setItems(prevItems => [...prevItems, ...newItems])
   }
   useEffect(() => {
@@ -52,9 +49,6 @@ export default function OverviewByTime ({ yearRange }) {
         endMessage={<h4>Nothing more to show</h4>}
       >
         <ScrollToTop smooth />
-
-        
-
         <Box margin={{ xs: 5, sm: 5, md: 5 }}>
           <Grid
             container
@@ -66,29 +60,26 @@ export default function OverviewByTime ({ yearRange }) {
               <Grid
                 item
                 key={item._id}
-                
                 columnSpacing={{ xs: 1, sm: 1, md: 1 }}
-                sx={{ display: 'flex', justifyContent: 'center'}}
+                sx={{ display: 'flex', justifyContent: 'center' }}
               >
                 <ImageListItem className='infoParent'>
                   <Link to={item._id}>
-                  <Box
-                    xs={6}
-                    sm={5}
-                    md={4}
-                    lg={3}
-                    className='center-cropped'
-                    sx={{
-                      backgroundImage: `url(${item.primaryImageSmall})`,
-                      display: 'flex',
-                      justifyContent: 'center',
-                      boxShadow: 'grey 0px 7px 29px 0px',
-                      borderRadius: '25px'
-                    }}
-                  >
-                  
-                  </Box>
-                  </Link>  
+                    <Box
+                      xs={6}
+                      sm={5}
+                      md={4}
+                      lg={3}
+                      className='center-cropped'
+                      sx={{
+                        backgroundImage: `url(${item.primaryImageSmall})`,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        boxShadow: 'grey 0px 7px 29px 0px',
+                        borderRadius: '25px'
+                      }}
+                    ></Box>
+                  </Link>
                   <ImageListItemBar
                     sx={{ borderRadius: '0 0 25px 25px' }}
                     className='imageInfo'
@@ -104,9 +95,7 @@ export default function OverviewByTime ({ yearRange }) {
                           color: 'rgba(255, 255, 255, 0.54)'
                         }}
                         aria-label={`info about ${item.title}`}
-                      >
-                        
-                      </IconButton>
+                      ></IconButton>
                     }
                   />
                 </ImageListItem>

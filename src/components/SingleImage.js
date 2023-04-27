@@ -25,15 +25,18 @@ import ListItemText from '@mui/material/ListItemText'
 import { Outlet, Link, NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addImage } from '../redux/itemSlice'
-
+import Modal from '@mui/material/Modal'
+import ZoomInIcon from '@mui/icons-material/ZoomIn'
 
 export default function SingleImage () {
   const { _id } = useParams()
 
   const [image, setImage] = useState()
   const [colorUrl, setColorUrl] = useState(null)
-  const dispatch = useDispatch();
-  
+  const dispatch = useDispatch()
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   const fetchData = async () => {
     try {
@@ -42,8 +45,8 @@ export default function SingleImage () {
         throw new Error(`Request failes with a status of ${getData.status}`)
       const parseData = await getData.json()
       setImage(parseData)
-      dispatch(addImage(parseData || ""))
-  
+      dispatch(addImage(parseData || ''))
+
       console.log(parseData)
     } catch (error) {
       console.log(error.message)
@@ -90,8 +93,8 @@ export default function SingleImage () {
         sx={{
           width: '80%',
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center'
-          // border: 'solid'
         }}
       >
         <Grid
@@ -107,8 +110,8 @@ export default function SingleImage () {
         >
           <Card
             sx={{
-              maxWidth: 300,
-              maxHeight: 400,
+              // maxWidth: 400,
+              // maxHeight: 500,
               border: 'solid',
               borderColor: '#F1F6F9',
               borderWidth: '15px'
@@ -116,18 +119,63 @@ export default function SingleImage () {
           >
             <CardActionArea>
               {image && (
-                <CardMedia
-                  component='img'
-                  height='400'
-                  image={image.primaryImage}
-                  alt={image.title}
-                />
+                <>
+                  <CardMedia
+                    component='img'
+                    width='auto'
+                    height='400'
+                    image={image.primaryImage}
+                    alt={image.title}
+                  />
+                </>
               )}
             </CardActionArea>
+            {image && (
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby='modal-modal-title'
+                sx={{ display: 'flex', justifyContent: 'center' }}
+              >
+                <Box
+                  sx={{
+                    // transform: 'translate(-50%, -50%)',
+                    maxHeight: 750,
+                    height: 750,
+                    maxWidth: '80vw',
+                    width: 'auto',
+                    bgcolor: 'background.paper',
+                    border: '2px solid #000',
+
+                    boxShadow: 24,
+                    p: 4,
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <img
+                    id='modal-modal-title'
+                    alt={image.title}
+                    src={image.primaryImage}
+                  />
+                </Box>
+              </Modal>
+            )}
           </Card>
         </Grid>
-        <Divider sx={{ width: '80%', marginTop: '3em' }}></Divider>
       </Grid>
+      <Grid
+        item
+        sx={{ display: 'flex', 
+        justifyContent: 'center', 
+        marginTop: '1em' 
+      }}
+      >
+        <ZoomInIcon onClick={handleOpen} />
+      </Grid>
+
+      <Divider sx={{ width: '80%', marginTop: '3em' }}></Divider>
+
       {/* artwork details and color panel */}
       <Grid
         container
@@ -251,7 +299,11 @@ export default function SingleImage () {
                         data.map(color => (
                           <ListItem
                             key={color}
-                            sx={{ backgroundColor: color, height: 50,color:"white" }}
+                            sx={{
+                              backgroundColor: color,
+                              height: 50,
+                              color: 'white'
+                            }}
                           >
                             {color}
                           </ListItem>
@@ -262,16 +314,15 @@ export default function SingleImage () {
               </Palette>
               <Container
                 sx={{
-                 
                   marginTop: '1em',
                   display: 'flex',
                   justifyContent: 'center'
                 }}
-              ><Link to="/canvas">
-                <Button 
-                variant='outlined' sx={{color:"black"}}>
-                  Draw it!
-                </Button>
+              >
+                <Link to='/canvas'>
+                  <Button variant='outlined' sx={{ color: 'black' }}>
+                    Draw it!
+                  </Button>
                 </Link>
               </Container>
             </Box>
