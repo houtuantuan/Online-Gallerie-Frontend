@@ -22,12 +22,9 @@ import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-<<<<<<< HEAD
 import { Outlet, Link, NavLink } from 'react-router-dom'
-=======
 import { useDispatch } from 'react-redux'
 import { addImage } from '../redux/itemSlice'
->>>>>>> 14c0037e76d4292f786f7366bb2e84dd754443c4
 
 
 export default function SingleImage () {
