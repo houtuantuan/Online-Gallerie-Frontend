@@ -42,7 +42,6 @@ export default function SingleImage () {
         throw new Error(`Request failes with a status of ${getData.status}`)
       const parseData = await getData.json()
       setImage(parseData)
-      dispatch(addImage(parseData || ""))
   
       console.log(parseData)
     } catch (error) {
@@ -67,6 +66,10 @@ export default function SingleImage () {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  const pickRef = (image) => {
+    dispatch(addImage(image || ""))
   }
   // console.log(image)
   useEffect(() => {
@@ -269,6 +272,7 @@ export default function SingleImage () {
                 }}
               ><Link to="/canvas">
                 <Button 
+                onclick={pickRef(image)}
                 variant='outlined' sx={{color:"black"}}>
                   Draw it!
                 </Button>

@@ -4,17 +4,25 @@ export const canvasSlice = createSlice({
   name: 'canvas',
   initialState: {
     width: 620,
-    height: 576
+    height: 576,
+    uriList: []
   },
   reducers: {
     changeCanvasSize: (state, action) => {
              state.value = action.payload
            },
+    addUri: (state,action) => {
+            state.uriList.push(action.payload)
+            if(state.uriList.length >42){
+              state.uriList.shift();
+            }
+    }
   },
+   
 })
 
-export const {changeCanvasSize } = itemSlice.actions
+export const {changeCanvasSize, addUri} = canvasSlice.actions
 
-export const selectItem = (state) => state.item.value
+export const selectCanvasUri = (state) => state.canvas.uriList;
 
 export default canvasSlice.reducer
