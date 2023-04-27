@@ -5,7 +5,14 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { CardActionArea, IconButton, Grid, Box, Button } from '@mui/material'
+import {
+  CardActionArea,
+  IconButton,
+  Grid,
+  Box,
+  Button,
+  Divider
+} from '@mui/material'
 import ShareIcon from '@mui/icons-material/Share'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import Color, { Palette, useColor } from 'color-thief-react'
@@ -68,34 +75,41 @@ export default function SingleImage () {
       <Grid
         flexWrap
         container
-        m={10}
-        rowSpacing={1}
+        mt={5}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         // columns={{ xs: 4, sm: 8, md: 10, lg: 10 }}
         sx={{
           width: '80%',
           display: 'flex',
-          justifyContent: 'center',
-          border: 'solid'
+          justifyContent: 'center'
+          // border: 'solid'
         }}
       >
         <Grid
           item
           xs={12}
-          md={6}
+          md={12}
           sx={{
             maxWidth: 400,
-            border: 'solid pink',
+            // border: 'solid pink',
             display: 'flex'
           }}
-          justifyContent={{ xs: 'center', xl: 'flex-end' }}
+          justifyContent={{ xs: 'center' }}
         >
-          <Card sx={{ maxWidth: 400, border: 'solid red' }}>
+          <Card
+            sx={{
+              maxWidth: 300,
+              maxHeight: 400,
+              border: 'solid',
+              borderColor: 'white',
+              borderWidth: '15px'
+            }}
+          >
             <CardActionArea>
               {image && (
                 <CardMedia
                   component='img'
-                  height='600'
+                  height='400'
                   image={image.primaryImage}
                   alt={image.title}
                 />
@@ -103,18 +117,49 @@ export default function SingleImage () {
             </CardActionArea>
           </Card>
         </Grid>
+        <Divider sx={{ width: '80%', marginTop: '3em' }}></Divider>
+      </Grid>
+      {/* artwork details and color panel */}
+      <Grid
+        container
+        m={5}
+        rowSpacing={1}
+        columnSpacing={{ xs: 1, sm: 3, md: 6 }}
+        columns={{ xs: 4, sm: 10, md: 12, lg: 12 }}
+        sx={{
+          padding: '0 10em 0 10em',
+          display: 'flex',
+          justifyContent: 'center'
+          // border: 'solid grey'
+        }}
+      >
+        {/* artwork details */}
         <Grid
           item
-          xs={10}
-          sm={5}
+          xs={12}
+          md={5}
+          lg={4}
+          xl={3}
           sx={{
-            display: 'flex',
+            display: 'block',
+            // border: 'solid red',
 
             flexDirection: 'column'
           }}
-          alignItems={{ xs: 'center', xl: 'flex-start' }}
+          alignItems={{ xs: 'center', md: 'flex-end' }}
+          justifyContent={{ xs: 'center', md: 'flex-end' }}
         >
-          <Typography sx={{ mt: 4, mb: 2 }} variant='h5' component='div'>
+          <Typography
+            sx={{
+              mt: 4,
+              mb: 2,
+              borderBottom: 'solid #afafaf',
+              paddingLeft: '0.5em',
+              fontFamily: 'josefin_sans'
+            }}
+            variant='h5'
+            component='div'
+          >
             Artwork Details
           </Typography>
 
@@ -153,53 +198,64 @@ export default function SingleImage () {
             )}
           </List>
         </Grid>
-      </Grid>
-      <Grid
-        container
-        m={10}
-        rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        // columns={{ xs: 4, sm: 8, md: 10, lg: 10 }}
-        sx={{
-          width: '80%',
-          display: 'flex',
-          justifyContent: 'center',
-          border: 'solid grey'
-        }}
-      >
+        {/* color panel */}
         {colorUrl && (
-          <Grid item xs={12} sm={6}>
-            <Color src={colorUrl} crossOrigin='Anonymous' format='hex'>
+          <Grid item 
+          xs={12} md={6} lg={4} xl={3} 
+          >
+            {/* <Color src={colorUrl} crossOrigin='Anonymous' format='hex'>
               {({ data, loading, error }) => {
                 console.log(error)
                 if (loading) return <Loading />
                 return (
-                  <div style={{ color: data }}>
-                    Text with predominant color: <strong>{data}</strong>
-                  </div>
+                  <>
+                    
+                    <Typography style={{ color: data, backgroundColor: data }}>
+                      <br />
+                      <strong>{data}</strong>
+                    </Typography>
+                  </>
                 )
               }}
-            </Color>
-            <Palette
-              src={colorUrl}
-              crossOrigin='Anonymous'
-              colorCount={5}
-              format='hex'
-            >
-              {({ data, loading, error }) => {
-                if (loading) return <Loading />
-                return (
-                  <List sx={{ color: data }}>
-                    {data &&
-                      data.map(color => (
-                        <ListItem key={color} sx={{ backgroundColor: color }}>
-                          {color}
-                        </ListItem>
-                      ))}
-                  </List>
-                )
-              }}
-            </Palette>
+            </Color> */}
+            <Box sx={{  maxWidth: 600 }}>
+              {/* <Typography>Predominant colors:</Typography> */}
+              <Palette
+                src={colorUrl}
+                crossOrigin='Anonymous'
+                colorCount={5}
+                format='hex'
+                className='colorPanel'
+              >
+                {({ data, loading, error }) => {
+                  if (loading) return <Loading />
+                  return (
+                    <List
+                      sx={{
+                        color: data,
+                        border: '1em solid white',
+                        borderRadius:"5%",
+                        height: 'auto',
+                        padding: '0',
+                        marginTop:"4em"
+                       
+
+                      }}
+                    >
+                      {data &&
+                        data.map(color => (
+                          <ListItem
+                            key={color}
+                            sx={{ backgroundColor: color, height: 50 }}
+                          >
+                            {color}
+                          </ListItem>
+                        ))}
+                    </List>
+                  )
+                }}
+              </Palette>
+            </Box>
           </Grid>
         )}
       </Grid>

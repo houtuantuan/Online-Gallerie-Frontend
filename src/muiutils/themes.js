@@ -1,6 +1,5 @@
-
-import {createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles'
+import { red } from '@mui/material/colors'
 
 const theme = createTheme({
   palette: {
@@ -8,15 +7,18 @@ const theme = createTheme({
       light: '#fff0ef',
       main: '#d8dbbe',
       dark: '#5960a1',
-      contrastText: '#000',
+      contrastText: '#000'
     },
     secondary: {
       light: '#ffffff',
       main: '#f44336',
       dark: '#ba000d',
-      contrastText: '#000',
-    },
+      contrastText: '#000'
+    }
   },
-});
+  typography: {
+    fontFamily: "josefin_sans"
+  }
+})
 
-export default theme;
+export default theme
