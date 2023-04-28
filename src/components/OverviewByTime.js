@@ -21,7 +21,7 @@ export default function OverviewByTime ({ yearRange }) {
   const [items, setItems] = useState([])
   const [hasMore, setHasMore] = useState(true)
   const dispatch = useDispatch()
-  console.log(yearRange)
+  // console.log(yearRange)
 
   const getMorePost = async () => {
     const res = await fetch(

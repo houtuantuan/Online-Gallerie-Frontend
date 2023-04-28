@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import HomePage from './components/HomePage'
 import SingleImage from './components/SingleImage'
+import SearchResult from "./components/SearchResult"
 
 
 function App () {
@@ -22,6 +23,7 @@ function App () {
           <Route path='canvas' element={<CanvasComp />} />
           <Route path='canvas/:_id' element={<CanvasComp />} />
           <Route path="gallery" element={<Overview/>} />
+          <Route path="gallery/search" element={<SearchResult/>} />
           <Route path="gallery/:_id" element={<SingleImage/>} theme={theme}/>
         </Routes>
       </ThemeProvider>

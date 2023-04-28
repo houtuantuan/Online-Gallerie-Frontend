@@ -9,8 +9,13 @@ import InputBase from '@mui/material/InputBase'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import Nav from './nav'
-import { Outlet, Link, NavLink } from 'react-router-dom'
-
+import {
+  createSearchParams,
+  Outlet,
+  Link,
+  NavLink,
+  useNavigate
+} from 'react-router-dom'
 import { createTheme } from '@mui/material/styles'
 import '../css/navLink.css'
 import Divider from '@mui/material/Divider'
@@ -21,6 +26,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import CssBaseline from '@mui/material/CssBaseline'
 import Button from '@mui/material/Button'
+import { useState } from 'react'
 
 // const theme = createTheme({
 //   palette: {
@@ -91,6 +97,7 @@ const navItems = [
 function Header (props) {
   const { window } = props
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [value, setValue] = useState()
 
   const handleDrawerToggle = () => {
     setMobileOpen(prevState => !prevState)
@@ -99,17 +106,17 @@ function Header (props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant='h6' sx={{ my: 2 }}>
-       <Link to="/">Gallery Art</Link>
-        
+        <Link to='/'>Gallery Art</Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map(item => (
           <ListItem key={item.name} disablePadding>
-            <NavLink className="navLink" to={item.pathName}>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item.name} />
-            </ListItemButton></NavLink>
+            <NavLink key={item.name} className='navLink' to={item.pathName}>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item.name} />
+              </ListItemButton>
+            </NavLink>
           </ListItem>
         ))}
       </List>
@@ -118,6 +125,20 @@ function Header (props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined
+
+  const navigate = useNavigate()
+  const params = { q: value }
+
+  const goToSearchResult = () => {
+    
+    navigate({
+      pathname: '/gallery/search',
+      search: `?${createSearchParams(params)}`
+    })
+    document.getElementById("inputField").value=""
+    
+  }
+  console.log(value)
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -138,33 +159,44 @@ function Header (props) {
             component='div'
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <Link className="navLink" to="/"> Gallery Art</Link>
-           
+            <Link className='navLink' to='/'>
+              {' '}
+              Gallery Art
+            </Link>
           </Typography>
-          <Box sx={{ display: { xs:"none",sm: 'none', md: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
             {navItems.map(item => (
-              <NavLink className='navLink' to={item.pathName}>
-                <Button key={item.name} style={{ color: 'white',fontWeight:"1000" }}>
+              <NavLink key={item.name} className='navLink' to={item.pathName}>
+                <Button
+                  key={item.name}
+                  style={{ color: 'white', fontWeight: '1000' }}
+                >
                   {item.name}
                 </Button>
               </NavLink>
             ))}
           </Box>
           <Toolbar>
-          
-        
-          
-        
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon sx={{color:"white"}}/>
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-        </Toolbar> 
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon sx={{ color: 'white' }} />
+              </SearchIconWrapper>
+              <StyledInputBase
+              id="inputField"
+                placeholder='Search…'
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={event => {
+                  setValue(event.target.value)
+                 
+                }}
+              />
+            </Search>
+            <Button onClick={goToSearchResult} variant='contained'
+            sx={{margin:"5px"}}
+            >
+              Search
+            </Button>
+          </Toolbar>
         </Toolbar>
       </AppBar>
       <Box component='nav'>
@@ -184,11 +216,9 @@ function Header (props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component='main' sx={{ p: 3 }}>
-          
-      </Box>
+      <Box component='main' sx={{ p: 3 }}></Box>
     </Box>
   )
 }
 
-export default Header;
+export default Header
