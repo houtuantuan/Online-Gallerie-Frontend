@@ -3,29 +3,32 @@ import { createSlice } from '@reduxjs/toolkit'
 export const brushSlice = createSlice({
   name: 'brush',
   initialState: {
-    brushSize: 1,
-    brushColor: "#000000",
-    brushDensity: 100
+    brushOptions:{
+        brushSize: 1,
+        brushColor: "#000000",
+        brushDensity: 100    
+    }
   },
   reducers: {
     increaseBrushSize: (state) => {
-             state.brushSize = state.brushShize + 1;
+             state.brushOptions.brushSize = state.brushOptions.brushSize + 1;
            },
            decreaseBrushSize: (state) => {
-            state.brushSize = state.brushShize - 1;
+            state.brushOptions.brushSize = state.brushOptions.brushSize - 1;
           },
           changeBrushSize: (state, action) => {
-            state.brushSize = action.payload;
+            state.brushOptions.brushSize = action.payload;
           },
+    changeBrushColor: (state,action) => {
+        state.brushOptions.brushColor = action.payload;
+    }
   },
 })
 
-export const {increaseBrushSize,decreaseBrushSize,changeBrushSize  } 
+export const {increaseBrushSize,decreaseBrushSize,changeBrushSize,changeBrushColor} 
 = brushSlice.actions
 
-export const selectBrushSize = (state) => state.brush.brushSize;
-export const selectBrushColor = (state) => state.brush.brushColor;
-export const selectBrushDensity = (state) => state.brush.brushDensity;
+export const selectBrushOptions = (state) => state.brush.brushOptions;
 
 
 

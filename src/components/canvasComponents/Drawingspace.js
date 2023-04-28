@@ -4,21 +4,20 @@ import { setCtx } from '../../canvasutils/canvas';
 import { useDispatch, useSelector } from 'react-redux'
 import { addUri, sliceUriList, selectCanvasUri } from '../../redux/canvasSlice'
 import {redo,undo} from '../../canvasutils/buttonfunctions';
-import { Popover,Button,Typography } from '@mui/material';
 import Instruction from './Instruction';
+import { selectBrushOptions } from '../../redux/brushSlice';
 
 
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
 
-export default ({brushOptions}) => {
+export default () => {
 
   const dispatch = useDispatch();
   const image = useSelector(selectCanvasUri);
+  const brushOptions = useSelector(selectBrushOptions);
   const[count,setcount] = useState(1);  
 
   const keyMap = {};
- 
-  console.log(image.length);
  
   useEffect(() => {
     
@@ -30,7 +29,6 @@ export default ({brushOptions}) => {
   },[]);
 
   useEffect(() => {
-
 
     const canvas = document.querySelector('canvas');
     const ctx = setCtx();
@@ -144,7 +142,8 @@ export default ({brushOptions}) => {
       }
 
       function keyOptions(evt){
-        evt.preventDefault();
+
+        // evt.preventDefault(); mal schauen.
         keyMap[evt.keyCode] = evt.type == "keydown";
           if(keyMap[17]&&keyMap[89]){
             undo(count,image,setcount);
