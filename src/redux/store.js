@@ -6,5 +6,6 @@ export const store = configureStore({
   reducer: {
     item: itemReducer,
     canvas: canvasReducer,
+    brush: brushReducer,
   },
 })

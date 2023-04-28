@@ -23,6 +23,7 @@ useEffect(() => {
              ',' + data[2] + ',' + (data[3] / 255) + ')';
              
         const newBrushOptions = {...brushOptions,brushColor: rgba}
+        setbrushOptions(newBrushOptions);
 
         createCanvas();
         ctx.beginPath();
@@ -43,7 +44,6 @@ useEffect(() => {
       
       
 
-        setbrushOptions(newBrushOptions);
     }
 
     function clamp(min, max, val)
