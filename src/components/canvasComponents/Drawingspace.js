@@ -2,8 +2,8 @@ import {useEffect,useState} from 'react';
 import { stroke } from '../../canvasutils/drawFunctions';
 import { setCtx } from '../../canvasutils/canvas';
 import { useDispatch, useSelector } from 'react-redux'
-import { addUri, selectCanvasUri } from '../../redux/canvasSlice'
-import { Redo } from '@mui/icons-material';
+import { addUri, sliceUriList, selectCanvasUri } from '../../redux/canvasSlice'
+import {redo,undo} from '../../canvasutils/buttonfunctions';
 
 
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
@@ -13,6 +13,7 @@ export default ({brushOptions}) => {
   const dispatch = useDispatch();
   const image = useSelector(selectCanvasUri);
   const[count,setcount] = useState(1);  
+  const[canvasObject,setCanvasObject] = useState({});
 
   console.log(count);
 
@@ -24,11 +25,6 @@ export default ({brushOptions}) => {
     canvas.height = 576;
     const ctx = setCtx();
     ctx.strokeRect(0,0,canvas.width,canvas.height);
-
-
-
-    return () => {
-    };
   },[]);
 
   useEffect(() => {
@@ -121,9 +117,13 @@ export default ({brushOptions}) => {
               ctx.lineTo(evt.layerX -x, evt.layerY -y);
               ongoingTouches.splice(idx, 1); // remove it; we're done
             
+              if(count > 1){
+                dispatch(sliceUriList(count));
+                setcount(1);
+              }
               const newUri = canvas.toDataURL();
               dispatch(addUri(newUri))
-  
+              
             } else {
             }
           }
@@ -144,44 +144,16 @@ export default ({brushOptions}) => {
           ctx.clearRect(1, 1, canvas.width -1, canvas.height -1); 
       }
 
-      const undo = async () => {
+      function keyOptions(evt){
         
-        let newCount = count +1;
-        setcount(newCount);
-
-        ctx.clearRect(1, 1, canvas.width -2, canvas.height -2); 
-        const img = new Image(); 
-        const url = image[image.length-1-count];
-
-        await new Promise(r => img.onload=r, img.src=url);
-        ctx.drawImage(img,0,0);
-
-      }
-      
-      const redo = async () => {
-        
-        let newCount = count -1;
-        setcount(newCount);
-
-        ctx.clearRect(1, 1, canvas.width -2, canvas.height -2); 
-        const img = new Image(); 
-        const url = image[image.length-1-count];
-
-        await new Promise(r => img.onload=r, img.src=url);
-        ctx.drawImage(img,0,0);
-
-        
-      }
-
-      function options(evt){
-        
+        evt.preventDefault();
             console.log(evt.key);
             switch(evt.key){
               case "d": clearLastLine();
               break;
-              case "y": undo();
+              case "y": undo(count,image,setcount);
               break;
-              case "z": redo();
+              case "z": if(count > 1) redo(count,image,setcount);
               break;
             }
         }
@@ -190,7 +162,7 @@ export default ({brushOptions}) => {
         canvas.addEventListener('pointerup',handleEnd.bind(brushOptions),false);
         canvas.addEventListener('pointermove',handleMove.bind(brushOptions),false);
         canvas.addEventListener('pointercancel', handleCancel,false);
-        document.addEventListener("keyup", options, false);
+        document.addEventListener("keyup", keyOptions, false);
 
 
         // Do not forget to remove eventlisteners!
@@ -200,13 +172,19 @@ export default ({brushOptions}) => {
           canvas.removeEventListener('pointerup',handleEnd.bind(brushOptions),false);
           canvas.removeEventListener('pointermove',handleMove.bind(brushOptions),false);
           canvas.removeEventListener('pointercancel', handleCancel,false);
-          document.removeEventListener("keyup", options, false);
+          document.removeEventListener("keyup", keyOptions, false);
         };
        
     })
 
     return(<div>
+<div className="optionPanel">
+  <div><button onClick={(evt)=> undo(count,image,setcount)}>&lt;</button>
+  <button onClick={(evt)=>redo(count,image,setcount)} disabled={(count>1)?false:true}  >&gt;</button></div>
+</div>
+<div className="Canvaspostion">
         <canvas id="canvas"></canvas>
+</div>
         
         <h2>Anleitung: </h2>
         <p>Press y to return to last state of Image</p>

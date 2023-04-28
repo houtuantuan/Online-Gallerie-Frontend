@@ -16,12 +16,18 @@ export const canvasSlice = createSlice({
             if(state.uriList.length >42){
               state.uriList.shift();
             }
+    },
+    sliceUriList: (state, action) => {
+      console.log("length" + state.uriList.length);
+      state.uriList = state.uriList.slice(0,state.uriList.length - action.payload +1);
+      console.log("lengthafter" + state.uriList.length);
+
     }
   },
    
 })
 
-export const {changeCanvasSize, addUri} = canvasSlice.actions
+export const {changeCanvasSize, addUri, sliceUriList} = canvasSlice.actions
 
 export const selectCanvasUri = (state) => state.canvas.uriList;
 

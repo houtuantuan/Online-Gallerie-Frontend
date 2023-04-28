@@ -4,7 +4,6 @@ import { useContext,useState,useEffect } from 'react'
 import Reference from './Reference'
 import CanvasSettings from './CanvasSettings' 
 
- 
 export default () => {
     
     const initialState ={
