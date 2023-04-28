@@ -4,6 +4,8 @@ import { setCtx } from '../../canvasutils/canvas';
 import { useDispatch, useSelector } from 'react-redux'
 import { addUri, sliceUriList, selectCanvasUri } from '../../redux/canvasSlice'
 import {redo,undo} from '../../canvasutils/buttonfunctions';
+import { Popover,Button,Typography } from '@mui/material';
+import Instruction from './Instruction';
 
 
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
@@ -13,10 +15,10 @@ export default ({brushOptions}) => {
   const dispatch = useDispatch();
   const image = useSelector(selectCanvasUri);
   const[count,setcount] = useState(1);  
-  const[canvasObject,setCanvasObject] = useState({});
 
-  console.log(count);
-
+  const keyMap = {};
+ 
+  console.log(image.length);
  
   useEffect(() => {
     
@@ -137,21 +139,18 @@ export default ({brushOptions}) => {
           }
 
 
-
-
-        
         const clearLastLine = () => {
           ctx.clearRect(1, 1, canvas.width -1, canvas.height -1); 
       }
 
       function keyOptions(evt){
-        
         evt.preventDefault();
-            console.log(evt.key);
+        keyMap[evt.keyCode] = evt.type == "keydown";
+          if(keyMap[17]&&keyMap[89]){
+            undo(count,image,setcount);
+          } 
             switch(evt.key){
               case "d": clearLastLine();
-              break;
-              case "y": undo(count,image,setcount);
               break;
               case "z": if(count > 1) redo(count,image,setcount);
               break;
@@ -162,8 +161,7 @@ export default ({brushOptions}) => {
         canvas.addEventListener('pointerup',handleEnd.bind(brushOptions),false);
         canvas.addEventListener('pointermove',handleMove.bind(brushOptions),false);
         canvas.addEventListener('pointercancel', handleCancel,false);
-        document.addEventListener("keyup", keyOptions, false);
-
+         document.addEventListener("keydown", keyOptions, false);
 
         // Do not forget to remove eventlisteners!
 
@@ -172,24 +170,20 @@ export default ({brushOptions}) => {
           canvas.removeEventListener('pointerup',handleEnd.bind(brushOptions),false);
           canvas.removeEventListener('pointermove',handleMove.bind(brushOptions),false);
           canvas.removeEventListener('pointercancel', handleCancel,false);
-          document.removeEventListener("keyup", keyOptions, false);
+          document.removeEventListener("keydown", keyOptions, false);
         };
        
     })
 
     return(<div>
 <div className="optionPanel">
-  <div><button onClick={(evt)=> undo(count,image,setcount)}>&lt;</button>
-  <button onClick={(evt)=>redo(count,image,setcount)} disabled={(count>1)?false:true}  >&gt;</button></div>
+  <div><button onClick={(evt)=> undo(count,image,setcount)} disabled={(count-1=== image.length||image.length===0)?true:false}>&lt;</button>
+  <button onClick={(evt)=>redo(count,image,setcount)} disabled={(count>1)?false:true}  >&gt;</button>
+  </div>
+<Instruction/>
 </div>
 <div className="Canvaspostion">
         <canvas id="canvas"></canvas>
 </div>
-        
-        <h2>Anleitung: </h2>
-        <p>Press y to return to last state of Image</p>
-        <p>Press z to return to recent state of Image</p>
-        <p>press d to delete Canvas</p>
-
     </div>)
 }

@@ -133,8 +133,8 @@ var hsv2rgb = function(hsv) {
 },[])
     
  return(
-        <div>
-            <canvas id="colorwheel"></canvas>
+        <div id="colorpalettePlace">
+            {/* <canvas id="colorwheel"></canvas> */}
             <canvas id="stripe"></canvas>
         </div>
     )
