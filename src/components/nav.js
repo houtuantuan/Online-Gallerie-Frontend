@@ -9,7 +9,7 @@ export default () => {
             <Link to='/' >Home</Link>
           </li>
           <li>
-            <Link to='gallery'>Expolre</Link>
+            <Link to='gallery'>Explore</Link>
           </li>
           <li>
             <Link to='canvas'>Drawing Board</Link>

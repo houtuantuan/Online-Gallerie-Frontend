@@ -1,7 +1,11 @@
 import { useEffect } from "react";
+import { useDispatch } from 'react-redux'
+import { changeBrushColor } from '../../redux/brushSlice'
 
 
 export default ({brushOptions,setbrushOptions}) => {
+
+  const dispatch = useDispatch();
 
 useEffect(() => {
 
@@ -15,14 +19,15 @@ useEffect(() => {
         const offsetY = evt.target.offsetTop;
         const offsetX = evt.target.offsetLeft;
   
-  
         const pixel = ctx.getImageData(evt.layerX -offsetX,evt.layerY -offsetY,1,1)
 
         const data =  pixel.data;
         const rgba = 'rgba(' + data[0] + ',' + data[1] +
              ',' + data[2] + ',' + (data[3] / 255) + ')';
              
-        const newBrushOptions = {...brushOptions,brushColor: rgba}
+        // const newBrushOptions = {...brushOptions,brushColor: rgba}
+        // setbrushOptions(newBrushOptions);
+      dispatch(changeBrushColor(rgba));
 
         createCanvas();
         ctx.beginPath();
@@ -43,7 +48,6 @@ useEffect(() => {
       
       
 
-        setbrushOptions(newBrushOptions);
     }
 
     function clamp(min, max, val)
@@ -133,8 +137,8 @@ var hsv2rgb = function(hsv) {
 },[])
     
  return(
-        <div>
-            <canvas id="colorwheel"></canvas>
+        <div id="colorpalettePlace">
+            {/* <canvas id="colorwheel"></canvas> */}
             <canvas id="stripe"></canvas>
         </div>
     )

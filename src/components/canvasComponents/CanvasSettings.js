@@ -1,25 +1,21 @@
 import ColorWheel from "./ColorWheel";
+import { useDispatch, useSelector } from 'react-redux'
+import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions } from '../../redux/brushSlice'
 
-export default ({brushOptions, setbrushOptions}) => {
+export default ({setbrushOptions}) => {
+   const brushOptions = useSelector(selectBrushOptions);  
+  const dispatch = useDispatch();
 
  const increaseSize = () => {
-    const newSize = brushOptions.brushSize +1;
-    const newBrushOptions = {...brushOptions,brushSize: newSize}
-    setbrushOptions(newBrushOptions);
-
+   dispatch(increaseBrushSize());
  }
 
 const decreaseSize = () => {
-    console.log(brushOptions);
-    const newSize = brushOptions.brushSize -1;
-    const newBrushOptions = {...brushOptions,brushSize: newSize}
-    setbrushOptions(newBrushOptions);  
- }
+   dispatch(decreaseBrushSize());
+   }
 
  const changeSize = () => {
-    const newSize = parseInt(document.getElementById("brushSize").value);
-    const newBrushOptions = {...brushOptions,brushSize: newSize}
-    setbrushOptions(newBrushOptions);  
+   dispatch(changeBrushSize(document.getElementById("brushSize").value));
  }
  
     return(
