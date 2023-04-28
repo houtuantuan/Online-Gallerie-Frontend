@@ -70,8 +70,8 @@ export default function SingleImage () {
     }
   }
 
-  const pickRef = (image) => {
-    dispatch(addImage(image || ""))
+  const pickRef = image => {
+    dispatch(addImage(image || ''))
   }
   // console.log(image)
   useEffect(() => {
@@ -93,11 +93,9 @@ export default function SingleImage () {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         // columns={{ xs: 4, sm: 8, md: 10, lg: 10 }}
         sx={{
-          width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems:"center"
+          alignItems: 'center'
         }}
       >
         <Grid
@@ -105,7 +103,7 @@ export default function SingleImage () {
           xs={12}
           md={12}
           sx={{
-            maxWidth: 400,
+            maxWidth: 375,
             // border: 'solid pink',
             display: 'flex'
           }}
@@ -167,19 +165,25 @@ export default function SingleImage () {
           </Card>
         </Grid>
       </Grid>
+      {/* zomm in icon */}
       <Grid
         item
-        sx={{ display: 'flex', 
-        justifyContent: 'center', 
-        marginTop: '1em' 
-      }}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          marginTop: '1em',
+          flexDirection: 'column'
+        }}
       >
-        <ZoomInIcon onClick={handleOpen}
-        sx={{"&:hover": { cursor: "pointer" }}}
+        <ZoomInIcon
+          onClick={handleOpen}
+          sx={{ '&:hover': { cursor: 'pointer' } }}
         />
+        <Divider
+          sx={{ width: '80%', marginTop: '3em' }}
+          variant='middle'
+        ></Divider>
       </Grid>
-
-      <Divider sx={{ width: '80%', marginTop: '3em' }}></Divider>
 
       {/* artwork details and color panel */}
       <Grid
@@ -252,7 +256,7 @@ export default function SingleImage () {
 
                 <ListItem>
                   <ListItemText
-                    primary='Get more'
+                    primary='Learn more'
                     secondary={image.objectURL}
                   />
                 </ListItem>
@@ -278,7 +282,7 @@ export default function SingleImage () {
                 )
               }}
             </Color> */}
-            <Box sx={{ maxWidth: 600 }}>
+            <Box sx={{ maxWidth: 375, minWidth: '300px' }}>
               {/* <Typography>Predominant colors:</Typography> */}
               <Palette
                 src={colorUrl}
@@ -323,12 +327,15 @@ export default function SingleImage () {
                   display: 'flex',
                   justifyContent: 'center'
                 }}
-              ><Link to="/canvas">
-                <Button 
-                onClick={pickRef(image)}
-                variant='outlined' sx={{color:"black"}}>
-                  Draw it!
-                </Button>
+              >
+                <Link to='/canvas'>
+                  <Button
+                    onClick={pickRef(image)}
+                    variant='outlined'
+                    sx={{ color: 'black' }}
+                  >
+                    Draw it!
+                  </Button>
                 </Link>
               </Container>
             </Box>
