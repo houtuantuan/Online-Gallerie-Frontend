@@ -30,7 +30,6 @@ import ZoomInIcon from '@mui/icons-material/ZoomIn'
 
 export default function SingleImage () {
   const { _id } = useParams()
-
   const [image, setImage] = useState()
   const [colorUrl, setColorUrl] = useState(null)
   const dispatch = useDispatch()
@@ -94,10 +93,11 @@ export default function SingleImage () {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         // columns={{ xs: 4, sm: 8, md: 10, lg: 10 }}
         sx={{
-          width: '80%',
+          width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          alignItems:"center"
         }}
       >
         <Grid
@@ -174,7 +174,9 @@ export default function SingleImage () {
         marginTop: '1em' 
       }}
       >
-        <ZoomInIcon onClick={handleOpen} />
+        <ZoomInIcon onClick={handleOpen}
+        sx={{"&:hover": { cursor: "pointer" }}}
+        />
       </Grid>
 
       <Divider sx={{ width: '80%', marginTop: '3em' }}></Divider>
@@ -323,7 +325,7 @@ export default function SingleImage () {
                 }}
               ><Link to="/canvas">
                 <Button 
-                onclick={pickRef(image)}
+                onClick={pickRef(image)}
                 variant='outlined' sx={{color:"black"}}>
                   Draw it!
                 </Button>
