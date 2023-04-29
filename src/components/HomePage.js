@@ -86,7 +86,7 @@ export default function HomePage () {
         <Grid
           container
           mt={10}
-          ColumnSpace={{ xs: 2, md: 3,lg:5 }}
+          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
           sx={{ display: 'flex', justifyContent: 'center' }}
         >
           <Grid item xs={12} md={5}>
@@ -97,9 +97,13 @@ export default function HomePage () {
               renewal. It is often considered a calming and soothing color that
               promotes relaxation and harmony.
             </Typography>
-            <Button
-            sx={{paddingLeft:"0",color:"#9CA777",fontWeight:"bold"}}
-            >Learn More</Button>
+            <Link to="/gallery/todayColor">
+              <Button
+                sx={{ paddingLeft: '0', color: '#9CA777', fontWeight: 'bold' }}
+              >
+                Learn More
+              </Button>
+            </Link>
           </Grid>
           <Grid xs={12} md={5} item>
             <ImageList variant='masonry' cols={3} gap={8}>
@@ -111,17 +115,16 @@ export default function HomePage () {
             </ImageList>
           </Grid>
         </Grid>
-      
       </Container>
       {/* explore in timeline */}
       <Container>
-        <Grid xs={12} md={6}sx={{ marginTop: '3em', display: 'block' }}>
+        <Grid xs={12} md={6} sx={{ marginTop: '3em', display: 'block' }}>
           <Typography
             wrap
             variant='h4'
             fontFamily='josefin_sans'
             sx={{ marginBottom: '1em', marginTop: '3em' }}
-            marginLeft={{lg:"2.7em",xs:"0em",md:"2.2em"}}
+            marginLeft={{ lg: '2.7em', xs: '0em', md: '2.2em' }}
           >
             Explore Color in Timeline
           </Typography>

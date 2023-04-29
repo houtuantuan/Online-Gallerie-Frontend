@@ -1,0 +1,33 @@
+
+
+.greenImage{
+   /* border: solid; */
+   display: block;
+   
+   float: left;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* color: orange; */
+
+}
+
+.greenImage:hover{
+   
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+    overflow: visible;
+    /* display: inline-block; */
+    /* border: solid red; */
+    /* border: solid black; */
+    display: block;
+    transform: scale(1.1) translate(0, 5px);
+    /* position: absolute; */
+    /* left: 30%;
+    top: 70%; */
+    z-index: 100;
+    /* position: absolute; */
+   
+
+
+
+}
