@@ -64,7 +64,7 @@ export default function TodayColor () {
     <Box
       sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}
     >
-      <Typography variant='h1' mt={10}>
+      <Typography variant='h2' mt={10}>
         Green
       </Typography>
       <Typography variant='p' sx={{ width: '60%', margin: '2em 0 3em 0' }}>
