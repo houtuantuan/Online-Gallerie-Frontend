@@ -87,25 +87,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   }
 }))
 
-const navItems = [
-  { name: 'Home', pathName: '/' },
-  { name: 'Explore', pathName: 'gallery' },
-  { name: 'Drawing board', pathName: 'canvas' },
-  { name: 'Sign In', pathName: 'signin' },
-  { name: 'Sign Up', pathName: 'signup' }
-]
 
 function Header (props) {
   
   const { window,isAuthenticated, user, logOut } = props
 
-  useEffect(() =>{
-    if(isAuthenticated){
-      navItems.push({name: 'Sign In', pathName: 'signin'})
-    }
-  
-  })
+const initialState = [
+    { name: 'Home', pathName: '/', tag:'home'},
+    { name: 'Explore', pathName: 'gallery' },
+    { name: 'Drawing board', pathName: 'canvas' },
+    { name: 'Sign In', pathName: 'signin', tag:'signIn' },
+    { name: 'Sign Up', pathName: 'signup', tag:'signUp' },
+]
 
+
+console.log(logOut);
+
+  const [navItems,setNavItems] =  useState(initialState)
+
+
+  
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [value, setValue] = useState()
 
@@ -121,6 +122,10 @@ function Header (props) {
       <Divider />
       <List>
         {navItems.map(item => (
+          !(isAuthenticated && 
+            item.tag === 'signIn'
+            || isAuthenticated && 
+            item.tag === 'signUp') &&
           <ListItem key={item.name} disablePadding>
             <NavLink key={item.name} className='navLink' to={item.pathName}>
               <ListItemButton sx={{ textAlign: 'center' }}>
@@ -176,7 +181,10 @@ function Header (props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
             {navItems.map(item => (
-              <NavLink key={item.name} className='navLink' to={item.pathName}>
+         !(isAuthenticated && 
+         item.tag === 'signIn'
+         || isAuthenticated && 
+         item.tag === 'signUp') && <NavLink key={item.name} className='navLink' to={item.pathName}>
                 <Button
                   key={item.name}
                   style={{ color: 'white', fontWeight: '1000' }}
@@ -207,6 +215,18 @@ function Header (props) {
               Search
             </Button>
           </Toolbar>
+         <Box> 
+          {user && <div>{user.firstName + " " + user.lastName}</div>}
+         </Box>
+         <Box> 
+          {user && <Button
+                  style={{ color: 'black', fontWeight: '1000' }}
+                  onClick={logOut}
+                >
+                  Logout
+                </Button>}
+         </Box>
+       
         </Toolbar>
       </AppBar>
       <Box component='nav'>
