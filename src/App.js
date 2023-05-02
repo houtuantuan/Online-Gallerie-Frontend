@@ -25,6 +25,7 @@ function App () {
   const [loadingAuthRequest, setLoadingAuthRequest] = useState(false);
 
 
+
   useEffect(() => {
     const validateToken = async () => {
       try {
@@ -51,12 +52,10 @@ function App () {
     setIsAuthenticated(false);
   };
 
- 
   return (
 
     <div className='App'>
-      <ThemeProvider theme={theme}>
-     
+      <ThemeProvider theme={theme}>     
         <Header isAuthenticated={isAuthenticated} theme={theme} logOut={logOut} user={user}></Header>
       ${!isAuthenticated} && <div>Wenn die message verschwindet bist du eingeloggt</div>
         <Routes>
