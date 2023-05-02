@@ -26,7 +26,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import CssBaseline from '@mui/material/CssBaseline'
 import Button from '@mui/material/Button'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 // const theme = createTheme({
 //   palette: {
@@ -86,6 +86,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     }
   }
 }))
+
 const navItems = [
   { name: 'Home', pathName: '/' },
   { name: 'Explore', pathName: 'gallery' },
@@ -95,7 +96,16 @@ const navItems = [
 ]
 
 function Header (props) {
-  const { window } = props
+  
+  const { window,isAuthenticated, user, logOut } = props
+
+  useEffect(() =>{
+    if(isAuthenticated){
+      navItems.push({name: 'Sign In', pathName: 'signin'})
+    }
+  
+  })
+
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [value, setValue] = useState()
 
