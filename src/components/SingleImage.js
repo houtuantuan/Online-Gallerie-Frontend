@@ -27,15 +27,39 @@ import { useDispatch } from 'react-redux'
 import { addImage } from '../redux/itemSlice'
 import Modal from '@mui/material/Modal'
 import ZoomInIcon from '@mui/icons-material/ZoomIn'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 
-export default function SingleImage () {
+export default function SingleImage ({ token }) {
   const { _id } = useParams()
   const [image, setImage] = useState()
   const [colorUrl, setColorUrl] = useState(null)
+  const [liked, setLiked] = useState(false)
   const dispatch = useDispatch()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const handleFavorite = async () => {
+    if (!token) {
+      window.alert('Please login first')
+    }
+    try {
+      const resData = await fetch('http://localhost:4000/users/like', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          paintingId: image && image._id,
+          liked: !liked
+        })
+      })
+      setLiked(prevState => !prevState)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   const fetchData = async () => {
     try {
@@ -47,6 +71,27 @@ export default function SingleImage () {
       dispatch(addImage(parseData || ''))
       console.log(parseData)
     } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  const fetchFavorite = async () => {
+    try {
+      const getData = await fetch(`http://localhost:4000/users/like/${_id}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      const parseData = await getData.json()
+
+      if (parseData.length === 0) {
+        setLiked(false)
+      } else {
+        setLiked(true)
+      }
+    } catch (error) {
+      setLiked(false)
       console.log(error.message)
     }
   }
@@ -76,6 +121,7 @@ export default function SingleImage () {
   // console.log(image)
   useEffect(() => {
     fetchData()
+    fetchFavorite()
   }, [])
 
   useEffect(() => {
@@ -175,10 +221,19 @@ export default function SingleImage () {
           flexDirection: 'column'
         }}
       >
-        <ZoomInIcon
-          onClick={handleOpen}
-          sx={{ '&:hover': { cursor: 'pointer' } }}
-        />
+        <Box sx={{ display: 'flex' }}>
+          <ZoomInIcon
+            onClick={handleOpen}
+            sx={{ '&:hover': { cursor: 'pointer' }, margin: '0.5em' }}
+          />
+          <IconButton>
+            <FavoriteBorderIcon
+              onClick={handleFavorite}
+              sx={{ color: liked ? 'red' : 'black' }}
+            ></FavoriteBorderIcon>
+          </IconButton>
+        </Box>
+
         <Divider
           sx={{ width: '80%', marginTop: '3em' }}
           variant='middle'
