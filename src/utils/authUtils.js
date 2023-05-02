@@ -37,3 +37,22 @@ export const loginUser = async credentials => {
       return { error };
     }
   };
+
+  export const getUser = async token => {
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BLOG_API}/auth/me`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (!res.ok) {
+        const { error } = await res.json();
+        throw new Error(error);
+      }
+      const data = await res.json();
+      return { data };
+    } catch (error) {
+      return { error };
+    }
+  };
