@@ -65,7 +65,7 @@ function App () {
           <Route path="gallery" element={<Overview/>} />
           <Route path="gallery/search" element={<SearchResult/>} />
           <Route path="gallery/todayColor" element={<TodayColor/>} />
-          <Route path="gallery/:_id" element={<SingleImage/>} theme={theme}/>
+          <Route path="gallery/:_id" element={<SingleImage token={token}/>} theme={theme}/>
           <Route path="signup" element={<SignUp
            isAuthenticated={isAuthenticated}
            setIsAuthenticated={setIsAuthenticated}
