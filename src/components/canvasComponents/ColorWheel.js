@@ -19,7 +19,7 @@ useEffect(() => {
         const offsetY = evt.target.offsetTop;
         const offsetX = evt.target.offsetLeft;
   
-        const pixel = ctx.getImageData(evt.layerX -offsetX,evt.layerY -offsetY,1,1)
+        const pixel = ctx.getImageData(evt.layerX,evt.layerY,1,1)
 
         const data =  pixel.data;
         const rgba = 'rgba(' + data[0] + ',' + data[1] +
@@ -129,8 +129,6 @@ var hsv2rgb = function(hsv) {
 
     const strip = createCanvas();
     strip.addEventListener('pointerdown',pickColor,false);
-
-
 
 
 

@@ -123,3 +123,13 @@ body{
     padding: 0px;
     margin: 0;
 }
+
+#stage #colorpalettePlace{
+    width: 620px;
+    height: 576px;
+    position: relative;
+}
+ 
+canvas{
+    position: absolute;
+}

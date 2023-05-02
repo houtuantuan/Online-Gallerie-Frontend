@@ -4,8 +4,8 @@ export const stroke = (evt,ctx,idx,ongoingTouches,brushOptions) => {
   const x = evt.target.parentNode.offsetLeft;
   
   ctx.beginPath();
-  ctx.moveTo(ongoingTouches[idx].layerX -x, ongoingTouches[idx].layerY -y);
-  ctx.lineTo(evt.layerX -x, evt.layerY -y +brushOptions.brushSize -1);
+  ctx.moveTo(ongoingTouches[idx].layerX, ongoingTouches[idx].layerY);
+  ctx.lineTo(evt.layerX, evt.layerY);
 
   ctx.lineWidth = brushOptions.brushSize;
   
