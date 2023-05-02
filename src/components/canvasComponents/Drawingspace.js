@@ -21,24 +21,18 @@ export default () => {
  
   useEffect(() => {
     
-    const canvas = document.querySelector('canvas');
+    //Set BackgroundLayer
+    const canvas = document.getElementById('backgroundLayer');
     canvas.width = 620;
-    canvas.height = 576;
-    const ctx = setCtx();
+    canvas.height = 457;
+    const ctx = setCtx("backgroundLayer");
     ctx.strokeRect(0,0,canvas.width,canvas.height);
   },[]);
 
   useEffect(() => {
-
-    const canvas = document.querySelector('canvas');
-    const ctx = setCtx();
-
+    const canvas = document.getElementById('canvas');
+    const ctx = setCtx('canvas');
       const ongoingTouches = []; 
-
-      // const canvas = document.querySelector('canvas');
-      // canvas.width = 808;
-      // canvas.height = 576;
-      // const ctx = setCtx();
 
         function copyTouch(touch) {
           // console.log(touch);
@@ -69,7 +63,7 @@ export default () => {
           
         function handleStart(evt) {
             evt.preventDefault();
-            const ctx = setCtx();
+            const ctx = setCtx('canvas');
               ongoingTouches.push(copyTouch(evt));
               const color = colorForTouch(evt);
               ctx.beginPath();
@@ -83,7 +77,7 @@ export default () => {
           
             evt.preventDefault();
           
-          const ctx = setCtx();
+          const ctx = setCtx('canvas');
             const idx = ongoingTouchIndexById(evt.pointerId);
 
             if (idx >= 0) {
@@ -100,7 +94,7 @@ export default () => {
           function handleEnd(evt) {
             evt.preventDefault();
           
-          const ctx = setCtx();
+          const ctx = setCtx('canvas');
             const idx = ongoingTouchIndexById(evt.pointerId);
             
             if (idx >= 0) {
@@ -113,8 +107,8 @@ export default () => {
               ctx.fillStyle = brushOptions.brushColor;
               // ctx.lineCap = "round";
               ctx.beginPath();
-              ctx.moveTo(ongoingTouches[idx].layerX -x, ongoingTouches[idx].layerY-y);
-              ctx.lineTo(evt.layerX -x, evt.layerY -y);
+              ctx.moveTo(ongoingTouches[idx].screenX, ongoingTouches[idx].screenY);
+              ctx.lineTo(evt.layerX, evt.layerY);
               ongoingTouches.splice(idx, 1); // remove it; we're done
             
               if(count > 1){
@@ -181,8 +175,9 @@ export default () => {
   </div>
 <Instruction/>
 </div>
-<div className="Canvaspostion">
-        <canvas id="canvas"></canvas>
+<div className="Canvaspostion" id="stage">
+        <canvas id="backgroundLayer" width="620" height="526"></canvas>
+        <canvas id="canvas" width="620" height="526"></canvas>
 </div>
     </div>)
 }

@@ -10,7 +10,9 @@ import HomePage from './components/HomePage'
 import SingleImage from './components/SingleImage'
 import SearchResult from "./components/SearchResult"
 import TodayColor from './components/TodayColor'
-
+import Loading from './components/loginComps/Loading'
+import SignUp from './components/loginComps/SignUp'
+import SignIn from './components/loginComps/SignIn'
 
 function App () {
  
@@ -27,6 +29,9 @@ function App () {
           <Route path="gallery/search" element={<SearchResult/>} />
           <Route path="gallery/todayColor" element={<TodayColor/>} />
           <Route path="gallery/:_id" element={<SingleImage/>} theme={theme}/>
+          <Route path="signup" element={<SignUp/>} theme={theme}/>
+          <Route path="signin" element={<SignIn/>} theme={theme}/>
+       
         </Routes>
       </ThemeProvider>
     </div>

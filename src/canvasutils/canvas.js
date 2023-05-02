@@ -1,6 +1,6 @@
-export function setCtx(){
+export function setCtx(pickedCanvas){
 
-    const el = document.getElementById("canvas");
+    const el = document.getElementById(`${pickedCanvas}`);
     const ctx = el.getContext("2d");
     return ctx;
   }
