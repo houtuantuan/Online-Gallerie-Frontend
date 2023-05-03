@@ -57,7 +57,9 @@ export default function SingleImage ({ token }) {
           liked: !liked
         })
       })
-      setLiked(prevState => !prevState)
+      if (token) {
+        setLiked(prevState => !prevState)
+      }
     } catch (e) {
       console.log(e)
     }
@@ -66,12 +68,16 @@ export default function SingleImage ({ token }) {
   const fetchData = async () => {
     try {
       const getData = await fetch(`http://localhost:4000/gallery/${_id}`)
+      console.log(222)
+      console.log(getData)
       if (!getData)
         throw new Error(`Request failes with a status of ${getData.status}`)
       const parseData = await getData.json()
+      console.log(111)
+      console.log(parseData)
       setImage(parseData)
       dispatch(addImage(parseData || ''))
-      console.log(parseData)
+      
     } catch (error) {
       console.log(error.message)
     }
@@ -123,7 +129,7 @@ export default function SingleImage ({ token }) {
   // console.log(image)
   useEffect(() => {
     fetchData()
-    fetchFavorite()
+    token && fetchFavorite()
   }, [])
 
   useEffect(() => {

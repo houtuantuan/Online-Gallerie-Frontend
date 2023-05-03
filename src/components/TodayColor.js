@@ -26,7 +26,7 @@ export default function TodayColor () {
     {
       title: 'Still Life with Apples and Pitcher',
       url: 'https://images.metmuseum.org/CRDImages/ep/original/DP-21958-001.jpg',
-      id: 'https://images.metmuseum.org/CRDImages/ep/original/DP-21958-001.jpg'
+      id: '6446e56cf4c4a0ab4158432a'
     },
     {
       title: 'The Flowering Orchard',
