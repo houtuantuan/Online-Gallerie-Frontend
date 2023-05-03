@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions } from '../../redux/brushSlice'
 
 export default ({setbrushOptions}) => {
-   const brushOptions = useSelector(selectBrushOptions);  
+  const brushOptions = useSelector(selectBrushOptions);  
   const dispatch = useDispatch();
 
  const increaseSize = () => {

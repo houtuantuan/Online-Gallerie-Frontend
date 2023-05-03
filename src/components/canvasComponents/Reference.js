@@ -7,24 +7,10 @@ import { CardActionArea, IconButton, Grid, Box, Button } from '@mui/material'
 import { Link } from 'react-router-dom';
 
 export default () => {
-
     const image = useSelector(selectItem)
-    console.log(image);
-
     return(
-        <div>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            maxWidth: 400,
-            border: 'solid pink',
-            display: 'flex'
-          }}
-          justifyContent={{ xs: 'center', xl: 'flex-end' }}
-        >
-          <Card sx={{ maxWidth: 400, maxHeight: 400, minHeight: 400 }}>
+        <>
+          <Card sx={{maxWidth: 300, maxHeight: 400, minHeight: 360 }}>
             <CardActionArea>
               {image ? (
                 <CardMedia
@@ -40,7 +26,6 @@ export default () => {
                 </ul></div>}
             </CardActionArea>
           </Card>
-        </Grid>
-        </div>
+        </>
     )
 }

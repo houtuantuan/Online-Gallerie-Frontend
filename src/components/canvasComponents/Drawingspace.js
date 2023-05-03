@@ -6,6 +6,7 @@ import { addUri, sliceUriList, selectCanvasUri } from '../../redux/canvasSlice'
 import {redo,undo} from '../../canvasutils/buttonfunctions';
 import Instruction from './Instruction';
 import { selectBrushOptions } from '../../redux/brushSlice';
+import { Typography } from '@mui/material';
 
 
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
@@ -20,13 +21,22 @@ export default () => {
   const keyMap = {};
  
   useEffect(() => {
-    
-    //Set BackgroundLayer
-    const canvas = document.getElementById('backgroundLayer');
+    const canvas = document.getElementById('canvas');
+    const ctx = setCtx("canvas");
     canvas.width = 620;
-    canvas.height = 457;
-    const ctx = setCtx("backgroundLayer");
+    canvas.height = 557;
+    ctx.fillStyle ="#000000";
     ctx.strokeRect(0,0,canvas.width,canvas.height);
+    
+    const bgCanvas = document.getElementById('backgroundLayer');
+    bgCanvas.width = 620;
+    bgCanvas.height = 557;
+    const bgCtx = setCtx("backgroundLayer");
+    bgCtx.fillStyle ="#000000";
+    bgCtx.strokeRect(0,0,bgCanvas.width,bgCanvas.height);
+
+
+
   },[]);
 
   useEffect(() => {
@@ -77,6 +87,7 @@ export default () => {
           
             evt.preventDefault();
           
+
           const ctx = setCtx('canvas');
             const idx = ongoingTouchIndexById(evt.pointerId);
 
@@ -154,7 +165,7 @@ export default () => {
         canvas.addEventListener('pointerup',handleEnd.bind(brushOptions),false);
         canvas.addEventListener('pointermove',handleMove.bind(brushOptions),false);
         canvas.addEventListener('pointercancel', handleCancel,false);
-         document.addEventListener("keydown", keyOptions, false);
+        document.addEventListener("keydown", keyOptions, false);
 
         // Do not forget to remove eventlisteners!
 
@@ -173,11 +184,15 @@ export default () => {
   <div><button onClick={(evt)=> undo(count,image,setcount)} disabled={(count-1=== image.length||image.length===0)?true:false}>&lt;</button>
   <button onClick={(evt)=>redo(count,image,setcount)} disabled={(count>1)?false:true}  >&gt;</button>
   </div>
+  <Typography 
+        variant='h4'
+  >
+    Drawing Board</Typography>
 <Instruction/>
 </div>
-<div className="Canvaspostion" id="stage">
-        <canvas id="backgroundLayer" width="620" height="526"></canvas>
-        <canvas id="canvas" width="620" height="526"></canvas>
+<div className="canvasFrame" id="stage">
+        <canvas id="canvas"></canvas>
+        <canvas id="backgroundLayer"></canvas>
 </div>
     </div>)
 }
