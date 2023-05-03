@@ -29,7 +29,7 @@ export default function SearchResult () {
 
   const getSearchResult = async () => {
     const res = await fetch(
-      `http://localhost:4000/gallery/search?q=${searchInput}`
+      `${process.env.REACT_APP_BLOG_API}/gallery/search?q=${searchInput}`
     )
     const newItems = await res.json()
     console.log(newItems)

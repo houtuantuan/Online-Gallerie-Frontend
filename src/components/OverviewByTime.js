@@ -25,7 +25,7 @@ export default function OverviewByTime ({ yearRange }) {
 
   const getMorePost = async () => {
     const res = await fetch(
-      `http://localhost:4000/gallery?itemOffset=${items.length}&limit=20&beginYear=${yearRange.beginYear}&endYear=${yearRange.endYear}`
+      `${process.env.REACT_APP_BLOG_API}/gallery?itemOffset=${items.length}&limit=20&beginYear=${yearRange.beginYear}&endYear=${yearRange.endYear}`
     )
     const newItems = await res.json()
     console.log(newItems)
