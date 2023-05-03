@@ -9,7 +9,7 @@ import {
   Button
 } from '@mui/material'
 import { Outlet, Link, NavLink } from 'react-router-dom'
-import { LOCAL_STORAGE_YEAR_RANGE_KEY, YEAR_RANGES } from '../utils/constants'
+import { LOCAL_STORAGE_YEAR_RANGE_KEY, YEAR_RANGES } from '../src/utils/constants'
 import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
 import Box from '@mui/material/Box'
@@ -46,7 +46,7 @@ export default function HomePage () {
         <Grid
           container
           mt={10}
-          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
+          // ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
           sx={{ display: 'flex', justifyContent: 'center' }}
         >
           <Grid item xs={12} md={5}>
@@ -80,7 +80,7 @@ export default function HomePage () {
       <Container>
         <Grid xs={12} md={6} sx={{ marginTop: '3em', display: 'block' }}>
           <Typography
-            wrap
+            
             variant='h4'
             fontFamily='josefin_sans'
             sx={{ marginBottom: '1em', marginTop: '3em' }}
@@ -137,7 +137,7 @@ export default function HomePage () {
         <Grid container mt={10} ColumnSpace={{ xs: 2, md: 3, lg: 5 }}>
           <Typography
             id='top10'
-            wrap
+           
             variant='h4'
             fontFamily='josefin_sans'
             sx={{ display: 'flex', justifyContent: 'center' }}
