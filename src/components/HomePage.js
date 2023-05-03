@@ -14,11 +14,10 @@ import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
 import Box from '@mui/material/Box'
 import { Copyright } from '@mui/icons-material'
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
 
 export default function HomePage () {
- 
   const imageData = [
     {
       title: 'Flower Garden and Bungalow',
@@ -47,7 +46,7 @@ export default function HomePage () {
         <Grid
           container
           mt={10}
-          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
+          // ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
           sx={{ display: 'flex', justifyContent: 'center' }}
         >
           <Grid item xs={12} md={5}>
@@ -58,7 +57,7 @@ export default function HomePage () {
               renewal. It is often considered a calming and soothing color that
               promotes relaxation and harmony.
             </Typography>
-            <Link to="/gallery/todayColor">
+            <Link to='/gallery/todayColor'>
               <Button
                 sx={{ paddingLeft: '0', color: '#9CA777', fontWeight: 'bold' }}
               >
@@ -81,7 +80,6 @@ export default function HomePage () {
       <Container>
         <Grid xs={12} md={6} sx={{ marginTop: '3em', display: 'block' }}>
           <Typography
-            wrap
             variant='h4'
             fontFamily='josefin_sans'
             sx={{ marginBottom: '1em', marginTop: '3em' }}
@@ -135,44 +133,140 @@ export default function HomePage () {
       </Container>
       <br />
       <Container>
-      <Grid container
+        <Grid
+          container
           mt={10}
-          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
-          >
-          <Typography id='top10'
-            wrap
+          // ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
+        >
+          <Typography
+            id='top10'
+            
             variant='h4'
             fontFamily='josefin_sans'
             sx={{ display: 'flex', justifyContent: 'center' }}
-          >Top 10 of popular Paintings
+          >
+            Top 10 of popular Paintings
           </Typography>
         </Grid>
       </Container>
-      <br />  
-        <Swiper watchSlidesProgress={true} slidesPerView={3} spaceBetween={30} className="mySwiper">
-        
-        <SwiperSlide><a href='/gallery/6446e65df4c4a0ab41584498'><img src='/gallery/6446e65df4c4a0ab41584498' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446e1fef4c4a0ab41583e0a'><img src='/gallery/6446e1fef4c4a0ab41583e0a' alt='Top 1' /></a></SwiperSlide>  
-        <SwiperSlide><a href='/gallery/6446e1c0f4c4a0ab41583da6'><img src='/gallery/6446e1c0f4c4a0ab41583da6' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446e171f4c4a0ab41583d1e'><img src='/gallery/6446e171f4c4a0ab41583d1e' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446e4d2f4c4a0ab41584234'><img src='/gallery/6446e4d2f4c4a0ab41584234' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446e175f4c4a0ab41583d26'><img src='/gallery/6446e175f4c4a0ab41583d26' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446e18ff4c4a0ab41583d56'><img src='/gallery/6446e18ff4c4a0ab41583d56' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446eaa2f4c4a0ab41584b0c'><img src='/gallery/6446eaa2f4c4a0ab41584b0c' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446e17ff4c4a0ab41583d38'><img src='/gallery/6446e17ff4c4a0ab41583d38' alt='Top 1' /></a></SwiperSlide>
-        <SwiperSlide><a href='/gallery/6446e177f4c4a0ab41583d2a'><img src='/gallery/6446e177f4c4a0ab41583d2a' alt='Top 1' /></a></SwiperSlide>
-           
-        </Swiper>
-     <br />
-    <Box>
-     <Container maxWidth="sm">
-      <Typography variant="body2">
-           <a href="/public/dsgvo.html">Datenschutzbestimmungen</a>
-      </Typography>
-       <Copyright />
-          <a href="/public/imprint.html">Impressum</a>
-    </Container>
-   </Box>
+      <br />
+      <Swiper
+        watchSlidesProgress={true}
+        slidesPerView={3}
+        spaceBetween={30}
+        className='mySwiper'
+      >
+        <SwiperSlide>
+          <Link to='/gallery/6446e65df4c4a0ab41584498'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP-26883-001.jpg'
+              alt='Top 1'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e1fef4c4a0ab41583e0a'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP-13139-001.jpg'
+              alt='Top 2'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e1c0f4c4a0ab41583da6'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP-20101-001.jpg'
+              alt='Top 3'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e171f4c4a0ab41583d1e'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DT1502_cropped2.jpg'
+              alt='Top 4'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e4d2f4c4a0ab41584234'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP-687-001.jpg'
+              alt='Top 5'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e175f4c4a0ab41583d26'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP159891.jpg'
+              alt='Top 6'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e18ff4c4a0ab41583d56'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP353256.jpg'
+              alt='Top 7'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446eaa2f4c4a0ab41584b0c'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DT11.jpg'
+              alt='Top 8'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e17ff4c4a0ab41583d38'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP-17680-001.jpg'
+              alt='Top 9'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e177f4c4a0ab41583d2a'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP145910.jpg'
+              alt='Top 10'
+              width={'300px'}
+              height={'300px'}
+            />
+          </Link>
+        </SwiperSlide>
+      </Swiper>
+      <br />
+      <Box>
+        <Container maxWidth='sm'>
+          <Typography variant='body2'>
+            <a href='/public/dsgvo.html'>Datenschutzbestimmungen</a>
+          </Typography>
+          <Copyright />
+          <a href='/public/imprint.html'>Impressum</a>
+        </Container>
+      </Box>
     </>
   )
-      }
+}

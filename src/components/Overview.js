@@ -34,7 +34,7 @@ export default function Overview () {
       {/* <Typography variant='h4'>Explore in Timeline</Typography> */}
       <Tabs
         onSelect={handleSelect}
-        defaultIndex={previousYearRangeIndex ? previousYearRangeIndex : 0}
+        defaultIndex={previousYearRangeIndex ? Number(previousYearRangeIndex) : 0}
       >
         <Grid
           container
