@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import React from 'react'
 import {
   Avatar,
@@ -7,57 +8,17 @@ import {
   Grid,
   Button
 } from '@mui/material'
-import ReactCardSlider from 'react-card-slider-component'
 import { Outlet, Link, NavLink } from 'react-router-dom'
 import { LOCAL_STORAGE_YEAR_RANGE_KEY, YEAR_RANGES } from '../utils/constants'
 import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
+import Box from '@mui/material/Box'
+import { Copyright } from '@mui/icons-material'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function HomePage () {
-  const slides = [
-    {
-      image: 'https://picsum.photos/200/300',
-      title: 'This is a title',
-      description: 'This is a description'
-      // clickEvent: sliderClick
-    },
-    {
-      image: 'https://picsum.photos/600/500',
-      title: 'This is a second title',
-      description: 'This is a second description'
-      // clickEvent: sliderClick
-    },
-    {
-      image: 'https://picsum.photos/700/600',
-      title: 'This is a third title',
-      description: 'This is a third description'
-      // clickEvent: sliderClick
-    },
-    {
-      image: 'https://picsum.photos/500/400',
-      title: 'This is a fourth title',
-      description: 'This is a fourth description'
-      // clickEvent: sliderClick
-    },
-    {
-      image: 'https://picsum.photos/200/300',
-      title: 'This is a fifth title',
-      description: 'This is a fifth description'
-      // clickEvent: sliderClick
-    },
-    {
-      image: 'https://picsum.photos/800/700',
-      title: 'This is a sixth title',
-      description: 'This is a sixth description'
-      // clickEvent: sliderClick
-    },
-    {
-      image: 'https://picsum.photos/800/900',
-      title: 'This is a seventh title',
-      description: 'This is a seventh description'
-      // clickEvent: sliderClick
-    }
-  ]
+ 
   const imageData = [
     {
       title: 'Flower Garden and Bungalow',
@@ -81,16 +42,13 @@ export default function HomePage () {
   }
   return (
     <>
-      {/* Today's topic */}
+      {/* Today's topci */}
       <Container>
         <Grid
           container
           mt={10}
           ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center'
-          }}
+          sx={{ display: 'flex', justifyContent: 'center' }}
         >
           <Grid item xs={12} md={5}>
             <Typography variant='h6'>Today's Color</Typography>
@@ -100,14 +58,9 @@ export default function HomePage () {
               renewal. It is often considered a calming and soothing color that
               promotes relaxation and harmony.
             </Typography>
-            <Link to='/gallery/todayColor'>
+            <Link to="/gallery/todayColor">
               <Button
-                sx={{
-                  paddingLeft: '0',
-                  color: '#9CA777',
-                  fontWeight: 'bold',
-                  '&:active': { textDecoration: 'underline black' }
-                }}
+                sx={{ paddingLeft: '0', color: '#9CA777', fontWeight: 'bold' }}
               >
                 Learn More
               </Button>
@@ -180,11 +133,46 @@ export default function HomePage () {
           ))}
         </Grid>
       </Container>
-      <Container
-        sx={{ marginTop: '5em', display: 'flex', justifyContent: 'center' }}
-      >
-        <ReactCardSlider slides={slides} />
+      <br />
+      <Container>
+      <Grid container
+          mt={10}
+          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
+          >
+          <Typography id='top10'
+            wrap
+            variant='h4'
+            fontFamily='josefin_sans'
+            sx={{ display: 'flex', justifyContent: 'center' }}
+          >Top 10 of popular Paintings
+          </Typography>
+        </Grid>
       </Container>
+      <br />  
+        <Swiper watchSlidesProgress={true} slidesPerView={3} spaceBetween={30} className="mySwiper">
+        
+        <SwiperSlide><a href='/gallery/6446e65df4c4a0ab41584498'><img src='/gallery/6446e65df4c4a0ab41584498' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446e1fef4c4a0ab41583e0a'><img src='/gallery/6446e1fef4c4a0ab41583e0a' alt='Top 1' /></a></SwiperSlide>  
+        <SwiperSlide><a href='/gallery/6446e1c0f4c4a0ab41583da6'><img src='/gallery/6446e1c0f4c4a0ab41583da6' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446e171f4c4a0ab41583d1e'><img src='/gallery/6446e171f4c4a0ab41583d1e' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446e4d2f4c4a0ab41584234'><img src='/gallery/6446e4d2f4c4a0ab41584234' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446e175f4c4a0ab41583d26'><img src='/gallery/6446e175f4c4a0ab41583d26' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446e18ff4c4a0ab41583d56'><img src='/gallery/6446e18ff4c4a0ab41583d56' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446eaa2f4c4a0ab41584b0c'><img src='/gallery/6446eaa2f4c4a0ab41584b0c' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446e17ff4c4a0ab41583d38'><img src='/gallery/6446e17ff4c4a0ab41583d38' alt='Top 1' /></a></SwiperSlide>
+        <SwiperSlide><a href='/gallery/6446e177f4c4a0ab41583d2a'><img src='/gallery/6446e177f4c4a0ab41583d2a' alt='Top 1' /></a></SwiperSlide>
+           
+        </Swiper>
+     <br />
+    <Box>
+     <Container maxWidth="sm">
+      <Typography variant="body2">
+           <a href="/public/dsgvo.html">Datenschutzbestimmungen</a>
+      </Typography>
+       <Copyright />
+          <a href="/public/imprint.html">Impressum</a>
+    </Container>
+   </Box>
     </>
   )
-}
+      }
