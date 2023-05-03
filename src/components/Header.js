@@ -27,6 +27,7 @@ import ListItemText from '@mui/material/ListItemText'
 import CssBaseline from '@mui/material/CssBaseline'
 import Button from '@mui/material/Button'
 import { useState,useEffect } from 'react'
+import { Menu, MenuItem } from '@mui/material'
 
 // const theme = createTheme({
 //   palette: {
@@ -100,12 +101,18 @@ const initialState = [
     { name: 'Sign Up', pathName: 'signup', tag:'signUp' },
 ]
 
+const [anchorEl, setAnchorEl] = React.useState(null);
+const open = Boolean(anchorEl);
+const handleClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+const handleClose = () => {
+  setAnchorEl(null);
+};
 
-console.log(logOut);
+
 
   const [navItems,setNavItems] =  useState(initialState)
-
-
   
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [value, setValue] = useState()
@@ -215,18 +222,32 @@ console.log(logOut);
               Search
             </Button>
           </Toolbar>
-         <Box> 
-          {user && <div>{user.firstName + " " + user.lastName}</div>}
-         </Box>
-         <Box> 
-          {user && <Button
-                  style={{ color: 'black', fontWeight: '1000' }}
-                  onClick={logOut}
-                >
-                  Logout
-                </Button>}
-         </Box>
-       
+    {user&&  <Box>
+      <Button
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
+        <Typography> <span style={{color:"#000000"}}>{user.firstName + " " + user.lastName}</span>
+</Typography></Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={()=> {logOut();
+                            handleClose()}}>
+                              Logout</MenuItem>
+      </Menu>
+       </Box>}
         </Toolbar>
       </AppBar>
       <Box component='nav'>
