@@ -102,7 +102,7 @@ export default function HomePage () {
             </Typography>
             <Link to='/gallery/todayColor'>
               <Button
-                sx={{ paddingLeft: '0', color: '#9CA777', fontWeight: 'bold' }}
+                sx={{ paddingLeft: '0', color: '#9CA777', fontWeight: 'bold','&:active': { textDecoration: 'underline black' } }}
               >
                 Learn More
               </Button>
@@ -185,7 +185,7 @@ export default function HomePage () {
             <Typography
               variant='h4'
               fontFamily='josefin_sans'
-              sx={{ marginBottom: '1em'}}
+              sx={{ marginBottom: '1em' }}
               marginLeft={{ lg: '2.7em', xs: '0em', md: '2.2em' }}
             >
               Most Popular
@@ -196,7 +196,7 @@ export default function HomePage () {
       <br />
       <Swiper
         watchSlidesProgress={true}
-        slidesPerView='auto'
+        slidesPerView={2}
         spaceBetween={5}
         className='mySwiper'
       >
