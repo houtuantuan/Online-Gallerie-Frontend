@@ -52,6 +52,8 @@ export default function SingleImage ({ token }) {
         },
         body: JSON.stringify({
           paintingId: image && image._id,
+          paintingUrl: image && image.primaryImageSmall,
+          paintingTitle:image && image.title,
           liked: !liked
         })
       })
