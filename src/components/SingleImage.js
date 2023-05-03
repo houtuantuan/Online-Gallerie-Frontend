@@ -44,7 +44,7 @@ export default function SingleImage ({ token }) {
       window.alert('Please login first')
     }
     try {
-      const resData = await fetch('http://localhost:4000/users/like', {
+      const resData = await fetch(`${process.env.REACT_APP_BLOG_API}/users/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export default function SingleImage ({ token }) {
 
   const fetchData = async () => {
     try {
-      const getData = await fetch(`http://localhost:4000/gallery/${_id}`)
+      const getData = await fetch(`${process.env.REACT_APP_BLOG_API}/gallery/${_id}`)
       console.log(222)
       console.log(getData)
       if (!getData)
@@ -85,7 +85,7 @@ export default function SingleImage ({ token }) {
 
   const fetchFavorite = async () => {
     try {
-      const getData = await fetch(`http://localhost:4000/users/like/${_id}`, {
+      const getData = await fetch(`${process.env.REACT_APP_BLOG_API}/users/like/${_id}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`
@@ -106,7 +106,7 @@ export default function SingleImage ({ token }) {
 
   const fetchUrl = async () => {
     try {
-      const data = await fetch('http://localhost:4000/gallery/color', {
+      const data = await fetch(`${process.env.REACT_APP_BLOG_API}/gallery/color`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -14,7 +14,7 @@ export default function Profile ({ token }) {
 
   const fetchFavorite = async () => {
     try {
-      const getData = await fetch('http://localhost:4000/users/like', {
+      const getData = await fetch(`${process.env.REACT_APP_BLOG_API}/users/like`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`

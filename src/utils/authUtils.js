@@ -19,7 +19,7 @@ export const registerUser = async credentials => {
       return { error };
     }
 };
-
+console.log(process.env.REACT_APP_BLOG_API)
 export const loginUser = async credentials => {
     try {
       const res = await fetch(`${process.env.REACT_APP_BLOG_API}/auth/signin`, {
