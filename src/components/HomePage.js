@@ -36,6 +36,49 @@ export default function HomePage () {
       url: 'https://images.metmuseum.org/CRDImages/ad/original/DP105798.jpg'
     }
   ]
+
+  const topTenImages = [
+    {
+      id: '6446e65df4c4a0ab41584498',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP-26883-001.jpg'
+    },
+    {
+      id: '6446e1fef4c4a0ab41583e0a',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP-13139-001.jpg'
+    },
+    {
+      id: '6446e1c0f4c4a0ab41583da6',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP-20101-001.jpg'
+    },
+    {
+      id: '6446e171f4c4a0ab41583d1e',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DT1502_cropped2.jpg'
+    },
+    {
+      id: '6446e4d2f4c4a0ab41584234',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP-687-001.jpg'
+    },
+    {
+      id: '6446e175f4c4a0ab41583d26',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP159891.jpg'
+    },
+    {
+      id: '6446e18ff4c4a0ab41583d56',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP353256.jpg'
+    },
+    {
+      id: '6446eaa2f4c4a0ab41584b0c',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DT11.jpg'
+    },
+    {
+      id: '6446e17ff4c4a0ab41583d38',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP-17680-001.jpg'
+    },
+    {
+      id: '6446e177f4c4a0ab41583d2a',
+      url: 'https://images.metmuseum.org/CRDImages/ep/original/DP145910.jpg'
+    }
+  ]
   const handleClick = index => {
     localStorage.setItem(LOCAL_STORAGE_YEAR_RANGE_KEY, index)
   }
@@ -65,10 +108,10 @@ export default function HomePage () {
               </Button>
             </Link>
           </Grid>
-          <Grid xs={12} md={5} item>
+          <Grid item xs={12} md={5}>
             <ImageList variant='masonry' cols={3} gap={8}>
               {imageData.map(item => (
-                <ImageListItem key={item.img}>
+                <ImageListItem key={item.url}>
                   <img src={item.url} alt={item.title} loading='lazy' />
                 </ImageListItem>
               ))}
@@ -78,7 +121,7 @@ export default function HomePage () {
       </Container>
       {/* explore in timeline */}
       <Container>
-        <Grid xs={12} md={6} sx={{ marginTop: '3em', display: 'block' }}>
+        <Grid item xs={12} md={6} sx={{ marginTop: '3em', display: 'block' }}>
           <Typography
             variant='h4'
             fontFamily='josefin_sans'
@@ -138,32 +181,47 @@ export default function HomePage () {
           mt={10}
           // ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
         >
-          <Typography
-            id='top10'
-            
-            variant='h4'
-            fontFamily='josefin_sans'
-            sx={{ display: 'flex', justifyContent: 'center' }}
-          >
-            Top 10 of popular Paintings
-          </Typography>
+          <Grid item xs={12} md={6} sx={{ marginTop: '1em', display: 'block' }}>
+            <Typography
+              variant='h4'
+              fontFamily='josefin_sans'
+              sx={{ marginBottom: '1em'}}
+              marginLeft={{ lg: '2.7em', xs: '0em', md: '2.2em' }}
+            >
+              Most Popular
+            </Typography>
+          </Grid>
         </Grid>
       </Container>
       <br />
       <Swiper
         watchSlidesProgress={true}
-        slidesPerView={3}
-        spaceBetween={30}
+        slidesPerView='auto'
+        spaceBetween={5}
         className='mySwiper'
       >
         <SwiperSlide>
           <Link to='/gallery/6446e65df4c4a0ab41584498'>
-            <img
-              src='https://images.metmuseum.org/CRDImages/ep/original/DP-26883-001.jpg'
-              alt='Top 1'
-              width={'300px'}
-              height={'300px'}
-            />
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <img
+                src='https://images.metmuseum.org/CRDImages/ep/original/DP-26883-001.jpg'
+                alt='Top 1'
+                width='auto'
+                height='300px'
+                style={{
+                  display: 'block',
+                  margin: 'auto',
+                  textAlign: 'center',
+                  verticalAlign: 'center'
+                }}
+              />
+            </Box>
           </Link>
         </SwiperSlide>
         <SwiperSlide>
@@ -171,8 +229,8 @@ export default function HomePage () {
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-13139-001.jpg'
               alt='Top 2'
-              width={'300px'}
-              height={'300px'}
+              width='auto'
+              height='300px'
             />
           </Link>
         </SwiperSlide>
@@ -181,8 +239,8 @@ export default function HomePage () {
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-20101-001.jpg'
               alt='Top 3'
-              width={'300px'}
-              height={'300px'}
+              width='auto'
+              height='300px'
             />
           </Link>
         </SwiperSlide>
@@ -191,8 +249,8 @@ export default function HomePage () {
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DT1502_cropped2.jpg'
               alt='Top 4'
-              width={'300px'}
-              height={'300px'}
+              width='auto'
+              height='300px'
             />
           </Link>
         </SwiperSlide>
@@ -201,38 +259,8 @@ export default function HomePage () {
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-687-001.jpg'
               alt='Top 5'
-              width={'300px'}
-              height={'300px'}
-            />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to='/gallery/6446e175f4c4a0ab41583d26'>
-            <img
-              src='https://images.metmuseum.org/CRDImages/ep/original/DP159891.jpg'
-              alt='Top 6'
-              width={'300px'}
-              height={'300px'}
-            />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to='/gallery/6446e18ff4c4a0ab41583d56'>
-            <img
-              src='https://images.metmuseum.org/CRDImages/ep/original/DP353256.jpg'
-              alt='Top 7'
-              width={'300px'}
-              height={'300px'}
-            />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to='/gallery/6446eaa2f4c4a0ab41584b0c'>
-            <img
-              src='https://images.metmuseum.org/CRDImages/ep/original/DT11.jpg'
-              alt='Top 8'
-              width={'300px'}
-              height={'300px'}
+              width='300px'
+              height='300px'
             />
           </Link>
         </SwiperSlide>
@@ -241,8 +269,38 @@ export default function HomePage () {
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-17680-001.jpg'
               alt='Top 9'
-              width={'300px'}
-              height={'300px'}
+              width='auto'
+              height='300px'
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e18ff4c4a0ab41583d56'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP353256.jpg'
+              alt='Top 7'
+              width='auto'
+              height='300px'
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446eaa2f4c4a0ab41584b0c'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DT11.jpg'
+              alt='Top 8'
+              width='auto'
+              height='300px'
+            />
+          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/gallery/6446e175f4c4a0ab41583d26'>
+            <img
+              src='https://images.metmuseum.org/CRDImages/ep/original/DP159891.jpg'
+              alt='Top 6'
+              width='auto'
+              height='300px'
             />
           </Link>
         </SwiperSlide>
@@ -251,8 +309,8 @@ export default function HomePage () {
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP145910.jpg'
               alt='Top 10'
-              width={'300px'}
-              height={'300px'}
+              width='auto'
+              height='300px'
             />
           </Link>
         </SwiperSlide>

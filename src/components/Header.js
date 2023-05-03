@@ -163,13 +163,13 @@ function Header (props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component='nav'>
-        <Toolbar>
+        <Toolbar sx={{display:"flex",justifyContent:"space-between"}}>
           <IconButton
             color='inherit'
             aria-label='open drawer'
             edge='start'
             onClick={handleDrawerToggle}
-            sx={{ mr: 2,color:"#94AF9F", display: { sm: 'none' } }}
+            sx={{ mr: 2,color:"#94AF9F", display: { md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -210,7 +210,7 @@ function Header (props) {
                 )
             )}
           </Box>
-          <Toolbar>
+          <Toolbar sx={{display:"flex",justifyContent:"flex-end"}}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon sx={{ color: 'white' }} />
@@ -227,7 +227,7 @@ function Header (props) {
             <Button
               onClick={goToSearchResult}
               variant='contained'
-              sx={{ margin: '7px',color:"#539165" }}
+              sx={{ marginLeft: '7px',color:"#539165" }}
             >
               Search
             </Button>

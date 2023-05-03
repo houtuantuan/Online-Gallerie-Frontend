@@ -95,11 +95,10 @@ export default function TodayColor () {
         }}
       >
         {greenImages.map(item => (
-          <Link key={item.url}
-          to={`/gallery/${item.id}`}>
+          <Link key={item.url} to={`/gallery/${item.id}`}>
             <ImageListItem key={item.url} className='greenImage'>
               <img
-                  style={{ padding: '3px' }}
+                style={{ padding: '3px' }}
                 src={item.url}
                 alt={item.title}
                 loading='lazy'

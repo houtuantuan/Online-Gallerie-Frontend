@@ -59,12 +59,16 @@ export default function OverviewByTime ({ yearRange }) {
             {items.map(item => (
               <Grid
                 item
-                key={item._id}
+                // key={item._id}
                 columnSpacing={{ xs: 1, sm: 1, md: 1 }}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <ImageListItem className='infoParent'>
-                  <Link to={item._id}>
+                <ImageListItem 
+                
+                className='infoParent'>
+                  <Link 
+                  key={item._id}
+                  to={item._id}>
                     <Box
                       xs={6}
                       sm={5}
