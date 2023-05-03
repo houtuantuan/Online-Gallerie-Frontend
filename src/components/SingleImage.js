@@ -53,7 +53,7 @@ export default function SingleImage ({ token }) {
         body: JSON.stringify({
           paintingId: image && image._id,
           paintingUrl: image && image.primaryImageSmall,
-          paintingTitle:image && image.title,
+          paintingTitle: image && image.title,
           liked: !liked
         })
       })
@@ -228,11 +228,12 @@ export default function SingleImage ({ token }) {
             onClick={handleOpen}
             sx={{ '&:hover': { cursor: 'pointer' }, margin: '0.5em' }}
           />
-          <IconButton>
-            <FavoriteBorderIcon
-              onClick={handleFavorite}
-              sx={{ color: liked ? 'red' : 'black' }}
-            ></FavoriteBorderIcon>
+          <IconButton onClick={handleFavorite} sx={{ color: 'black' }}>
+            {liked ? (
+              <FavoriteIcon sx={{ color: '#ad4f39' }}></FavoriteIcon>
+            ) : (
+              <FavoriteBorderIcon />
+            )}
           </IconButton>
         </Box>
 
@@ -389,7 +390,10 @@ export default function SingleImage ({ token }) {
                   <Button
                     onClick={pickRef(image)}
                     variant='outlined'
-                    sx={{ color: 'black' }}
+                    sx={{
+                      color: 'black',
+                      '&:active': { textDecoration: 'underline black' }
+                    }}
                   >
                     Draw it!
                   </Button>
