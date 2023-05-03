@@ -118,3 +118,31 @@ body{
     }
 
 }
+
+#colorpalettePlace{
+    padding: 0px;
+    margin: 0;
+}
+
+#stage #colorpalettePlace{
+    width: 620px;
+    height: 576px;
+    position: relative;
+}
+ 
+canvas{
+    position: absolute;
+}
+
+.swiper {
+    width: 974px;
+  }
+  .swiper-slide {
+    height: 300px;
+    
+    line-height: 300px;
+    text-align: center;
+  }
+    #top10 {
+    min-width: 630px;
+  }
