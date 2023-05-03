@@ -13,6 +13,7 @@ import TodayColor from './components/TodayColor'
 import Loading from './components/loginComps/Loading'
 import SignUp from './components/loginComps/SignUp'
 import SignIn from './components/loginComps/SignIn'
+import Profile from "./components/Profile"
 import { useState,useEffect } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
 import { getUser } from './utils/authUtils';
@@ -77,6 +78,7 @@ function App () {
            setToken={setToken}
            loadingAuthRequest={loadingAuthRequest}
            setLoadingAuthRequest={setLoadingAuthRequest}/>} theme={theme}/>
+           <Route path="profile" element={<Profile token={token}/>}></Route>
         </Routes>
       </ThemeProvider>
     </div>

@@ -26,8 +26,9 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import CssBaseline from '@mui/material/CssBaseline'
 import Button from '@mui/material/Button'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, MenuItem } from '@mui/material'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // const theme = createTheme({
 //   palette: {
@@ -88,32 +89,28 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   }
 }))
 
-
 function Header (props) {
-  
-  const { window,isAuthenticated, user, logOut } = props
+  const { window, isAuthenticated, user, logOut } = props
 
-const initialState = [
-    { name: 'Home', pathName: '/', tag:'home'},
+  const initialState = [
+    { name: 'Home', pathName: '/', tag: 'home' },
     { name: 'Explore', pathName: 'gallery' },
     { name: 'Drawing board', pathName: 'canvas' },
-    { name: 'Sign In', pathName: 'signin', tag:'signIn' },
-    { name: 'Sign Up', pathName: 'signup', tag:'signUp' },
-]
+    { name: 'Sign In', pathName: 'signin', tag: 'signIn' },
+    { name: 'Sign Up', pathName: 'signup', tag: 'signUp' }
+  ]
 
-const [anchorEl, setAnchorEl] = React.useState(null);
-const open = Boolean(anchorEl);
-const handleClick = (event) => {
-  setAnchorEl(event.currentTarget);
-};
-const handleClose = () => {
-  setAnchorEl(null);
-};
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
+  const [navItems, setNavItems] = useState(initialState)
 
-
-  const [navItems,setNavItems] =  useState(initialState)
-  
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [value, setValue] = useState()
 
@@ -128,19 +125,21 @@ const handleClose = () => {
       </Typography>
       <Divider />
       <List>
-        {navItems.map(item => (
-          !(isAuthenticated && 
-            item.tag === 'signIn'
-            || isAuthenticated && 
-            item.tag === 'signUp') &&
-          <ListItem key={item.name} disablePadding>
-            <NavLink key={item.name} className='navLink' to={item.pathName}>
-              <ListItemButton sx={{ textAlign: 'center' }}>
-                <ListItemText primary={item.name} />
-              </ListItemButton>
-            </NavLink>
-          </ListItem>
-        ))}
+        {navItems.map(
+          item =>
+            !(
+              (isAuthenticated && item.tag === 'signIn') ||
+              (isAuthenticated && item.tag === 'signUp')
+            ) && (
+              <ListItem key={item.name} disablePadding>
+                <NavLink key={item.name} className='navLink' to={item.pathName}>
+                  <ListItemButton sx={{ textAlign: 'center' }}>
+                    <ListItemText primary={item.name} />
+                  </ListItemButton>
+                </NavLink>
+              </ListItem>
+            )
+        )}
       </List>
     </Box>
   )
@@ -152,13 +151,11 @@ const handleClose = () => {
   const params = { q: value }
 
   const goToSearchResult = () => {
-    
     navigate({
       pathname: '/gallery/search',
       search: `?${createSearchParams(params)}`
     })
-    document.getElementById("inputField").value=""
-    
+    document.getElementById('inputField').value = ''
   }
   console.log(value)
 
@@ -187,19 +184,26 @@ const handleClose = () => {
             </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
-            {navItems.map(item => (
-         !(isAuthenticated && 
-         item.tag === 'signIn'
-         || isAuthenticated && 
-         item.tag === 'signUp') && <NavLink key={item.name} className='navLink' to={item.pathName}>
-                <Button
-                  key={item.name}
-                  style={{ color: 'white', fontWeight: '1000' }}
-                >
-                  {item.name}
-                </Button>
-              </NavLink>
-            ))}
+            {navItems.map(
+              item =>
+                !(
+                  (isAuthenticated && item.tag === 'signIn') ||
+                  (isAuthenticated && item.tag === 'signUp')
+                ) && (
+                  <NavLink
+                    key={item.name}
+                    className='navLink'
+                    to={item.pathName}
+                  >
+                    <Button
+                      key={item.name}
+                      style={{ color: 'white', fontWeight: '1000' }}
+                    >
+                      {item.name}
+                    </Button>
+                  </NavLink>
+                )
+            )}
           </Box>
           <Toolbar>
             <Search>
@@ -207,47 +211,68 @@ const handleClose = () => {
                 <SearchIcon sx={{ color: 'white' }} />
               </SearchIconWrapper>
               <StyledInputBase
-              id="inputField"
+                id='inputField'
                 placeholder='Search…'
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={event => {
                   setValue(event.target.value)
-                 
                 }}
               />
             </Search>
-            <Button onClick={goToSearchResult} variant='contained'
-            sx={{margin:"5px"}}
+            <Button
+              onClick={goToSearchResult}
+              variant='contained'
+              sx={{ margin: '5px' }}
             >
               Search
             </Button>
           </Toolbar>
-    {user&&  <Box>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        <Typography> <span style={{color:"#000000"}}>{user.firstName + " " + user.lastName}</span>
-</Typography></Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={()=> {logOut();
-                            handleClose()}}>
-                              Logout</MenuItem>
-      </Menu>
-       </Box>}
+          {user && (
+            <Box>
+              <Button
+                id='basic-button'
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                 
+              >
+                <Typography>
+                  {' '}
+                  <span style={{ color: '#000000' }}>
+                  <AccountCircleIcon fontSize='large'
+                  sx={{marginTop:"10px"}}
+                  />
+                    {/* {user.firstName + ' ' + user.lastName} */}
+                  </span>
+                </Typography>
+              </Button>
+              <Menu
+                id='basic-menu'
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  'aria-labelledby': 'basic-button'
+                }}
+              >
+                <Link to="profile" style={{textDecoration:"none",color:"black"}}>
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                </Link>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <Link to="/">
+                <MenuItem
+                style={{textDecoration:"none",color:"black"}}
+                  onClick={() => {
+                    logOut()
+                    handleClose()
+                  }}
+                >
+                  Logout
+                </MenuItem></Link>
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
       <Box component='nav'>
