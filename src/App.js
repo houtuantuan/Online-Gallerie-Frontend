@@ -57,7 +57,6 @@ function App () {
     <div className='App'>
       <ThemeProvider theme={theme}>     
         <Header isAuthenticated={isAuthenticated} theme={theme} logOut={logOut} user={user}></Header>
-      ${!isAuthenticated} && <div>Wenn die message verschwindet bist du eingeloggt</div>
         <Routes>
           <Route path="" element={<HomePage/>}/>
           <Route path='canvas' element={<CanvasComp />} />
