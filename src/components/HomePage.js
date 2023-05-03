@@ -81,13 +81,16 @@ export default function HomePage () {
   }
   return (
     <>
-      {/* Today's topci */}
+      {/* Today's topic */}
       <Container>
         <Grid
           container
           mt={10}
           ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
-          sx={{ display: 'flex', justifyContent: 'center' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center'
+          }}
         >
           <Grid item xs={12} md={5}>
             <Typography variant='h6'>Today's Color</Typography>
@@ -97,9 +100,14 @@ export default function HomePage () {
               renewal. It is often considered a calming and soothing color that
               promotes relaxation and harmony.
             </Typography>
-            <Link to="/gallery/todayColor">
+            <Link to='/gallery/todayColor'>
               <Button
-                sx={{ paddingLeft: '0', color: '#9CA777', fontWeight: 'bold' }}
+                sx={{
+                  paddingLeft: '0',
+                  color: '#9CA777',
+                  fontWeight: 'bold',
+                  '&:active': { textDecoration: 'underline black' }
+                }}
               >
                 Learn More
               </Button>

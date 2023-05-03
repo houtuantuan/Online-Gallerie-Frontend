@@ -28,7 +28,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Button from '@mui/material/Button'
 import { useState, useEffect } from 'react'
 import { Menu, MenuItem } from '@mui/material'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 // const theme = createTheme({
 //   palette: {
@@ -120,8 +120,8 @@ function Header (props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant='h6' sx={{ my: 2 }}>
-        <Link to='/'>Gallery Art</Link>
+      <Typography variant='h6' sx={{ my: 2,textDecoration:"none" }}>
+        <Link to='/'>Color Gallery</Link>
       </Typography>
       <Divider />
       <List>
@@ -169,7 +169,7 @@ function Header (props) {
             aria-label='open drawer'
             edge='start'
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2,color:"#94AF9F", display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -179,8 +179,13 @@ function Header (props) {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <Link className='navLink' to='/'>
-              {' '}
-              Gallery Art
+              <Typography
+                variant='h5'
+                fontWeight={'bold'}
+                sx={{ color: '#94AF9F',textShadow:"1px 2px 5px #F9F5EB" }}
+              >
+                Color Gallery
+              </Typography>
             </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
@@ -222,7 +227,7 @@ function Header (props) {
             <Button
               onClick={goToSearchResult}
               variant='contained'
-              sx={{ margin: '5px' }}
+              sx={{ margin: '7px',color:"#539165" }}
             >
               Search
             </Button>
@@ -235,14 +240,14 @@ function Header (props) {
                 aria-haspopup='true'
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-                 
               >
                 <Typography>
                   {' '}
                   <span style={{ color: '#000000' }}>
-                  <AccountCircleIcon fontSize='large'
-                  sx={{marginTop:"10px"}}
-                  />
+                    <AccountCircleIcon
+                      fontSize='large'
+                      sx={{ marginTop: '10px',color:"#94AF9F" }}
+                    />
                     {/* {user.firstName + ' ' + user.lastName} */}
                   </span>
                 </Typography>
@@ -256,20 +261,24 @@ function Header (props) {
                   'aria-labelledby': 'basic-button'
                 }}
               >
-                <Link to="profile" style={{textDecoration:"none",color:"black"}}>
+                <Link
+                  to='profile'
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                <Link to="/">
-                <MenuItem
-                style={{textDecoration:"none",color:"black"}}
-                  onClick={() => {
-                    logOut()
-                    handleClose()
-                  }}
-                >
-                  Logout
-                </MenuItem></Link>
+                <Link to='/'>
+                  <MenuItem
+                    style={{ textDecoration: 'none', color: 'black' }}
+                    onClick={() => {
+                      logOut()
+                      handleClose()
+                    }}
+                  >
+                    Logout
+                  </MenuItem>
+                </Link>
               </Menu>
             </Box>
           )}
