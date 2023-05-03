@@ -53,17 +53,22 @@ export default function Profile ({ token }) {
                   maxWidth: '500px',
                   minWidth: '350px'
                 }}
+                key={el._id}
               >
                 <Avatar
+                 key={el._id}
                   alt={el.paintingTitle}
                   src={el.paintingUrl}
                   sx={{ width: 80, height: 80, margin: '1em' }}
                 />
                 <Link
+                
                   to={`/gallery/${el.paintingId}`}
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
-                  <ListItemText primary={el.paintingTitle} />
+                  <ListItemText 
+                   
+                  primary={el.paintingTitle} />
                 </Link>
               </ListItem>
               {/* <Typography>{el.paintingTitle}</Typography> */}

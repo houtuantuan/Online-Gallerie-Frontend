@@ -12,6 +12,7 @@ import { Outlet, Link, NavLink } from 'react-router-dom'
 import { LOCAL_STORAGE_YEAR_RANGE_KEY, YEAR_RANGES } from '../utils/constants'
 import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 export default function HomePage () {
   const slides = [
@@ -86,7 +87,7 @@ export default function HomePage () {
         <Grid
           container
           mt={10}
-          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
+          // columnSpace={{ xs: 2, md: 3, lg: 5 }}
           sx={{
             display: 'flex',
             justifyContent: 'center'
@@ -113,11 +114,12 @@ export default function HomePage () {
               </Button>
             </Link>
           </Grid>
-          <Grid xs={12} md={5} item>
+          <Grid item xs={12} md={5} >
             <ImageList variant='masonry' cols={3} gap={8}>
               {imageData.map(item => (
-                <ImageListItem key={item.img}>
-                  <img src={item.url} alt={item.title} loading='lazy' />
+                <ImageListItem key={item.url}>
+                  <img 
+                  src={item.url} alt={item.title} loading='lazy' />
                 </ImageListItem>
               ))}
             </ImageList>
@@ -126,9 +128,9 @@ export default function HomePage () {
       </Container>
       {/* explore in timeline */}
       <Container>
-        <Grid xs={12} md={6} sx={{ marginTop: '3em', display: 'block' }}>
+        <Grid container xs={12} md={6} sx={{ marginTop: '3em', display: 'block' }}>
           <Typography
-            wrap
+            
             variant='h4'
             fontFamily='josefin_sans'
             sx={{ marginBottom: '1em', marginTop: '3em' }}
@@ -183,7 +185,7 @@ export default function HomePage () {
       <Container
         sx={{ marginTop: '5em', display: 'flex', justifyContent: 'center' }}
       >
-        <ReactCardSlider slides={slides} />
+       
       </Container>
     </>
   )

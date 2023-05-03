@@ -24,7 +24,7 @@ export default function Overview () {
   const previousYearRangeIndex = localStorage.getItem(
     LOCAL_STORAGE_YEAR_RANGE_KEY
   )
-
+console.log(typeof Number(previousYearRangeIndex))
   const handleSelect = index => {
     localStorage.setItem(LOCAL_STORAGE_YEAR_RANGE_KEY, index)
   }
@@ -34,7 +34,7 @@ export default function Overview () {
       {/* <Typography variant='h4'>Explore in Timeline</Typography> */}
       <Tabs
         onSelect={handleSelect}
-        defaultIndex={previousYearRangeIndex ? previousYearRangeIndex : 0}
+        defaultIndex={previousYearRangeIndex ? Number(previousYearRangeIndex) : 0}
       >
         <Grid
           container
