@@ -1,143 +1,142 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux'
 import { changeBrushColor } from '../../redux/brushSlice'
+import { Box, Container } from "@mui/material";
 
 
-export default ({brushOptions,setbrushOptions}) => {
-
+export default ({brushOptions}) => {
   const dispatch = useDispatch();
-
 useEffect(() => {
 
-    function pickColor(evt){
+  function pickHue(evt) {
 
+    const canvas = this, ctx = canvas.getContext("2d");
+    const pixel = ctx.getImageData(evt.layerX,evt.layerY,1,1)
+    const data =  pixel.data;
+    const rgba = 'rgba(' + data[0] + ',' + data[1] +
+         ',' + data[2] + ',' + (data[3] / 255) + ')';
+
+     createHueSpectrum();
+         ctx.beginPath();
+ 
+         ctx.lineWidth = 1.2;
+         ctx.strokeStyle = "#000000";
+        
+         ctx.beginPath(); // Start a new path
+         ctx.moveTo(0,evt.layerY - 2); // Move the pen to (30, 50)
+         ctx.lineTo(canvas.width, evt.layerY -2); // Draw a line to (150, 100)
+         ctx.stroke(); // Render the path
+        
+         ctx.beginPath();
+         ctx.moveTo(0,evt.layerY + 2); // Move the pen to (30, 50)
+         ctx.lineTo(canvas.width, evt.layerY +2); // Draw a line to (150, 100)
+       
+         ctx.stroke();
+        createSpectrum(rgba);
+  }
+
+    function pickColor(evt){
         const canvas = this;
         const ctx = canvas.getContext("2d");
-        
-        // const pixel = ctx.getImageData(evt.layerX,evt.layerY,1,1)
-
-        const offsetY = evt.target.offsetTop;
-        const offsetX = evt.target.offsetLeft;
-  
         const pixel = ctx.getImageData(evt.layerX,evt.layerY,1,1)
-
         const data =  pixel.data;
-        const rgba = 'rgba(' + data[0] + ',' + data[1] +
-             ',' + data[2] + ',' + (data[3] / 255) + ')';
-             
-        // const newBrushOptions = {...brushOptions,brushColor: rgba}
-        // setbrushOptions(newBrushOptions);
-      dispatch(changeBrushColor(rgba));
-
-        createCanvas();
-        ctx.beginPath();
-
-        ctx.arc(evt.layerX -offsetX,evt.layerY -offsetY, 5, 0, 2 * Math.PI);
-        ctx.lineWidth = brushOptions.brushSize;
+                const rgba = 'rgba(' + data[0] + ',' + data[1] +
+                     ',' + data[2] + ',' + (data[3] / 255) + ')';
+                     
+        const huepixel = ctx.getImageData(canvas.width -1,0,1,1)
+        const hueData = huepixel.data;
+        const huergba = 'rgba(' + hueData[0] + ',' + hueData[1] +
+             ',' + hueData[2] + ',' + (hueData[3] / 255) + ')';
         
+       dispatch(changeBrushColor(rgba));
+      
+        createSpectrum(huergba);
+        ctx.beginPath();
+        ctx.arc(evt.layerX,evt.layerY, 5, 0, 2 * Math.PI);
+        ctx.lineWidth = brushOptions.brushSize;
         ctx.strokeStyle = "#ffffff";
         ctx.stroke();
-
         ctx.beginPath();
-
-        ctx.arc(evt.layerX -offsetX,evt.layerY -offsetY, 4, 0, 2 * Math.PI);
+        ctx.arc(evt.layerX,evt.layerY, 4, 0, 2 * Math.PI);
         ctx.lineWidth = brushOptions.brushSize;
-        
         ctx.strokeStyle = "#000000";
         ctx.stroke();
-      
-      
-
     }
 
-    function clamp(min, max, val)
-{
-	if (val < min) return min;
-	if (val > max) return max;
-	return val;
+const createHueSpectrum = () => {
+  const canvas = document.getElementById("hueC"), ctx = canvas.getContext("2d");
+   const hueGradient = ctx.createLinearGradient(0,0,0,canvas.height);
+   
+   hueGradient.addColorStop(0.00, "hsl(0,100%,50%)");
+   hueGradient.addColorStop(0.17, "hsl(298.8,100%,50%)");
+   hueGradient.addColorStop(0.33, "hsl(241.2,100%,50%)");
+   hueGradient.addColorStop(0.50, "hsl(180,100%,50%)");
+   hueGradient.addColorStop(0.67, "hsl(118.8,100%,50%)");
+   hueGradient.addColorStop(0.83, "hsl(61.2,100%,50%)");
+   hueGradient.addColorStop(1.00, "hsl(360,100%,50%)");
+   ctx.fillStyle = hueGradient;
+   ctx.fillRect(0,0,canvas.width, canvas.height);
+
+   return canvas;
+   
 }
 
-var hsv2rgb = function(hsv) {
-    
-    var h = hsv.hue, s = hsv.sat, v = hsv.val;
-    var rgb, i, data = [];
-    if (s === 0) {
-      rgb = [v,v,v];
-    } else {
-      h = h / 60;
-      i = Math.floor(h);
-      data = [v*(1-s), v*(1-s*(h-i)), v*(1-s*(1-(h-i)))];
-      switch(i) {
-        case 0:
-          rgb = [v, data[2], data[0]];
-          break;
-        case 1:
-          rgb = [data[1], v, data[0]];
-          break;
-        case 2:
-          rgb = [data[0], v, data[2]];
-          break;
-        case 3:
-          rgb = [data[0], data[1], v];
-          break;
-        case 4:
-          rgb = [data[2], data[0], v];
-          break;
-        default:
-          rgb = [v, data[0], data[1]];
-          break;
-      }
-    }
-    return rgb;
-  };
 
-    const createCanvas = () => 
+  const createSpectrum = (hue="rgba(1,180,255,1)") => 
     {
-        const canvas = document.getElementById("stripe"), ctx = canvas.getContext("2d");
-       
-        canvas.height = 100;
-        canvas.width= 360;
-        const imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
-        const height=imgData.height, width=imgData.width;
 
-        for(let yPos= 0; yPos<height;yPos++){
+      console.log("create new Spectrum");
+        const canvas = document.getElementById("valueSaturationC"), ctx = canvas.getContext("2d");
+        canvas.height = 212;
+        canvas.width= 200;
 
-            for(let xPos= 0,divisor=2; xPos<width;xPos++){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = hue;
+        ctx.fillRect(0,0,canvas.width, canvas.height);
 
-                let hue = xPos;
-                let sat = clamp(0, 1, yPos / (height/divisor) );
-			    let val = clamp(0, 1, (height-yPos) / (height/divisor) );
-
-                let rgb = hsv2rgb( {hue:hue, sat:sat, val:val} );
-
-               let index = 4 * (xPos + yPos*360);
-
-                
-                imgData.data[ index + 0 ] = rgb[0] * 255;
-                imgData.data[ index + 1 ] = rgb[1] * 255;	
-                imgData.data[ index + 2 ] = rgb[2] * 255;	
-                imgData.data[ index + 3 ] = 255;	
-                
-
-            }
+        const whiteGradient = ctx.createLinearGradient(0,0,canvas.width, 0);
+        whiteGradient.addColorStop(0, "#fff")
+        whiteGradient.addColorStop(1, "transparent");
+        ctx.fillStyle= whiteGradient;
+        ctx.fillRect(0,0,canvas.width, canvas.height);
 
 
-        }
-        ctx.putImageData(imgData, 0, 0);
+        const blackGradient = ctx.createLinearGradient(0,0,0,canvas.height);
+        blackGradient.addColorStop(0, "transparent")
+        blackGradient.addColorStop(1, "#000");
+        ctx.fillStyle= blackGradient;
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        
+
         return canvas;
     }
 
-    const strip = createCanvas();
-    strip.addEventListener('pointerdown',pickColor,false);
+    const hueCanvas = createHueSpectrum();
+    const spectrumCanvas = createSpectrum();
 
-
+  spectrumCanvas.addEventListener('pointerdown',pickColor,false);
+   hueCanvas.addEventListener('pointerdown',pickHue,false);
 
 },[])
     
  return(
-        <div id="colorpalettePlace">
-            {/* <canvas id="colorwheel"></canvas> */}
-            <canvas id="stripe"></canvas>
-        </div>
+        <Container
+        container
+         
+        sx={{ display: 'flex' }}
+        mt={4}
+        ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
+  
+        >
+            <Box>
+            <div className="canvasFrame" id="valSatF">          
+            <canvas id="valueSaturationC"/>  
+            </div>
+              </Box>
+              <Box>
+            <div className="canvasFrame" id="hueF"> 
+            <canvas id="hueC"/>
+            </div></Box>
+        </Container>
     )
 }

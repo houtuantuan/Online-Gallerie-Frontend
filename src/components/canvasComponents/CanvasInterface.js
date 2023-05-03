@@ -3,6 +3,7 @@ import Drawingspace from './Drawingspace'
 import { useContext,useState,useEffect } from 'react'
 import Reference from './Reference'
 import CanvasSettings from './CanvasSettings' 
+import "../../css/canvas.scss"
 
 export default () => {
     
@@ -15,28 +16,26 @@ export default () => {
     const [brushOptions,setbrushOptions] = useState(initialState);
 
     return(
-        <Container>
-    <Typography 
-        fontFamily='josefin_sans'
-        wrap
-        variant='h4'
-        sx={{ marginBottom: '1em', marginTop: '1em' }}
-    >
-        Drawing Board</Typography>
-<Grid container>
-    <Grid container md={7}>
-            <Drawingspace 
+        <>
+    <Container >
+        <Grid container
+         mt={10}
+         ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
+         sx={{ display: 'flex', justifyContent: 'center' }}
+        >
+            <Grid item>
+           <Drawingspace 
             brushOptions={brushOptions} 
         />
         </Grid>
-        <Grid container md={3} direction="column">
+        <Grid item md={3} sx={{ m: 1 }}>
             <Grid item><Reference/></Grid>
-            <Grid item><CanvasSettings
+            <CanvasSettings
            brushOptions={brushOptions}
            setbrushOptions={setbrushOptions}/>
-            </Grid>
         </Grid>
 </Grid>  
 </Container>
+</>
     )
 }
