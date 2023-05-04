@@ -1,3 +1,9 @@
+$primary-color: rgb(255, 250, 238);
+$secondary-color: rgb(218, 224, 175);
+$contrast-color: rgb(89, 90, 159);
+$contrast-color2: rgb(118,65,61);
+$font-color: #141414;
+$font-color2: rgb(215,220,178);
 
 .hue-map{
     max-width: 1rem;
@@ -42,7 +48,8 @@
 
 .canvasFrame{
     position: relative;
-    overflow: hidden;
+    display: 'inline-block';
+    // overflow: hidden;
     
     &#stage{
         
@@ -59,7 +66,8 @@
     &#hueF{
         width: 10px;
         *>#hue{
-            border-radius: 8px;
+            width: 100%;
+            // border-radius: 8px;
             position: absolute;
             width: 10px;
         }
@@ -67,6 +75,10 @@
     &#valSatF{
         width: 212px;
         height: 200px;
+        canvas{
+            width: 100%;
+            height: 100%;
+        }
     }
     *>canvas{
         position: absolute;
@@ -88,4 +100,51 @@
 #backgroundLayer{
     width: 100%;
     height: 100%;
+}
+
+
+.setting{
+    width: 100%;
+    
+    margin: 1rem;
+    background-color: $secondary-color;
+    border-radius: 5px;
+}
+
+.optionPanel{
+
+    display:flex;
+    justify-content: space-between;
+
+    button{
+        width: 1rem;
+    }
+
+    background-color: $secondary-color;
+    *>button{
+        border: none;
+        background-color: $primary-color;
+        width: 1rem;
+        margin-left: 0.2rem;
+        font-weight: bold;
+        
+    }
+    *>.inactive:disabled{
+        background-color: dimgrey;
+         color: linen;
+    opacity: 1;
+    }
+    *>:nth-child(2n){
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+}
+
+#colorpalettePlace{
+    padding: 0px;
+    margin: 0;
+}
+
+canvas{
+    position: absolute;
 }

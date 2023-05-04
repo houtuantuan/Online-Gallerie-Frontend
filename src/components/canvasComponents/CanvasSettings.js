@@ -1,6 +1,7 @@
 import ColorWheel from "./ColorWheel";
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions } from '../../redux/brushSlice'
+import { Container } from "@mui/material";
 
 export default ({setbrushOptions}) => {
   const brushOptions = useSelector(selectBrushOptions);  
@@ -18,8 +19,12 @@ const decreaseSize = () => {
    dispatch(changeBrushSize(document.getElementById("brushSize").value));
  }
  
-    return(
-<div className="setting">
+    return(<>
+      <Container
+      container>
+        <Container>
+
+
 
 <div className="sizeToggle">
 brushsize: 
@@ -27,10 +32,10 @@ brushsize:
     <input onChange={()=>changeSize()} id="brushSize" value={brushOptions.brushSize}/>
     <button onClick={()=>increaseSize()}>&gt;</button>
 </div>
+</Container>
 
       <ColorWheel
       brushOptions={brushOptions}
       setbrushOptions={setbrushOptions}/>
-
-</div>)   
+</Container></>)   
 }

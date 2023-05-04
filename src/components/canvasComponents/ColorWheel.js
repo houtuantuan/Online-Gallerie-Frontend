@@ -65,7 +65,10 @@ useEffect(() => {
 
 const createHueSpectrum = () => {
   const canvas = document.getElementById("hueC"), ctx = canvas.getContext("2d");
-   const hueGradient = ctx.createLinearGradient(0,0,0,canvas.height);
+  
+    canvas.width = 10;
+    canvas.height = 200;
+  const hueGradient = ctx.createLinearGradient(0,0,0,canvas.height);
    
    hueGradient.addColorStop(0.00, "hsl(0,100%,50%)");
    hueGradient.addColorStop(0.17, "hsl(298.8,100%,50%)");
@@ -87,8 +90,8 @@ const createHueSpectrum = () => {
 
       console.log("create new Spectrum");
         const canvas = document.getElementById("valueSaturationC"), ctx = canvas.getContext("2d");
-        canvas.height = 212;
-        canvas.width= 200;
+        canvas.height = 200;
+        canvas.width= 212;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = hue;
@@ -119,24 +122,32 @@ const createHueSpectrum = () => {
 
 },[])
     
- return(
+ return(<>
         <Container
-        container
-         
+        container   
         sx={{ display: 'flex' }}
-        mt={4}
-        ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
-  
-        >
-            <Box>
+        mt={5}
+        ColumnSpace={{ xs: 2, md: 1, lg: 1 }}
+      >    
+       <Box sx={{border: 'solid black 2px',
+                borderLeft: 'solid gray 2px',
+                borderRight: 'solid gray 2px',
+                height: 'min-content'}}>
             <div className="canvasFrame" id="valSatF">          
             <canvas id="valueSaturationC"/>  
             </div>
-              </Box>
-              <Box>
+        </Box>
+        <Box
+        sx={{border: 'solid black 2px',
+        borderLeft: 'solid gray 2px',
+        marginLeft: '0.5rem'}}
+        >
             <div className="canvasFrame" id="hueF"> 
             <canvas id="hueC"/>
             </div></Box>
+     
         </Container>
+        
+        </>
     )
 }
