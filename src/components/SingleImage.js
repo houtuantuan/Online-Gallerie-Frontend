@@ -396,7 +396,7 @@ export default function SingleImage ({ token }) {
                   justifyContent: 'center'
                 }}
               >
-                <Link to='/canvas'>
+                <Link to='/Online-Gallerie-Frontend/canvas'>
                   <Button
                     onClick={pickRef(image)}
                     variant='outlined'
