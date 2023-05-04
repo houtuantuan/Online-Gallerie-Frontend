@@ -6,15 +6,12 @@ import CanvasSettings from './CanvasSettings'
 import "../../css/canvas.scss"
 
 export default () => {
-    
     const initialState ={
         brushSize: 1,
         brushColor: "#000000",
         brushDensity: 100
     }
-    
     const [brushOptions,setbrushOptions] = useState(initialState);
-
     return(
         <>
     <Container >
@@ -22,7 +19,6 @@ export default () => {
          mt={10}
          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
          sx={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}
-         
         >
             <Grid item>
            <Drawingspace 
