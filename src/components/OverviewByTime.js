@@ -67,7 +67,7 @@ export default function OverviewByTime ({ yearRange }) {
                 key={item._id}
                 className='infoParent'>
                   <Link 
-                  key={item._id}
+                  key={`Online-Gallerie-Frontend/gallery/${item._id}`}
                   to={item._id}>
                     <Box
                       xs={6}

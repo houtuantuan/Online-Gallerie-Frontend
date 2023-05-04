@@ -73,7 +73,7 @@ function Header (props) {
   const { window, isAuthenticated, user, logOut } = props
 
   const initialState = [
-    { name: 'Home', pathName: '/', tag: 'home' },
+    { name: 'Home', pathName: '', tag: 'home' },
     { name: 'Explore', pathName: 'gallery' },
     { name: 'Drawing board', pathName: 'canvas' },
     { name: 'Sign In', pathName: 'signin', tag: 'signIn' },
@@ -100,8 +100,8 @@ function Header (props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant='h6' sx={{ my: 2,textDecoration:"none" }}>
-        <Link to='/'>Color Gallery</Link>
+      <Typography variant='h6' sx={{ my: 2, textDecoration: 'none' }}>
+        <Link to='/Online-Gallerie-Frontend'>Color Gallery</Link>
       </Typography>
       <Divider />
       <List>
@@ -112,7 +112,11 @@ function Header (props) {
               (isAuthenticated && item.tag === 'signUp')
             ) && (
               <ListItem key={item.name} disablePadding>
-                <NavLink key={item.name} className='navLink' to={item.pathName}>
+                <NavLink
+                  key={item.name}
+                  className='navLink'
+                  to={`Online-Gallerie-Frontend/${item.pathName}`}
+                >
                   <ListItemButton sx={{ textAlign: 'center' }}>
                     <ListItemText primary={item.name} />
                   </ListItemButton>
@@ -143,13 +147,13 @@ function Header (props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component='nav'>
-        <Toolbar sx={{display:"flex",justifyContent:"space-between"}}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color='inherit'
             aria-label='open drawer'
             edge='start'
             onClick={handleDrawerToggle}
-            sx={{ mr: 2,color:"#94AF9F", display: { md: 'none' } }}
+            sx={{ mr: 2, color: '#94AF9F', display: { md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -158,11 +162,11 @@ function Header (props) {
             component='div'
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <Link className='navLink' to='/'>
+            <Link className='navLink' to='/Online-Gallerie-Frontend'>
               <Typography
                 variant='h5'
                 fontWeight={'bold'}
-                sx={{ color: '#94AF9F',textShadow:"1px 2px 5px #F9F5EB" }}
+                sx={{ color: '#94AF9F', textShadow: '1px 2px 5px #F9F5EB' }}
               >
                 Color Gallery
               </Typography>
@@ -178,7 +182,7 @@ function Header (props) {
                   <NavLink
                     key={item.name}
                     className='navLink'
-                    to={item.pathName}
+                    to={`Online-Gallerie-Frontend/${item.pathName}`}
                   >
                     <Button
                       key={item.name}
@@ -190,7 +194,7 @@ function Header (props) {
                 )
             )}
           </Box>
-          <Toolbar sx={{display:"flex",justifyContent:"flex-end"}}>
+          <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon sx={{ color: 'white' }} />
@@ -207,7 +211,7 @@ function Header (props) {
             <Button
               onClick={goToSearchResult}
               variant='contained'
-              sx={{ marginLeft: '7px',color:"#539165" }}
+              sx={{ marginLeft: '7px', color: '#539165' }}
             >
               Search
             </Button>
@@ -226,7 +230,7 @@ function Header (props) {
                   <span style={{ color: '#000000' }}>
                     <AccountCircleIcon
                       fontSize='large'
-                      sx={{ marginTop: '10px',color:"#94AF9F" }}
+                      sx={{ marginTop: '10px', color: '#94AF9F' }}
                     />
                     {/* {user.firstName + ' ' + user.lastName} */}
                   </span>
@@ -242,13 +246,13 @@ function Header (props) {
                 }}
               >
                 <Link
-                  to='profile'
+                  to='Online-Gallerie-Frontend/profile'
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
                 {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
-                <Link to='/'>
+                <Link to='/Online-Gallerie-Frontend'>
                   <MenuItem
                     style={{ textDecoration: 'none', color: 'black' }}
                     onClick={() => {

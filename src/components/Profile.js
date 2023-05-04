@@ -65,7 +65,7 @@ export default function Profile ({ token }) {
                   sx={{ width: 80, height: 80, margin: '1em' }}
                 />
                 <Link
-                  to={`/gallery/${el.paintingId}`}
+                  to={`/Online-Gallerie-Frontend/gallery/${el.paintingId}`}
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <ListItemText key={el._id} primary={el.paintingTitle} />
