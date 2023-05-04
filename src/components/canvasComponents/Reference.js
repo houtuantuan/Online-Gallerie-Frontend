@@ -11,7 +11,7 @@ export default () => {
     console.log(image);
     return(
         <>
-          <Card sx={{minWidth: 340,gi maxHeight: 400, minHeight: 360 }}>
+          <Card sx={{minWidth: 340, maxHeight: 400, minHeight: 360 }}>
             <CardActionArea>
               {image ? (
                 <CardMedia
