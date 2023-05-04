@@ -316,7 +316,7 @@ export default function HomePage () {
         </SwiperSlide>
       </Swiper>
       <br />
-      <Box>
+      {/* <Box>
         <Container maxWidth='sm'>
           <Typography variant='body2'>
             <a href='/public/dsgvo.html'>Datenschutzbestimmungen</a>
@@ -324,7 +324,7 @@ export default function HomePage () {
           <Copyright />
           <a href='/public/imprint.html'>Impressum</a>
         </Container>
-      </Box>
+      </Box> */}
     </>
   )
 }
