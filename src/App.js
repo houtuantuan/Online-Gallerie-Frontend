@@ -6,6 +6,7 @@ import theme from './muiutils/themes'
 import CanvasComp from './components/canvasComponents/CanvasInterface'
 import { Routes, Route } from 'react-router-dom'
 
+import StickyFooter from './components/Footer'
 import HomePage from './components/HomePage'
 import SingleImage from './components/SingleImage'
 import SearchResult from "./components/SearchResult"
@@ -80,6 +81,8 @@ function App () {
            setLoadingAuthRequest={setLoadingAuthRequest}/>} theme={theme}/>
            <Route path="profile" element={<Profile token={token}/>}></Route>
         </Routes>
+        <p />
+        <StickyFooter></StickyFooter>
       </ThemeProvider>
     </div>
   )
