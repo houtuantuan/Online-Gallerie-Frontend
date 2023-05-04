@@ -40,27 +40,31 @@ $font-color2: rgb(215,220,178);
     margin: -10px 0 0 -10px
     }
 
-    .spectrum-map{
-
-    }
 }
 
+canvas{
+    object-fit: contain;
+}
+
+#referenceF{
+    min-width: 300px;
+    min-height: 360px;
+    background-color: $secondary-color;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
 
 .canvasFrame{
     position: relative;
-    display: 'inline-block';
     // overflow: hidden;
+    &#referenceF{
+        min-height: "min-content";
+    }
     
     &#stage{
-        
+    
         height: 557px;
         width: 620px;
-    
-    canvas{
-        top: 0;
-        left: 0;
-    }
-
 }
 
     &#hueF{
