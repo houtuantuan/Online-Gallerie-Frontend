@@ -19,11 +19,15 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import {Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { addImage } from '../redux/itemSlice'
+import { addColor } from '../redux/colorSlice'
+
 import Modal from '@mui/material/Modal'
 import ZoomInIcon from '@mui/icons-material/ZoomIn'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import { useDispatch } from 'react-redux'
+
+
 
 export default function SingleImage ({ token }) {
   const { _id } = useParams()
@@ -112,6 +116,7 @@ export default function SingleImage ({ token }) {
         })
       })
       const blob = await data.blob()
+                         
       const colorUrl = URL.createObjectURL(blob)
       setColorUrl(colorUrl)
     } catch (e) {
@@ -133,6 +138,7 @@ export default function SingleImage ({ token }) {
   }, [image])
 
   const Loading = () => <div>Loading...</div>
+
 
   return (
     <Box>
@@ -352,6 +358,8 @@ export default function SingleImage ({ token }) {
                 className='colorPanel'
               >
                 {({ data, loading, error }) => {
+                  dispatch(addColor(data));
+
                   if (loading) return <Loading />
                   return (
                     <List

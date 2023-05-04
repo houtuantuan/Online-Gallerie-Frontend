@@ -9,7 +9,13 @@ $font-color2: rgb(215,220,178);
     max-width: 1rem;
 }
  
-
+.colorPick{
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.2rem;
+    border-radius: 4px;
+}
 
 .color-cursor{
     &.dragging{
