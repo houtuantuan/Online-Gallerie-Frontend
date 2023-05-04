@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/houtuantuan/Online-Gallerie-Frontend/static/css/main.7006c5c1.css",
-    "main.js": "/houtuantuan/Online-Gallerie-Frontend/static/js/main.75df565a.js",
-    "static/media/PlayfairDisplay-VariableFont_wght.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/PlayfairDisplay-VariableFont_wght.3f7c141215e6d22d0f1e.ttf",
-    "static/media/PlayfairDisplay-Italic-VariableFont_wght.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/PlayfairDisplay-Italic-VariableFont_wght.8a3a30667c7d75e00588.ttf",
-    "static/media/JosefinSans-Italic-VariableFont_wght.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/JosefinSans-Italic-VariableFont_wght.5747f005bcd21b1d8b23.ttf",
-    "static/media/JosefinSans-VariableFont_wght.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/JosefinSans-VariableFont_wght.1bfcfba29eda50476f98.ttf",
-    "static/media/Nobile-Italic.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/Nobile-Italic.3e2a3830dcab9a965a7f.ttf",
-    "static/media/Nobile-BoldItalic.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/Nobile-BoldItalic.7f3a16dc1f38ebf9bac3.ttf",
-    "static/media/Nobile-Medium.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/Nobile-Medium.71c70e8d39d8cb7737d1.ttf",
-    "static/media/Nobile-Bold.ttf": "/houtuantuan/Online-Gallerie-Frontend/static/media/Nobile-Bold.019f212d3fcbebc8af44.ttf",
-    "index.html": "/houtuantuan/Online-Gallerie-Frontend/index.html",
-    "main.7006c5c1.css.map": "/houtuantuan/Online-Gallerie-Frontend/static/css/main.7006c5c1.css.map",
-    "main.75df565a.js.map": "/houtuantuan/Online-Gallerie-Frontend/static/js/main.75df565a.js.map"
+    "main.css": "/.github.io/Online-Gallerie-Frontend/static/css/main.be2ff642.css",
+    "main.js": "/.github.io/Online-Gallerie-Frontend/static/js/main.75df565a.js",
+    "static/media/PlayfairDisplay-VariableFont_wght.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/PlayfairDisplay-VariableFont_wght.3f7c141215e6d22d0f1e.ttf",
+    "static/media/PlayfairDisplay-Italic-VariableFont_wght.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/PlayfairDisplay-Italic-VariableFont_wght.8a3a30667c7d75e00588.ttf",
+    "static/media/JosefinSans-Italic-VariableFont_wght.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/JosefinSans-Italic-VariableFont_wght.5747f005bcd21b1d8b23.ttf",
+    "static/media/JosefinSans-VariableFont_wght.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/JosefinSans-VariableFont_wght.1bfcfba29eda50476f98.ttf",
+    "static/media/Nobile-Italic.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/Nobile-Italic.3e2a3830dcab9a965a7f.ttf",
+    "static/media/Nobile-BoldItalic.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/Nobile-BoldItalic.7f3a16dc1f38ebf9bac3.ttf",
+    "static/media/Nobile-Medium.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/Nobile-Medium.71c70e8d39d8cb7737d1.ttf",
+    "static/media/Nobile-Bold.ttf": "/.github.io/Online-Gallerie-Frontend/static/media/Nobile-Bold.019f212d3fcbebc8af44.ttf",
+    "index.html": "/.github.io/Online-Gallerie-Frontend/index.html",
+    "main.be2ff642.css.map": "/.github.io/Online-Gallerie-Frontend/static/css/main.be2ff642.css.map",
+    "main.75df565a.js.map": "/.github.io/Online-Gallerie-Frontend/static/js/main.75df565a.js.map"
   },
   "entrypoints": [
-    "static/css/main.7006c5c1.css",
+    "static/css/main.be2ff642.css",
     "static/js/main.75df565a.js"
   ]
 }
