@@ -92,3 +92,12 @@ body{
     #top10 {
     min-width: 630px;
   }
+
+  .footer  {
+    background-color: $secondary-color;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    
+  }
