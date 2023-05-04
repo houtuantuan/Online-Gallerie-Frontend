@@ -8,15 +8,12 @@ import Typography from '@mui/material/Typography'
 import InputBase from '@mui/material/InputBase'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
-import Nav from './nav'
 import {
   createSearchParams,
-  Outlet,
   Link,
   NavLink,
   useNavigate
 } from 'react-router-dom'
-import { createTheme } from '@mui/material/styles'
 import '../css/navLink.css'
 import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
@@ -26,26 +23,9 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import CssBaseline from '@mui/material/CssBaseline'
 import Button from '@mui/material/Button'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Menu, MenuItem } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       light: '#ffffff',
-//       main: '#ffffff',
-//       dark: '#ffffff',
-//       contrastText: '#fff',
-//     },
-//     secondary: {
-//       light: '#ffffff',
-//       main: '#f44336',
-//       dark: '#ba000d',
-//       contrastText: '#000',
-//     },
-//   },
-// });
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -109,7 +89,7 @@ function Header (props) {
     setAnchorEl(null)
   }
 
-  const [navItems, setNavItems] = useState(initialState)
+  const [navItems] = useState(initialState)
 
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [value, setValue] = useState()

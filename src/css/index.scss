@@ -80,60 +80,6 @@ body{
     background-size: 4px 4px;
 }
 
-.setting{
-    margin: 1rem;
-    border: solid black 1px;
-    border-radius: 5px;
-}
-
-.colorwheel{border:solid black 1px}
-
-.optionPanel{
-
-    display:flex;
-    justify-content: space-between;
-
-    button{
-        width: 1rem;
-    }
-
-    background-color: $secondary-color;
-    *>button{
-        border: none;
-        background-color: $primary-color;
-        width: 1rem;
-        margin-left: 0.2rem;
-
-        font-weight: bold;
-        
-    }
-    *>.inactive:disabled{
-        background-color: dimgrey;
-         color: linen;
-    opacity: 1;
-    }
-    *>:nth-child(2n){
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-    }
-
-}
-
-#colorpalettePlace{
-    padding: 0px;
-    margin: 0;
-}
-
-#stage #colorpalettePlace{
-    width: 620px;
-    height: 576px;
-    position: relative;
-}
- 
-canvas{
-    position: absolute;
-}
-
 .swiper {
     width: 974px;
   }

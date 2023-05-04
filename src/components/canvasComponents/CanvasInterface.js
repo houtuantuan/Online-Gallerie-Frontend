@@ -1,6 +1,6 @@
-import { Avatar, Stack, Typography, Container, Grid} from '@mui/material'
+import  {Container, Grid} from '@mui/material'
 import Drawingspace from './Drawingspace'
-import { useContext,useState,useEffect } from 'react'
+import { useState } from 'react'
 import Reference from './Reference'
 import CanvasSettings from './CanvasSettings' 
 import "../../css/canvas.scss"
@@ -21,7 +21,8 @@ export default () => {
         <Grid container
          mt={10}
          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
-         sx={{ display: 'flex', justifyContent: 'center' }}
+         sx={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}
+         
         >
             <Grid item>
            <Drawingspace 

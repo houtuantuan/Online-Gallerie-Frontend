@@ -2,7 +2,6 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import {
@@ -14,15 +13,12 @@ import {
   Divider,
   Container
 } from '@mui/material'
-import ShareIcon from '@mui/icons-material/Share'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import Color, { Palette, useColor } from 'color-thief-react'
+import  { Palette } from 'color-thief-react'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import { Outlet, Link, NavLink } from 'react-router-dom'
+import {Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addImage } from '../redux/itemSlice'
 import Modal from '@mui/material/Modal'
@@ -401,7 +397,7 @@ export default function SingleImage ({ token }) {
                       '&:active': { textDecoration: 'underline black' }
                     }}
                   >
-                    Draw it!
+                    Art Study!
                   </Button>
                 </Link>
               </Container>

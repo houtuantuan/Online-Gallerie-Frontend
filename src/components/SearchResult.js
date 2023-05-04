@@ -1,22 +1,14 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useState } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
 import ImageListItemBar from '@mui/material/ImageListItemBar'
-import ListSubheader from '@mui/material/ListSubheader'
 import IconButton from '@mui/material/IconButton'
-import InfoIcon from '@mui/icons-material/Info'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
 import {
-  createSearchParams,
-  Outlet,
   Link,
-  NavLink,
-  useNavigate
 } from 'react-router-dom'
 import { Typography } from '@mui/material'
 

@@ -191,8 +191,8 @@ export default () => {
 <Instruction/>
 </div>
 <div className="canvasFrame" id="stage">
-        <canvas id="canvas"></canvas>
         <canvas id="backgroundLayer"></canvas>
+        <canvas id="canvas"></canvas>
 </div>
     </div>)
 }
