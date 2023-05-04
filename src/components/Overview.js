@@ -37,7 +37,7 @@ export default function Overview () {
           {YEAR_RANGES.map((yearRange, i) => {
             return (
               <TabPanel key={i} index={i}>
-                <OverviewByTime yearRange={yearRange} />
+                <OverviewByTime key={i} yearRange={yearRange} />
               </TabPanel>
             )
           })}

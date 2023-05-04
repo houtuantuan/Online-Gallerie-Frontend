@@ -247,7 +247,7 @@ function Header (props) {
                 >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
                 <Link to='/'>
                   <MenuItem
                     style={{ textDecoration: 'none', color: 'black' }}
@@ -274,7 +274,7 @@ function Header (props) {
             keepMounted: true // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block', md: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '100%' }
           }}
         >

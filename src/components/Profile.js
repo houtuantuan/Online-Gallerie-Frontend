@@ -14,12 +14,15 @@ export default function Profile ({ token }) {
 
   const fetchFavorite = async () => {
     try {
-      const getData = await fetch(`${process.env.REACT_APP_BLOG_API}/users/like`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`
+      const getData = await fetch(
+        `${process.env.REACT_APP_BLOG_API}/users/like`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-      })
+      )
       const parseData = await getData.json()
       setFavorites(parseData)
       console.log(parseData)
@@ -44,6 +47,7 @@ export default function Profile ({ token }) {
           favorites.map(el => (
             <>
               <ListItem
+                key={el._id}
                 sx={{
                   //   border: 'solid',
                   display: 'flex',
@@ -55,6 +59,7 @@ export default function Profile ({ token }) {
                 }}
               >
                 <Avatar
+                  key={el._id}
                   alt={el.paintingTitle}
                   src={el.paintingUrl}
                   sx={{ width: 80, height: 80, margin: '1em' }}
@@ -63,7 +68,7 @@ export default function Profile ({ token }) {
                   to={`/gallery/${el.paintingId}`}
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
-                  <ListItemText primary={el.paintingTitle} />
+                  <ListItemText key={el._id} primary={el.paintingTitle} />
                 </Link>
               </ListItem>
               {/* <Typography>{el.paintingTitle}</Typography> */}
