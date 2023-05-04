@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/github.io/Online-Gallerie-Frontend/static/css/main.391b239e.css",
-    "main.js": "/github.io/Online-Gallerie-Frontend/static/js/main.75df565a.js",
+    "main.js": "/github.io/Online-Gallerie-Frontend/static/js/main.16f8b421.js",
     "static/media/PlayfairDisplay-VariableFont_wght.ttf": "/github.io/Online-Gallerie-Frontend/static/media/PlayfairDisplay-VariableFont_wght.3f7c141215e6d22d0f1e.ttf",
     "static/media/PlayfairDisplay-Italic-VariableFont_wght.ttf": "/github.io/Online-Gallerie-Frontend/static/media/PlayfairDisplay-Italic-VariableFont_wght.8a3a30667c7d75e00588.ttf",
     "static/media/JosefinSans-Italic-VariableFont_wght.ttf": "/github.io/Online-Gallerie-Frontend/static/media/JosefinSans-Italic-VariableFont_wght.5747f005bcd21b1d8b23.ttf",
@@ -12,10 +12,10 @@
     "static/media/Nobile-Bold.ttf": "/github.io/Online-Gallerie-Frontend/static/media/Nobile-Bold.019f212d3fcbebc8af44.ttf",
     "index.html": "/github.io/Online-Gallerie-Frontend/index.html",
     "main.391b239e.css.map": "/github.io/Online-Gallerie-Frontend/static/css/main.391b239e.css.map",
-    "main.75df565a.js.map": "/github.io/Online-Gallerie-Frontend/static/js/main.75df565a.js.map"
+    "main.16f8b421.js.map": "/github.io/Online-Gallerie-Frontend/static/js/main.16f8b421.js.map"
   },
   "entrypoints": [
     "static/css/main.391b239e.css",
-    "static/js/main.75df565a.js"
+    "static/js/main.16f8b421.js"
   ]
 }
