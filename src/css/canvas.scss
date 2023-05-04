@@ -62,6 +62,7 @@ canvas{
 
 .canvasFrame{
     position: relative;
+    display: inline-block;
     // overflow: hidden;
     &#referenceF{
         min-height: "min-content";
