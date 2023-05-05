@@ -38,8 +38,12 @@ export default function Profile ({ token }) {
   return (
     <>
       <Box
-        sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column',  minHeight:'75vh'
-      }}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+          minHeight: '83vh'
+        }}
       >
         <Typography variant='h4' sx={{ margin: '1.5em' }}>
           My Favorites
