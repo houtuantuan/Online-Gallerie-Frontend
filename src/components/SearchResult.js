@@ -7,9 +7,7 @@ import IconButton from '@mui/material/IconButton'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
-import {
-  Link,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Typography } from '@mui/material'
 
 export default function SearchResult () {
@@ -35,7 +33,9 @@ export default function SearchResult () {
   return (
     <>
       <Box margin={{ xs: 5, sm: 5, md: 5 }}>
-        <Typography variant='h4' sx={{ margin: '1em' }}>Search Results</Typography>
+        <Typography variant='h4' sx={{ margin: '1em' }}>
+          Search Results
+        </Typography>
         <Grid
           container
           spacing={{ xs: 2, md: 2, xl: 2 }}

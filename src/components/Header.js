@@ -136,7 +136,7 @@ function Header (props) {
 
   const goToSearchResult = () => {
     navigate({
-      pathname: '/gallery/search',
+      pathname: '/Online-Gallerie-Frontend/gallery/search',
       search: `?${createSearchParams(params)}`
     })
     document.getElementById('inputField').value = ''
@@ -216,7 +216,7 @@ function Header (props) {
               Search
             </Button>
           </Toolbar>
-          {user && (
+          {user && isAuthenticated && (
             <Box>
               <Button
                 id='basic-button'
@@ -226,13 +226,13 @@ function Header (props) {
                 onClick={handleClick}
               >
                 <Typography>
-                  {' '}
+                 
                   <span style={{ color: '#000000' }}>
                     <AccountCircleIcon
                       fontSize='large'
                       sx={{ marginTop: '10px', color: '#94AF9F' }}
                     />
-                    {/* {user.firstName + ' ' + user.lastName} */}
+                   
                   </span>
                 </Typography>
               </Button>
