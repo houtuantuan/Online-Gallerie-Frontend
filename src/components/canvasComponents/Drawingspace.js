@@ -210,7 +210,7 @@ console.log(brushOptions.brushColor);
 <Instruction/>
 </div>
 <div className="canvasFrame" id="stage">
-        <canvas id="backgroundLayer"></canvas>
+        <canvas id="backgroundLayer" style={{border:"solid black 1px"}}></canvas>
 </div>
     </div>)
 }

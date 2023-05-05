@@ -98,11 +98,11 @@ body{
     padding: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    
-    
+    justify-content: space-between;    
+    bottom: 0px;
   }
 
-  
-
-  
+.App{
+    min-height: 100vh;
+    flex-direction: column;
+}

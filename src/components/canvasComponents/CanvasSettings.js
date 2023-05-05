@@ -3,61 +3,67 @@ import { useDispatch, useSelector } from 'react-redux'
 import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions,
 increaseBrushDensity, decreaseBrushDensity, changeBrushDensity } from '../../redux/brushSlice'
 import { Container, Grid } from "@mui/material";
+import { useEffect } from "react";
 
 export default ({setbrushOptions}) => {
   const brushOptions = useSelector(selectBrushOptions);  
   const dispatch = useDispatch();
 
   const {brushSize,brushDensity} = brushOptions;
-
-
+  
   const validate = (value) => {
-    if(value>100||value<0){
+      if(value>100||value<0){
       return false;
     }
     return true;
   }
 
+useEffect(() =>{
 
- const increaseSize = () => {
-   const value =   parseInt(document.getElementById("brushSize").value);
-   if(value <= 100) dispatch(increaseBrushSize());
-  }
 
-const decreaseSize = () => {
+
+},[])
+
+const increaseSize = () => {
   const value =   parseInt(document.getElementById("brushSize").value);
-  if(value >= 0) dispatch(decreaseBrushSize());
-   }
-
- const changeSize = () => {
-  const value =   document.getElementById("brushSize").value;
-  const pass = validate(value);
-  pass && dispatch(changeBrushSize(value));
+  if(value <= 100) dispatch(increaseBrushSize());
  }
 
- const increaseDensity = () => {
-  dispatch(increaseBrushDensity());
+const decreaseSize = () => {
+ const value =   parseInt(document.getElementById("brushSize").value);
+ if(value >= 0) dispatch(decreaseBrushSize());
+  }
+
+const changeSize = () => {
+ const value =   document.getElementById("brushSize").value;
+ const pass = validate(value);
+ pass && dispatch(changeBrushSize(value));
+}
+
+const increaseDensity = () => {
+ dispatch(increaseBrushDensity());
 }
 
 const decreaseDensity = () => {
-  dispatch(decreaseBrushDensity());
-  }
+ dispatch(decreaseBrushDensity());
+ }
 
 const changeDensity = () => {
-  const value =   document.getElementById("brushDensity").value;
-  const pass = validate(value);
-  pass && dispatch(changeBrushDensity(value));
+ const value =   document.getElementById("brushDensity").value;
+ const pass = validate(value);
+ pass && dispatch(changeBrushDensity(value));
 }
 
 
-
-    return(<>
+return(<>
       <Container
-      container>
-        <Grid container>
+      container
+      >
+        <Grid container    
+        sx={{ display: 'flex', justifyContent: 'flex-start' }}>
 <Grid item>
 <div className="sizeToggle">
-brushsize: 
+size: 
     <button onClick={()=>decreaseSize()} disabled={(brushSize<=0)?true:false}>&lt;</button>
     <input onChange={()=>changeSize()} id="brushSize" value={brushOptions.brushSize}/>
     <button onClick={()=>increaseSize()} disabled={(brushSize>=100)?true:false}>&gt;</button>
@@ -65,11 +71,17 @@ brushsize:
 </Grid>
 
 <Grid item>
-  brushDensity: 
+  Density: 
     <button onClick={()=>decreaseDensity()} disabled={(brushDensity<=0)?true:false}>&lt;</button>
     <input onChange={()=>changeDensity()} id="brushDensity" value={brushOptions.brushDensity}/>
     <button onClick={()=>increaseDensity()} disabled={(brushDensity>=100)?true:false}>&gt;</button>
 </Grid>
+</Grid>
+<Grid container>
+
+  <Grid item>
+      Brushlist
+  </Grid>
 </Grid>
 
       <ColorWheel

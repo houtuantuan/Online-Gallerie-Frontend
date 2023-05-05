@@ -75,6 +75,8 @@ import { loginUser } from '../../utils/authUtils';
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            minHeight:'75vh'
+          
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
