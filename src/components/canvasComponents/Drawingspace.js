@@ -17,26 +17,25 @@ export default () => {
   const image = useSelector(selectCanvasUri);
   const brushOptions = useSelector(selectBrushOptions);
   const[count,setcount] = useState(1);  
-
+  
   const keyMap = {};
  
   useEffect(() => {
-    const canvas = document.getElementById('canvas');
-    const ctx = setCtx("canvas");
-    canvas.width = 620;
-    canvas.height = 557;
-    ctx.fillStyle ="#000000";
-    ctx.strokeRect(0,0,canvas.width,canvas.height);
+
+    //Create First drawing canvas
+    const currentFrame = document.getElementById("stage");
+    const newCanvas = document.createElement("canvas");
+    currentFrame.appendChild(newCanvas);
+    newCanvas.setAttribute("id", "canvas"); 
+    newCanvas.width = 620;
+    newCanvas.height = 557; 
     
     const bgCanvas = document.getElementById('backgroundLayer');
     bgCanvas.width = 620;
     bgCanvas.height = 557;
     const bgCtx = setCtx("backgroundLayer");
-    bgCtx.fillStyle ="#000000";
-    bgCtx.strokeRect(0,0,bgCanvas.width,bgCanvas.height);
-
-
-
+    bgCtx.fillStyle ="#fff";
+    bgCtx.fillRect(0,0,bgCanvas.width,bgCanvas.height);
   },[]);
 
   useEffect(() => {
@@ -82,19 +81,39 @@ export default () => {
           }
         
           function handleMove(evt) {
-
-            // const color = colorForTouch(evt);
-          
             evt.preventDefault();
-          
-
-          const ctx = setCtx('canvas');
+            const ctx = setCtx('canvas');
             const idx = ongoingTouchIndexById(evt.pointerId);
-
             if (idx >= 0) {
-
-              stroke(evt,ctx,idx, ongoingTouches,brushOptions);
+            //  stroke(evt,ctx,idx, ongoingTouches,brushOptions);
+            ctx.beginPath();
+        
+            
+            ctx.moveTo(ongoingTouches[idx].layerX, ongoingTouches[idx].layerY);   
+          // curve through the last two ongoingTouches
           
+          // const controlPointX = 2*evt.pageX -ongoingTouches[idx].layerX/2 -evt.layerX/2;
+          // const controlPointY = 2*evt.pageY -ongoingTouches[idx].layerY/2 -evt.layerY/2;
+          // console.log(ongoingTouches[idx].layerX +"to" + evt.layerX);
+          
+          ctx.lineTo(evt.layerX, evt.layerY);
+          // ctx.quadraticCurveTo(controlPointX, controlPointY, evt.layerX, evt.layerY);
+
+          
+          //Brush regulation
+            ctx.lineWidth = brushOptions.brushSize;
+            const brushColor = `rgba(${brushOptions.hueData[0]},${brushOptions.hueData[1]},${brushOptions.hueData[2]},${brushOptions.brushDensity/100})`
+console.log(brushColor);
+console.log(brushOptions.brushColor);
+
+            // ctx.strokeStyle = "rgba(0,0,0,0.22)";
+            ctx.strokeStyle = brushColor;
+        
+            ctx.lineCap = 'round';
+             ctx.lineJoin = 'round';
+    
+            ctx.stroke();
+
               ongoingTouches.splice(idx, 1, copyTouch(evt)); // swap in the new touch record
             } else {
             }
@@ -192,7 +211,6 @@ export default () => {
 </div>
 <div className="canvasFrame" id="stage">
         <canvas id="backgroundLayer"></canvas>
-        <canvas id="canvas"></canvas>
 </div>
     </div>)
 }
