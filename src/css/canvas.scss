@@ -62,12 +62,9 @@ canvas{
 
 .canvasFrame{
     position: relative;
-    display: inline-block;
-    // overflow: hidden;
     &#referenceF{
         min-height: "min-content";
     }
-    
     &#stage{
     
         height: 557px;
@@ -78,7 +75,6 @@ canvas{
         width: 10px;
         *>#hue{
             width: 100%;
-            // border-radius: 8px;
             position: absolute;
             width: 10px;
         }
@@ -158,4 +154,11 @@ canvas{
 
 canvas{
     position: absolute;
+}
+
+
+.inactive:disabled{
+    background-color: dimgrey;
+         color: linen;
+    opacity: 1;
 }

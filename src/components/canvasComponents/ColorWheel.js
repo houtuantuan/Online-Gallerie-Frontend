@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux'
-import { changeBrushColor } from '../../redux/brushSlice'
+import { changeBrushColor, changeHueData } from '../../redux/brushSlice'
 import { Box, Container } from "@mui/material";
 
 
@@ -42,12 +42,17 @@ useEffect(() => {
         const data =  pixel.data;
                 const rgba = 'rgba(' + data[0] + ',' + data[1] +
                      ',' + data[2] + ',' + (data[3] / 255) + ')';
+        dispatch(changeHueData([data[0],data[1],data[2]]))
                      
         const huepixel = ctx.getImageData(canvas.width -1,0,1,1)
         const hueData = huepixel.data;
         const huergba = 'rgba(' + hueData[0] + ',' + hueData[1] +
              ',' + hueData[2] + ',' + (hueData[3] / 255) + ')';
+
         
+
+             console.log(hueData[3]/255);
+
        dispatch(changeBrushColor(rgba));
       
         createSpectrum(huergba);
@@ -79,7 +84,6 @@ const createHueSpectrum = () => {
    hueGradient.addColorStop(1.00, "hsl(360,100%,50%)");
    ctx.fillStyle = hueGradient;
    ctx.fillRect(0,0,canvas.width, canvas.height);
-
    return canvas;
    
 }
@@ -102,15 +106,11 @@ const createHueSpectrum = () => {
         whiteGradient.addColorStop(1, "transparent");
         ctx.fillStyle= whiteGradient;
         ctx.fillRect(0,0,canvas.width, canvas.height);
-
-
         const blackGradient = ctx.createLinearGradient(0,0,0,canvas.height);
         blackGradient.addColorStop(0, "transparent")
         blackGradient.addColorStop(1, "#000");
         ctx.fillStyle= blackGradient;
         ctx.fillRect(0,0,canvas.width, canvas.height);
-        
-
         return canvas;
     }
 

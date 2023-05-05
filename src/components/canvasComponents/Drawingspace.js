@@ -94,20 +94,23 @@ export default () => {
           
           // const controlPointX = 2*evt.pageX -ongoingTouches[idx].layerX/2 -evt.layerX/2;
           // const controlPointY = 2*evt.pageY -ongoingTouches[idx].layerY/2 -evt.layerY/2;
-          
-
-          console.log(ongoingTouches[idx].layerX +"to" + evt.layerX);
+          // console.log(ongoingTouches[idx].layerX +"to" + evt.layerX);
           
           ctx.lineTo(evt.layerX, evt.layerY);
           // ctx.quadraticCurveTo(controlPointX, controlPointY, evt.layerX, evt.layerY);
 
           
+          //Brush regulation
             ctx.lineWidth = brushOptions.brushSize;
-            ctx.strokeStyle = brushOptions.brushColor;
+            const brushColor = `rgba(${brushOptions.hueData[0]},${brushOptions.hueData[1]},${brushOptions.hueData[2]},${brushOptions.brushDensity/100})`
+console.log(brushColor);
+console.log(brushOptions.brushColor);
 
-                     
-          ctx.lineCap = 'round';
-          ctx.lineJoin = 'round';
+            // ctx.strokeStyle = "rgba(0,0,0,0.22)";
+            ctx.strokeStyle = brushColor;
+        
+            ctx.lineCap = 'round';
+             ctx.lineJoin = 'round';
     
             ctx.stroke();
 
