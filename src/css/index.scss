@@ -95,9 +95,14 @@ body{
 
   .footer  {
     background-color: $secondary-color;
-    display: flex;
     padding: 1rem;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    
     
   }
+
+  
+
+  
