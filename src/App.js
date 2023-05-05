@@ -50,6 +50,7 @@ function App () {
     setUser(null)
     setIsAuthenticated(false)
   }
+  console.log(isAuthenticated)
 
   return (
     <div className='App'>
@@ -61,18 +62,27 @@ function App () {
           user={user}
         ></Header>
         <Routes>
-          <Route
-            path='Online-Gallerie-Frontend'
-            element={<HomePage />}
-          />
+          <Route path='Online-Gallerie-Frontend' element={<HomePage />} />
           <Route
             path='Online-Gallerie-Frontend/canvas'
             element={<CanvasComp />}
           />
-          <Route path='Online-Gallerie-Frontend/canvas/:_id' element={<CanvasComp />} />
-          <Route path='Online-Gallerie-Frontend/gallery' element={<Overview />} />
-          <Route path='Online-Gallerie-Frontend/gallery/search' element={<SearchResult />} />
-          <Route path='Online-Gallerie-Frontend/gallery/todayColor' element={<TodayColor />} />
+          <Route
+            path='Online-Gallerie-Frontend/canvas/:_id'
+            element={<CanvasComp />}
+          />
+          <Route
+            path='Online-Gallerie-Frontend/gallery'
+            element={<Overview />}
+          />
+          <Route
+            path='Online-Gallerie-Frontend/gallery/search'
+            element={<SearchResult />}
+          />
+          <Route
+            path='Online-Gallerie-Frontend/gallery/todayColor'
+            element={<TodayColor />}
+          />
           <Route
             path='Online-Gallerie-Frontend/gallery/:_id'
             element={<SingleImage token={token} />}
@@ -104,7 +114,12 @@ function App () {
             }
             theme={theme}
           />
-          <Route path='Online-Gallerie-Frontend/profile' element={<Profile token={token} />}></Route>
+          <Route
+            path='Online-Gallerie-Frontend/profile'
+            element={
+              <Profile token={token} setIsAuthenticated={setIsAuthenticated} />
+            }
+          ></Route>
         </Routes>
         <p />
         <StickyFooter></StickyFooter>
