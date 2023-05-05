@@ -4,40 +4,47 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import { Typography, Link } from '@mui/material';
+import { Typography, Box, Container } from '@mui/material';
+
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary">
+    <Typography variant="body1" color="text.secondary">
+      <></>
+      <div className='copyright'>
       {'Copyright © '}
-      <Link color="inherit">
-        XanGerAnd
-      </Link>{' '}
+      
+        XanAndGer
+    {' '}
       {new Date().getFullYear()}
       {'.'}
+      </div>
     </Typography>
   );
 }
 
+function SocialLinks() {
+    return (
+      <div className='sociallinks'>
+      <a href="https://github.com" target="#"><GitHubIcon /></a>
+      <a href="https://linkedin.com" target="#"><LinkedInIcon /></a>
+      <a href='https://facebook.com' target="#"><FacebookIcon /></a>
+      <a href='https://instagram.com' target="#"><InstagramIcon /></a>
+      </div>
+    );
+}
+
 export default function StickyFooter() {
   return (
-    <>
-      <div className='footer'>
-              <GitHubIcon to='https://github.com' >GitHub</GitHubIcon>
-              <p />           
-              <LinkedInIcon to='https://linkedin.com' >LinkedIn</LinkedInIcon>
-              <p />  
-              <FacebookIcon to='https://facebook.com' >Facebook</FacebookIcon>
-              <p />  
-              <InstagramIcon to='https://instagram.com' >Instagram</InstagramIcon>
-              <Typography variant="body1">
-                 <Link to='./public/imprint.html'>Imprint</Link>
-                 <br />
-                 <Link to='./public/dsgvo.html'>Private Policies</Link>
-                 <br />
-              </Typography>
-              <Copyright />
-         </div>
-      </> 
-    )
+    <Container className='footer'>
+          <Box item xs={12} sm={6} md={3}>
+          <SocialLinks />
+          </Box>
+          <Box item xs={12} sm={6} md={3}>
+          <Copyright />
+          </Box>
+         
+     </Container>
+    );
   }
+  
