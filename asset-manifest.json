@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Online-Gallerie-Frontend/static/css/main.917d6e42.css",
-    "main.js": "/Online-Gallerie-Frontend/static/js/main.f198723a.js",
-    "static/media/PlayfairDisplay-VariableFont_wght.ttf": "/Online-Gallerie-Frontend/static/media/PlayfairDisplay-VariableFont_wght.3f7c141215e6d22d0f1e.ttf",
-    "static/media/PlayfairDisplay-Italic-VariableFont_wght.ttf": "/Online-Gallerie-Frontend/static/media/PlayfairDisplay-Italic-VariableFont_wght.8a3a30667c7d75e00588.ttf",
-    "static/media/JosefinSans-Italic-VariableFont_wght.ttf": "/Online-Gallerie-Frontend/static/media/JosefinSans-Italic-VariableFont_wght.5747f005bcd21b1d8b23.ttf",
-    "static/media/JosefinSans-VariableFont_wght.ttf": "/Online-Gallerie-Frontend/static/media/JosefinSans-VariableFont_wght.1bfcfba29eda50476f98.ttf",
-    "static/media/Nobile-Italic.ttf": "/Online-Gallerie-Frontend/static/media/Nobile-Italic.3e2a3830dcab9a965a7f.ttf",
-    "static/media/Nobile-BoldItalic.ttf": "/Online-Gallerie-Frontend/static/media/Nobile-BoldItalic.7f3a16dc1f38ebf9bac3.ttf",
-    "static/media/Nobile-Medium.ttf": "/Online-Gallerie-Frontend/static/media/Nobile-Medium.71c70e8d39d8cb7737d1.ttf",
-    "static/media/Nobile-Bold.ttf": "/Online-Gallerie-Frontend/static/media/Nobile-Bold.019f212d3fcbebc8af44.ttf",
-    "index.html": "/Online-Gallerie-Frontend/index.html",
-    "main.917d6e42.css.map": "/Online-Gallerie-Frontend/static/css/main.917d6e42.css.map",
-    "main.f198723a.js.map": "/Online-Gallerie-Frontend/static/js/main.f198723a.js.map"
+    "main.css": "/static/css/main.f67df123.css",
+    "main.js": "/static/js/main.f198723a.js",
+    "static/media/PlayfairDisplay-VariableFont_wght.ttf": "/static/media/PlayfairDisplay-VariableFont_wght.3f7c141215e6d22d0f1e.ttf",
+    "static/media/PlayfairDisplay-Italic-VariableFont_wght.ttf": "/static/media/PlayfairDisplay-Italic-VariableFont_wght.8a3a30667c7d75e00588.ttf",
+    "static/media/JosefinSans-Italic-VariableFont_wght.ttf": "/static/media/JosefinSans-Italic-VariableFont_wght.5747f005bcd21b1d8b23.ttf",
+    "static/media/JosefinSans-VariableFont_wght.ttf": "/static/media/JosefinSans-VariableFont_wght.1bfcfba29eda50476f98.ttf",
+    "static/media/Nobile-Italic.ttf": "/static/media/Nobile-Italic.3e2a3830dcab9a965a7f.ttf",
+    "static/media/Nobile-BoldItalic.ttf": "/static/media/Nobile-BoldItalic.7f3a16dc1f38ebf9bac3.ttf",
+    "static/media/Nobile-Medium.ttf": "/static/media/Nobile-Medium.71c70e8d39d8cb7737d1.ttf",
+    "static/media/Nobile-Bold.ttf": "/static/media/Nobile-Bold.019f212d3fcbebc8af44.ttf",
+    "index.html": "/index.html",
+    "main.f67df123.css.map": "/static/css/main.f67df123.css.map",
+    "main.f198723a.js.map": "/static/js/main.f198723a.js.map"
   },
   "entrypoints": [
-    "static/css/main.917d6e42.css",
+    "static/css/main.f67df123.css",
     "static/js/main.f198723a.js"
   ]
 }
