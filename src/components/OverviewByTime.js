@@ -46,7 +46,7 @@ export default function OverviewByTime ({ yearRange }) {
         next={getMorePost}
         hasMore={hasMore}
         loader={<h3> Loading...</h3>}
-        endMessage={<h4>Nothing more to show</h4>}
+    /*    endMessage={<h4>Nothing more to show</h4>} */
       >
         <ScrollToTop smooth />
         <Box margin={{ xs: 5, sm: 5, md: 5 }}>
