@@ -1,5 +1,6 @@
 import {useEffect,useState} from 'react';
 import { stroke } from '../../canvasutils/drawFunctions';
+// import brush1 from '../../assets/brush/Brushtest2.svg';
 import { setCtx } from '../../canvasutils/canvas';
 import { useDispatch, useSelector } from 'react-redux'
 import { addUri, sliceUriList, selectCanvasUri } from '../../redux/canvasSlice'
@@ -7,7 +8,6 @@ import {redo,undo} from '../../canvasutils/buttonfunctions';
 import Instruction from './Instruction';
 import { selectBrushOptions } from '../../redux/brushSlice';
 import { Typography } from '@mui/material';
-
 
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
 
@@ -107,10 +107,17 @@ console.log(brushColor);
 console.log(brushOptions.brushColor);
 
             // ctx.strokeStyle = "rgba(0,0,0,0.22)";
-            ctx.strokeStyle = brushColor;
-        
-            ctx.lineCap = 'round';
-             ctx.lineJoin = 'round';
+            // ctx.strokeStyle = brushColor;
+            // ctx.lineCap = 'round';
+            //  ctx.lineJoin = 'round';
+
+
+             const image = new Image(10,10);
+             
+              image.src="../../assets/brush/Brushtest2.svg";
+              const pat = ctx.createPattern(image, "repeat");
+              ctx.strokeStyle = brushColor;
+              
     
             ctx.stroke();
 
@@ -134,7 +141,10 @@ console.log(brushOptions.brushColor);
               
               ctx.lineWidth = brushOptions.brushSize;
               
+
               ctx.fillStyle = brushOptions.brushColor;
+              
+              
               // ctx.lineCap = "round";
               ctx.beginPath();
               ctx.moveTo(ongoingTouches[idx].screenX, ongoingTouches[idx].screenY);

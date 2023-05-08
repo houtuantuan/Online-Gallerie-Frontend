@@ -2,25 +2,20 @@ import ColorWheel from "./ColorWheel";
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions,
 increaseBrushDensity, decreaseBrushDensity, changeBrushDensity } from '../../redux/brushSlice'
-import { Container, Grid } from "@mui/material";
-import { useEffect } from "react";
+import { Container, Grid, Popover, Button, Typography } from "@mui/material";
+import { useEffect,useState } from "react";
 
 export default ({setbrushOptions}) => {
   const brushOptions = useSelector(selectBrushOptions);  
   const dispatch = useDispatch();
-
   const {brushSize,brushDensity} = brushOptions;
-  
   const validate = (value) => {
       if(value>100||value<0){
       return false;
     }
     return true;
   }
-
 useEffect(() =>{
-
-
 
 },[])
 
@@ -54,6 +49,20 @@ const changeDensity = () => {
  pass && dispatch(changeBrushDensity(value));
 }
 
+const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+    
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
+    
+      const open = Boolean(anchorEl);
+      const id = open ? 'simple-popover' : undefined;
+    
+
 
 return(<>
       <Container
@@ -80,7 +89,28 @@ size:
 <Grid container>
 
   <Grid item>
-      Brushlist
+  <Button aria-describedby={1} variant="contained" onClick={handleClick} style={{height:"1rem"}}>
+        brushtypes
+      </Button>
+      <Popover
+        id={1}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}>
+
+        <h2>Brushes</h2>
+        <button>Normal</button>
+        <button>Normal</button>
+        <button>Normal</button>
+       
+        </Typography>
+      </Popover>
   </Grid>
 </Grid>
 

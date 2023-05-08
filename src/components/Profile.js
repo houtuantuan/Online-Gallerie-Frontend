@@ -51,7 +51,6 @@ export default function Profile ({ token, setIsAuthenticated }) {
       )
       const parseData = await getData.json()
       setFavorites(parseData)
-      console.log(parseData)
     } catch (error) {
       console.log(error.message)
     }

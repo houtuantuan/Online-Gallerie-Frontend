@@ -8,7 +8,8 @@ export const brushSlice = createSlice({
         brushColor: "#000000",
         brushDensity: 100,
         hueData: []    
-    }
+    },
+    hue: "rgba(1,180,255,1)"
   },
   reducers: {
     increaseBrushSize: (state) => {
@@ -35,15 +36,17 @@ export const brushSlice = createSlice({
    changeBrushDensity: (state, action) => {
      state.brushOptions.brushDensity = action.payload;
    },
+   changeHue: (state,action) => {
+    state.hue = action.payload;
+   }
   },
 })
 
 export const {increaseBrushSize,decreaseBrushSize,changeBrushSize,changeBrushColor, increaseBrushDensity,
-decreaseBrushDensity,changeBrushDensity,changeHueData} 
+decreaseBrushDensity,changeBrushDensity,changeHueData,changeHue} 
 = brushSlice.actions
 
 export const selectBrushOptions = (state) => state.brush.brushOptions;
-
-
+export const selectHue = (state) => state.brush.hue;
 
 export default brushSlice.reducer

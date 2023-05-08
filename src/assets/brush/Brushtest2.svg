@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="Brushtest2.svg"
+   viewBox="0 0 3.2 3.2"
+   height="3.2"
+   width="3.2"
+   id="svg22"
+   version="1.1">
+  <metadata
+     id="metadata28">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs26" />
+  <sodipodi:namedview
+     inkscape:current-layer="g30"
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="1.5205806"
+     inkscape:cx="-1.6968099"
+     inkscape:zoom="70.710677"
+     showgrid="false"
+     id="namedview24"
+     inkscape:window-height="480"
+     inkscape:window-width="758"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     id="g30"
+     inkscape:label="Image"
+     inkscape:groupmode="layer">
+    <image
+       id="image32"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAC4jAAAuIwF4pT92AAAA
+G3RFWHRTb2Z0d2FyZQBDZWxzeXMgU3R1ZGlvIFRvb2zBp+F8AAAAzElEQVQY043QPSjHARyE8c+3
+lMViMbCQQUk2I5HBIv0Xg5nBQFmkLGS2sSgWmzJQlAwki9lolJdRJkk6y89mcHXd8gxPV0n8J/UL
+VtUgFjGDCTwm+a6qFdwVOrCOdrTwjj6M4wX9eCqMYQr7+MQOJjGKIbwkuSm0NV3AEgYarRZGcJjk
+oXCMLmxhFnP4wCrmsZzkvvCMbmw3Cqc4wRd2sZnkqnDdiJ9hutlz9GINi0n2ChvYbOAuXGI4yW1V
+vSXphEIPjnCBgySvfx3+A4zfSEdgGNJzAAAAAElFTkSuQmCC
+"
+       preserveAspectRatio="none"
+       height="3.2"
+       width="3.2" />
+  </g>
+</svg>
