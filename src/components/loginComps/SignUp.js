@@ -51,7 +51,7 @@ const SignUp = ({
   };
 
   if (loadingAuthRequest) return <Loading />;
-  if (isAuthenticated) return <Navigate to='/Online-Gallerie-Frontend' />;
+  if (isAuthenticated) return <Navigate to='/' />;
   return (
     <>
     {/* <Container>
