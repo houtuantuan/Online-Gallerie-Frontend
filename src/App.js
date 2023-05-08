@@ -62,34 +62,34 @@ function App () {
           user={user}
         ></Header>
         <Routes>
-          <Route path='Online-Gallerie-Frontend' element={<HomePage />} />
+          <Route path='/' element={<HomePage />} />
           <Route
-            path='Online-Gallerie-Frontend/canvas'
+            path='/canvas'
             element={<CanvasComp />}
           />
           <Route
-            path='Online-Gallerie-Frontend/canvas/:_id'
+            path='/canvas/:_id'
             element={<CanvasComp />}
           />
           <Route
-            path='Online-Gallerie-Frontend/gallery'
+            path='/gallery'
             element={<Overview />}
           />
           <Route
-            path='Online-Gallerie-Frontend/gallery/search'
+            path='/gallery/search'
             element={<SearchResult />}
           />
           <Route
-            path='Online-Gallerie-Frontend/gallery/todayColor'
+            path='/gallery/todayColor'
             element={<TodayColor />}
           />
           <Route
-            path='Online-Gallerie-Frontend/gallery/:_id'
+            path='/gallery/:_id'
             element={<SingleImage token={token} />}
             theme={theme}
           />
           <Route
-            path='Online-Gallerie-Frontend/signup'
+            path='/signup'
             element={
               <SignUp
                 isAuthenticated={isAuthenticated}
@@ -102,7 +102,7 @@ function App () {
             theme={theme}
           />
           <Route
-            path='Online-Gallerie-Frontend/signin'
+            path='/signin'
             element={
               <SignIn
                 isAuthenticated={isAuthenticated}
@@ -115,7 +115,7 @@ function App () {
             theme={theme}
           />
           <Route
-            path='Online-Gallerie-Frontend/profile'
+            path='/profile'
             element={
               <Profile token={token} setIsAuthenticated={setIsAuthenticated} />
             }

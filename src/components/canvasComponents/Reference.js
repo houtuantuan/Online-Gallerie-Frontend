@@ -37,7 +37,7 @@ export default () => {
               ): <div><p>Please select an Image for study</p>
               <ul>
               <li>   
-                <Link to='/Online-Gallerie-Frontend/gallery'>Explore</Link>
+                <Link to='/gallery'>Explore</Link>
               </li>
               </ul>
               </div>}

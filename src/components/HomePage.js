@@ -157,7 +157,7 @@ export default function HomePage () {
                 alignItems: 'center'
               }}
             >
-              <Link to='/Online-Gallerie-Frontend/gallery' onClick={() => handleClick(index)}>
+              <Link to='/gallery' onClick={() => handleClick(index)}>
                 <Avatar
                   src={el.imageUrl}
                   sx={{
@@ -201,7 +201,7 @@ export default function HomePage () {
         className='mySwiper'
       >
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e65df4c4a0ab41584498'>
+          <Link to='/gallery/6446e65df4c4a0ab41584498'>
             <Box
               sx={{
                 display: 'flex',
@@ -225,7 +225,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e1fef4c4a0ab41583e0a'>
+          <Link to='/gallery/6446e1fef4c4a0ab41583e0a'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-13139-001.jpg'
               alt='Top 2'
@@ -235,7 +235,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e1c0f4c4a0ab41583da6'>
+          <Link to='/gallery/6446e1c0f4c4a0ab41583da6'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-20101-001.jpg'
               alt='Top 3'
@@ -245,7 +245,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e171f4c4a0ab41583d1e'>
+          <Link to='/gallery/6446e171f4c4a0ab41583d1e'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DT1502_cropped2.jpg'
               alt='Top 4'
@@ -255,7 +255,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e4d2f4c4a0ab41584234'>
+          <Link to='/gallery/6446e4d2f4c4a0ab41584234'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-687-001.jpg'
               alt='Top 5'
@@ -265,7 +265,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e17ff4c4a0ab41583d38'>
+          <Link to='/gallery/6446e17ff4c4a0ab41583d38'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP-17680-001.jpg'
               alt='Top 9'
@@ -275,7 +275,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e18ff4c4a0ab41583d56'>
+          <Link to='/gallery/6446e18ff4c4a0ab41583d56'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP353256.jpg'
               alt='Top 7'
@@ -285,7 +285,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446eaa2f4c4a0ab41584b0c'>
+          <Link to='/gallery/6446eaa2f4c4a0ab41584b0c'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DT11.jpg'
               alt='Top 8'
@@ -295,7 +295,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e175f4c4a0ab41583d26'>
+          <Link to='/gallery/6446e175f4c4a0ab41583d26'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP159891.jpg'
               alt='Top 6'
@@ -305,7 +305,7 @@ export default function HomePage () {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to='/Online-Gallerie-Frontend/gallery/6446e177f4c4a0ab41583d2a'>
+          <Link to='/gallery/6446e177f4c4a0ab41583d2a'>
             <img
               src='https://images.metmuseum.org/CRDImages/ep/original/DP145910.jpg'
               alt='Top 10'

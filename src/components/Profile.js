@@ -93,7 +93,7 @@ export default function Profile ({ token, setIsAuthenticated }) {
       setOpen(false)
       setIsAuthenticated(false)
       localStorage.removeItem('token')
-      navigate('/Online-Gallerie-Frontend')
+      navigate('/')
 
       return
     } catch (error) {
@@ -191,7 +191,7 @@ export default function Profile ({ token, setIsAuthenticated }) {
                       sx={{ width: 80, height: 80, margin: '1em' }}
                     />
                     <Link
-                      to={`/Online-Gallerie-Frontend/gallery/${el.paintingId}`}
+                      to={`/gallery/${el.paintingId}`}
                       style={{ textDecoration: 'none', color: 'black' }}
                     >
                       <ListItemText key={el._id} primary={el.paintingTitle} />

@@ -50,7 +50,7 @@ import { loginUser } from '../../utils/authUtils';
     };
   
     if (loadingAuthRequest) return <Loading />;
-    if (isAuthenticated) return <Navigate to='/Online-Gallerie-Frontend' />;
+    if (isAuthenticated) return <Navigate to='/' />;
   
   
   

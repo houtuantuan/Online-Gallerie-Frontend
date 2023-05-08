@@ -50,7 +50,7 @@ export default function SearchResult () {
               sx={{ display: 'flex', justifyContent: 'center' }}
             >
               <ImageListItem className='infoParent'>
-                <Link to={`/Online-Gallerie-Frontend/gallery/${item._id}`}>
+                <Link to={`/gallery/${item._id}`}>
                   <Box
                     xs={6}
                     sm={5}

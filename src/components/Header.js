@@ -101,7 +101,7 @@ function Header (props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant='h6' sx={{ my: 2, textDecoration: 'none' }}>
-        <Link to='/Online-Gallerie-Frontend'>Color Gallery</Link>
+        <Link to='/'>Color Gallery</Link>
       </Typography>
       <Divider />
       <List>
@@ -115,7 +115,7 @@ function Header (props) {
                 <NavLink
                   key={item.name}
                   className='navLink'
-                  to={`Online-Gallerie-Frontend/${item.pathName}`}
+                  to={`/${item.pathName}`}
                 >
                   <ListItemButton sx={{ textAlign: 'center' }}>
                     <ListItemText primary={item.name} />
@@ -136,7 +136,7 @@ function Header (props) {
 
   const goToSearchResult = () => {
     navigate({
-      pathname: '/Online-Gallerie-Frontend/gallery/search',
+      pathname: '/gallery/search',
       search: `?${createSearchParams(params)}`
     })
     document.getElementById('inputField').value = ''
@@ -162,7 +162,7 @@ function Header (props) {
             component='div'
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <Link className='navLink' to='/Online-Gallerie-Frontend'>
+            <Link className='navLink' to='/'>
               <Typography
                 variant='h5'
                 fontWeight={'bold'}
@@ -182,7 +182,7 @@ function Header (props) {
                   <NavLink
                     key={item.name}
                     className='navLink'
-                    to={`Online-Gallerie-Frontend/${item.pathName}`}
+                    to={`/${item.pathName}`}
                   >
                     <Button
                       key={item.name}
@@ -246,13 +246,13 @@ function Header (props) {
                 }}
               >
                 <Link
-                  to='Online-Gallerie-Frontend/profile'
+                  to='/profile'
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
                 {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
-                <Link to='/Online-Gallerie-Frontend'>
+                <Link to='/'>
                   <MenuItem
                     style={{ textDecoration: 'none', color: 'black' }}
                     onClick={() => {
