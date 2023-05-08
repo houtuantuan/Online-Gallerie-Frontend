@@ -14,7 +14,6 @@ export const undo = async (count,image,setcount) => {
   
 export const redo = async (count,image,setcount) => {
     
-
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext("2d");
     let newCount = count -1;

@@ -25,7 +25,6 @@ export default function Profile ({ token }) {
       )
       const parseData = await getData.json()
       setFavorites(parseData)
-      console.log(parseData)
     } catch (error) {
       console.log(error.message)
     }
