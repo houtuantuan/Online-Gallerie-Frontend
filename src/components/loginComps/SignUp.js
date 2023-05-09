@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import Loading from './Loading';
-import { registerUser } from '../../utils/authUtils';
-import { Container, Grid, Box, Link, Typography } from '@mui/material';
-import Avatar from '@mui/material/Avatar'; 
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { useState } from 'react'
+import { Link, Navigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import Loading from './Loading'
+import { registerUser } from '../../utils/authUtils'
+import { Container, Grid, Box, Typography } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import Checkbox from '@mui/material/Checkbox'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 
 const SignUp = ({
   isAuthenticated,
@@ -23,38 +23,39 @@ const SignUp = ({
     lastName: '',
     email: '',
     password: ''
-  });
+  })
 
-  const handleChange = e => setFormState(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  const handleChange = e =>
+    setFormState(prev => ({ ...prev, [e.target.id]: e.target.value }))
 
   const handleSubmit = async e => {
     try {
-      e.preventDefault();
+      e.preventDefault()
       if (!firstName || !lastName || !email || !password)
-        throw new Error('First and last name, email and password are required');
-      setLoadingAuthRequest(true);
+        throw new Error('First and last name, email and password are required')
+      setLoadingAuthRequest(true)
       const { data, error } = await registerUser({
         firstName,
         lastName,
         email,
         password
-      });
-      if (error) throw error;
-      setToken(data.token);
-      setIsAuthenticated(true);
-      setLoadingAuthRequest(false);
-      localStorage.setItem('token', data.token);
+      })
+      if (error) throw error
+      setToken(data.token)
+      setIsAuthenticated(true)
+      setLoadingAuthRequest(false)
+      localStorage.setItem('token', data.token)
     } catch (error) {
-      setLoadingAuthRequest(false);
-      toast.error(error.message);
+      setLoadingAuthRequest(false)
+      toast.error(error.message)
     }
-  };
+  }
 
-  if (loadingAuthRequest) return <Loading />;
-  if (isAuthenticated) return <Navigate to='/' />;
+  if (loadingAuthRequest) return <Loading />
+  if (isAuthenticated) return <Navigate to='/' />
   return (
     <>
-    {/* <Container>
+      {/* <Container>
 
         <Grid
         container
@@ -111,7 +112,7 @@ const SignUp = ({
         </form>
       </Grid>
     </Container> */}
-    <Container component="main" maxWidth="xs">
+      <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <Box
           sx={{
@@ -119,25 +120,30 @@ const SignUp = ({
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            minHeight:'75vh'
+            minHeight: '75vh'
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component='h1' variant='h5'>
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box
+            component='form'
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                  autoComplete='given-name'
+                  name='firstName'
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id='firstName'
+                  label='First Name'
                   autoFocus
                   onChange={handleChange}
                 />
@@ -146,59 +152,55 @@ const SignUp = ({
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id='lastName'
+                  label='Last Name'
+                  name='lastName'
+                  autoComplete='family-name'
                   onChange={handleChange}
-         
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id='email'
+                  label='Email Address'
+                  name='email'
+                  autoComplete='email'
                   onChange={handleChange}
-         
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  name='password'
+                  label='Password'
+                  type='password'
+                  id='password'
+                  autoComplete='new-password'
                   onChange={handleChange}
                 />
               </Grid>
             </Grid>
             <Button
-              type="submit"
+              type='submit'
               fullWidth
-              variant="contained"
+              variant='contained'
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                <Link to='/signin'>Already have an account? Sign in</Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp
