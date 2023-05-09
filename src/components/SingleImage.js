@@ -68,13 +68,9 @@ export default function SingleImage ({ token }) {
   const fetchData = async () => {
     try {
       const getData = await fetch(`${process.env.REACT_APP_BLOG_API}/gallery/${_id}`)
-      console.log(222)
-      console.log(getData)
       if (!getData)
         throw new Error(`Request failes with a status of ${getData.status}`)
       const parseData = await getData.json()
-      console.log(111)
-      console.log(parseData)
       setImage(parseData)
       dispatch(addImage(parseData || ''))
       
@@ -127,7 +123,6 @@ export default function SingleImage ({ token }) {
   const pickRef = image => {
     dispatch(addImage(image || ''))
   }
-  // console.log(image)
   useEffect(() => {
     fetchData()
     token && fetchFavorite()

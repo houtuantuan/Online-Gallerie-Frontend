@@ -124,7 +124,6 @@ export default () => {
             const pixel = ctx.getImageData(evt.layerX, evt.layerY,1,1)
             const data =  pixel.data;
 
-            console.log([data[0],data[1],data[2]]);
             // const rgba = 'rgba(' + data[0] + ',' + data[1] +
             //      ',' + data[2] + ',' + (data[3] / 255) + ')';
 
@@ -236,13 +235,6 @@ export default () => {
             
             if (idx >= 0) {
           
-              singleStroke(
-                [ongoingTouches[idx].screenX, ongoingTouches[idx].screenY],
-                [evt.layerX, evt.layerY],
-                ctx
-              )
-          
-              
               if(count > 1){
                 dispatch(sliceUriList(count));
                 setcount(1);

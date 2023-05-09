@@ -20,9 +20,7 @@ export const canvasSlice = createSlice({
             }
     },
     sliceUriList: (state, action) => {
-      console.log("length" + state.uriList.length);
       state.uriList = state.uriList.slice(0,state.uriList.length - action.payload +1);
-      console.log("lengthafter" + state.uriList.length);
 
     },
     changeBackground: (state,action) => {
