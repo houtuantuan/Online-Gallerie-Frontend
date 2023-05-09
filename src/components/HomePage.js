@@ -188,7 +188,7 @@ export default function HomePage () {
               sx={{ marginBottom: '1em' }}
               marginLeft={{ lg: '2.7em', xs: '0em', md: '2.2em' }}
             >
-              Most Popular
+              Recommendation
             </Typography>
           </Grid>
         </Grid>
