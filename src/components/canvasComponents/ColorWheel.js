@@ -307,7 +307,7 @@ useEffect(() => {
                 borderRight: 'solid gray 2px',
                 height: 'min-content'}}>
             <div className="canvasFrame" id="valSatF">          
-            <canvas id="valueSaturationC"/>  
+            <canvas id="valueSaturationC" className="nonTouch"/>  
             </div>
         </Box>
         <Box
@@ -316,7 +316,7 @@ useEffect(() => {
         marginLeft: '0.5rem'}}
         >
             <div className="canvasFrame" id="hueF"> 
-            <canvas id="hueC"/>
+            <canvas id="hueC" className="nonTouch"/>
             </div></Box>
      
         </Container>

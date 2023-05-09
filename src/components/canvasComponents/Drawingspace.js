@@ -408,7 +408,7 @@ export default () => {
 <div className="canvasFrame" id="stage">
         <canvas id="backgroundLayer" style={{border:"solid black 1px"}}></canvas>
 </div>
-<div className="stageTogglerF" id="stageTogglerF"
+<div className="stageTogglerF nonTouch" id="stageTogglerF"
 style={{height: "20px"}}>
       <canvas id="stageToggler" ></canvas>
 </div>
