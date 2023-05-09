@@ -191,9 +191,6 @@ useEffect(() => {
       
       // dispatch(changeHue(rgba));
     }
-    
-
-
   }
 
     function pickColor(evt){

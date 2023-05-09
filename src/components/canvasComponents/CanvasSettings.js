@@ -1,7 +1,7 @@
 import ColorWheel from "./ColorWheel";
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions,
-increaseBrushDensity, decreaseBrushDensity, changeBrushDensity,changeMode } from '../../redux/brushSlice'
+increaseBrushDensity, decreaseBrushDensity, changeBrushDensity,changeMode ,selectMode} from '../../redux/brushSlice'
 import { Container, Grid, Popover, Button, Typography } from "@mui/material";
 import { useEffect,useState } from "react";
 
@@ -10,6 +10,7 @@ export default ({setbrushOptions}) => {
   const [modes,setModes] = useState(["pen","eraser"])
   const brushOptions = useSelector(selectBrushOptions);  
   const dispatch = useDispatch();
+  const currentMode = useSelector(selectMode);
   const {brushSize,brushDensity} = brushOptions;
   const validate = (value) => {
       if(value>100||value<0){
@@ -114,7 +115,13 @@ size:
        
       {
         modes.map((mode) => (
-          <button onClick={() => switchMode(mode)}>{mode}</button>
+        (currentMode === mode)? <Button onClick={() => switchMode(mode)}
+        style={{backgroundColor:"rgb(128, 135, 78)",
+        color:"white"}}>{mode}</Button>:
+        <Button 
+        onClick={() => switchMode(mode)}
+      
+        >{mode}</Button>
         ))
       }
         </Typography>
