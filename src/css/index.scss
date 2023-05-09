@@ -66,6 +66,10 @@ body{
     touch-action: none !important;
 }
 
+.nonTouch{
+    touch-action: none !important;
+}
+
 #brushSize,#brushDensity{
     width: 1.6rem;
 }
