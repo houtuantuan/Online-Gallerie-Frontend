@@ -18,7 +18,7 @@ export default () => {
         <Grid container
          mt={10}
          ColumnSpace={{ xs: 2, md: 3, lg: 5 }}
-         sx={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}
+         sx={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem', minHeight:'85vh'}}
         >
             <Grid item>
            <Drawingspace 
