@@ -1,13 +1,18 @@
 import ColorWheel from "./ColorWheel";
 import { useDispatch, useSelector } from 'react-redux'
-import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions,
-increaseBrushDensity, decreaseBrushDensity, changeBrushDensity } from '../../redux/brushSlice'
+import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions, selectHue,
+increaseBrushDensity, decreaseBrushDensity, changeBrushDensity,changeMode ,selectMode} from '../../redux/brushSlice'
 import { Container, Grid, Popover, Button, Typography } from "@mui/material";
 import { useEffect,useState } from "react";
 
 export default ({setbrushOptions}) => {
+
+  const [modes,setModes] = useState(["pen","eraser","smudge","waterColor","bristle"])
+  
   const brushOptions = useSelector(selectBrushOptions);  
   const dispatch = useDispatch();
+  const currentMode = useSelector(selectMode);
+  const options = useSelector(selectBrushOptions);
   const {brushSize,brushDensity} = brushOptions;
   const validate = (value) => {
       if(value>100||value<0){
@@ -18,7 +23,6 @@ export default ({setbrushOptions}) => {
 useEffect(() =>{
 
 },[])
-
 const increaseSize = () => {
   const value =   parseInt(document.getElementById("brushSize").value);
   if(value <= 100) dispatch(increaseBrushSize());
@@ -49,6 +53,10 @@ const changeDensity = () => {
  pass && dispatch(changeBrushDensity(value));
 }
 
+const switchMode = (mode) => {
+  dispatch(changeMode(mode));
+}
+
 const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -61,9 +69,7 @@ const [anchorEl, setAnchorEl] = useState(null);
     
       const open = Boolean(anchorEl);
       const id = open ? 'simple-popover' : undefined;
-    
-
-
+  
 return(<>
       <Container
       container
@@ -103,15 +109,30 @@ size:
         }}
       >
         <Typography sx={{ p: 2 }}>
-
         <h2>Brushes</h2>
-        <button>Normal</button>
-        <button>Normal</button>
-        <button>Normal</button>
        
+      {
+        modes.map((mode) => (
+        (currentMode === mode)? <Button onClick={() => switchMode(mode)}
+        style={{backgroundColor:"rgb(128, 135, 78)",
+        color:"white"}}>{mode}</Button>:
+        <Button 
+        onClick={() => switchMode(mode)}
+      
+        >{mode}</Button>
+        ))
+      }
         </Typography>
       </Popover>
   </Grid>
+  {/* <Grid item
+  
+  sx={{ display: 'flex', justifyContent: 'flex-start',marginLeft:1}}
+  >
+    <Typography>BrushColor: </Typography>
+     <div style={{backgroundColor:brushOptions.brushColor,width: 20, height: 20,marginLeft:1}}></div>
+  </Grid> */}
+  
 </Grid>
 
       <ColorWheel

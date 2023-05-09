@@ -37,6 +37,7 @@ export default () => {
         <p>Press ctrl + y to return to last state of Image</p>
         <p>Press z to return to recent state of Image</p>
         <p>press d to delete Canvas</p>
+        <p>holding strg while pointing on main Canvas will pick Color you clicked on</p>
 
         </Typography>
       </Popover>

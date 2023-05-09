@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch , useSelector  } from 'react-redux'
-import { changeBrushColor, changeHueData,changeHue, selectHue } from '../../redux/brushSlice'
+import { changeBrushColor, changeHueData,changeHue, selectHue,selectMode} from '../../redux/brushSlice'
 import { Box, Container } from "@mui/material";
 
 
@@ -8,6 +8,8 @@ export default ({brushOptions}) => {
   // const [hue, setHue] = useState("rgba(1,180,255,1)");
   const dispatch = useDispatch();
   const hue = useSelector(selectHue);
+  const mode = useSelector(selectHue);
+
 
 useEffect(() => {
   
@@ -64,7 +66,6 @@ createSpectrum();
 useEffect(() => {
 
   const ongoingTouches = []; 
-
   function copyTouch(touch) {
     // console.log(touch);
     return {
@@ -113,24 +114,23 @@ useEffect(() => {
       const canvas = this;
       const ctx = canvas.getContext("2d");
       
-      
       if(canvas.id === "valueSaturationC"){
         createSpectrum(hue);
         ctx.beginPath();
             ctx.arc(evt.layerX,evt.layerY, 5, 0, 2 * Math.PI);
-            ctx.lineWidth = brushOptions.brushSize;
+            ctx.lineWidth = 2;
             ctx.strokeStyle = "#ffffff";
             ctx.stroke();
             ctx.beginPath();
             ctx.arc(evt.layerX,evt.layerY, 4, 0, 2 * Math.PI);
-            ctx.lineWidth = brushOptions.brushSize;
+            ctx.lineWidth = 2;
             ctx.strokeStyle = "#000000";
             ctx.stroke();  
       }
       else if(canvas.id === "hueC") {
         createHueSpectrum();
         ctx.beginPath();
-       ctx.lineWidth = 1.2;
+        ctx.lineWidth = 1.2;
         ctx.strokeStyle = "#000000";
         ctx.beginPath(); // Start a new path
         ctx.moveTo(0,evt.layerY - 2); // Move the pen to (30, 50)
@@ -141,35 +141,26 @@ useEffect(() => {
         ctx.lineTo(canvas.width, evt.layerY +2); // Draw a line to (150, 100)
         ctx.stroke();
 
-
-        
       const pixel = ctx.getImageData(evt.layerX,evt.layerY,1,1)
       const data =  pixel.data;
       const rgba = 'rgba(' + data[0] + ',' + data[1] +
            ',' + data[2] + ',' + (data[3] / 255) + ')';  
       createSpectrum(rgba);
       }
-     
-
-
   }
 
-
-
   function pickHue(evt) {
-
+    evt.preventDefault();
+   
     const canvas = this;
     const ctx = canvas.getContext("2d");
     const idx = ongoingTouchIndexById(evt.pointerId);
     ctx.lineWidth = 1.2;
     ctx.strokeStyle = "#000000";
-   
-
 
     if(idx >= 0){
     
       createHueSpectrum();
-   
       ctx.beginPath(); // Start a new path
       ctx.moveTo(0,evt.layerY - 2); // Move the pen to (30, 50)
       ctx.lineTo(canvas.width, evt.layerY -2); // Draw a line to (150, 100)
@@ -188,40 +179,34 @@ useEffect(() => {
       
       // dispatch(changeHue(rgba));
     }
-    
-
-
   }
 
     function pickColor(evt){
+      evt.preventDefault();
+   
         const canvas = this;
         const ctx = canvas.getContext("2d");
-
         const idx = ongoingTouchIndexById(evt.pointerId);
-
 
         if(idx >= 0){
       
           createSpectrum(hue);
-  
           ctx.beginPath();
           ctx.arc(evt.layerX,evt.layerY, 5, 0, 2 * Math.PI);
-          ctx.lineWidth = brushOptions.brushSize;
+          ctx.lineWidth = 2;
           ctx.strokeStyle = "#ffffff";
           ctx.stroke();
           ctx.beginPath();
           ctx.arc(evt.layerX,evt.layerY, 4, 0, 2 * Math.PI);
-          ctx.lineWidth = brushOptions.brushSize;
+          ctx.lineWidth = 2;
           ctx.strokeStyle = "#000000";
           ctx.stroke();
-
 
         }
         
     }
 
     function handleEnd(evt) {
-
       evt.preventDefault();
       const canvas = this;
       const ctx = canvas.getContext("2d");
@@ -234,11 +219,11 @@ useEffect(() => {
         const rgba = 'rgba(' + data[0] + ',' + data[1] +
              ',' + data[2] + ',' + (data[3] / 255) + ')';
         dispatch(changeHueData([data[0],data[1],data[2]]))
+
         dispatch(changeBrushColor(rgba));
     
       }
       else if (canvas.id === "hueC"){
-        
       const pixel = ctx.getImageData(evt.layerX,evt.layerY,1,1)
       const data =  pixel.data;
       const rgba = 'rgba(' + data[0] + ',' + data[1] +
@@ -247,9 +232,7 @@ useEffect(() => {
           dispatch(changeHue(rgba));
 
       }
-
       ongoingTouches.splice(idx, 1); // remove it; we're done
-       
     }
 
     function handleCancel(evt) {
@@ -288,8 +271,6 @@ useEffect(() => {
 
     const spectrumCanvas = document.getElementById("valueSaturationC");
     const hueCanvas = document.getElementById("hueC");
-    
-
    spectrumCanvas.addEventListener('pointerdown',handleStart,false);
    spectrumCanvas.addEventListener('pointermove',pickColor,false);
    spectrumCanvas.addEventListener('pointercancel',handleCancel,false);
@@ -300,8 +281,6 @@ useEffect(() => {
    hueCanvas.addEventListener('pointercancel',handleCancel,false);
    hueCanvas.addEventListener('pointerup',handleEnd,false);
   
-
-
    return () => {
    spectrumCanvas.removeEventListener('pointerdown',handleStart,false);
    spectrumCanvas.removeEventListener('pointermove',pickColor,false);

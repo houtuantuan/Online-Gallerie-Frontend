@@ -7,6 +7,8 @@
 
 $primary-color: rgb(255, 250, 238);
 $secondary-color: rgb(218, 224, 175);
+$secondary-color-dark: rgb(128, 135, 78);
+
 $contrast-color: rgb(89, 90, 159);
 $contrast-color2: rgb(118,65,61);
 $font-color: #141414;
@@ -105,4 +107,21 @@ body{
 .App{
     min-height: 100vh;
     flex-direction: column;
+}
+
+
+.modeActive{
+    background-color: $secondary-color;
+
+}
+
+
+.stageTogglerF{
+
+    margin-top: 1rem;
+
+}
+
+.refActive{
+    border: solid green 4px;
 }
