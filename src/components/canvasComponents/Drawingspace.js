@@ -333,13 +333,15 @@ export default () => {
 
         keyMap[evt.keyCode] = evt.type === "keydown";
 
-          if(keyMap[17]&&keyMap[89]){
+        if(keyMap[17]){
+          setShiftActive(true);
+        }
+
+          if(keyMap[89]){
             undo(count,image,setcount);
           } 
+          
 
-          if(keyMap[17]){
-            setShiftActive(true);
-          }
             switch(evt.key){
               case "d": clearLastLine();
               break;
