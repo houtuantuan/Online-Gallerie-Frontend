@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addUri, sliceUriList, selectCanvasUri } from '../../redux/canvasSlice'
 import {redo,undo} from '../../canvasutils/buttonfunctions';
 import Instruction from './Instruction';
-import { selectBrushOptions } from '../../redux/brushSlice';
+import { selectBrushOptions,selectMode } from '../../redux/brushSlice';
 import { Typography } from '@mui/material';
 
 // import { setCtx,copyTouch,ongoingTouchIndexById, ongoingTouches } from '../canvasutils/drawFunctions';
@@ -14,10 +14,10 @@ import { Typography } from '@mui/material';
 export default () => {
 
   const dispatch = useDispatch();
+  const mode = useSelector(selectMode);
   const image = useSelector(selectCanvasUri);
   const brushOptions = useSelector(selectBrushOptions);
   const[count,setcount] = useState(1);  
-  
   const keyMap = {};
  
   useEffect(() => {
@@ -86,46 +86,37 @@ export default () => {
             const idx = ongoingTouchIndexById(evt.pointerId);
             if (idx >= 0) {
             //  stroke(evt,ctx,idx, ongoingTouches,brushOptions);
-            ctx.beginPath();
-        
-            
-            ctx.moveTo(ongoingTouches[idx].layerX, ongoingTouches[idx].layerY);   
-          // curve through the last two ongoingTouches
-          
-          // const controlPointX = 2*evt.pageX -ongoingTouches[idx].layerX/2 -evt.layerX/2;
-          // const controlPointY = 2*evt.pageY -ongoingTouches[idx].layerY/2 -evt.layerY/2;
-          // console.log(ongoingTouches[idx].layerX +"to" + evt.layerX);
-          
-          ctx.lineTo(evt.layerX, evt.layerY);
-          // ctx.quadraticCurveTo(controlPointX, controlPointY, evt.layerX, evt.layerY);
 
-          
+
+   
+
+    ctx.lineWidth = brushOptions.brushSize * evt.pressure;
           //Brush regulation
-            ctx.lineWidth = brushOptions.brushSize;
+
             const brushColor = `rgba(${brushOptions.hueData[0]},${brushOptions.hueData[1]},${brushOptions.hueData[2]},${brushOptions.brushDensity/100})`
-console.log(brushColor);
-console.log(brushOptions.brushColor);
-
-            // ctx.strokeStyle = "rgba(0,0,0,0.22)";
-            // ctx.strokeStyle = brushColor;
-            // ctx.lineCap = 'round';
-            //  ctx.lineJoin = 'round';
-
-
-             const image = new Image(10,10);
+            const image = new Image(10,10);
              
               image.src="../../assets/brush/Brushtest2.svg";
               const pat = ctx.createPattern(image, "repeat");
               ctx.strokeStyle = brushColor;
-              
-    
-            ctx.stroke();
-
+            
+              ctx.beginPath();
+              ctx.moveTo(ongoingTouches[idx].layerX, ongoingTouches[idx].layerY);   
+              ctx.lineTo(evt.layerX, evt.layerY);
+            switch(mode){
+              case "pen":
+                ctx.globalCompositeOperation="source-over";
+              // curve through the last two ongoingTouches
+              // ctx.quadraticCurveTo(controlPointX, controlPointY, evt.layerX, evt.layerY);
+              break;
+              case "eraser":
+                ctx.globalCompositeOperation="destination-out";
+                break;        
+              }
+              ctx.stroke();
               ongoingTouches.splice(idx, 1, copyTouch(evt)); // swap in the new touch record
             } else {
             }
-            
-       
           }
         
           function handleEnd(evt) {
@@ -140,12 +131,8 @@ console.log(brushOptions.brushColor);
               const x = evt.target.parentNode.offsetLeft;
               
               ctx.lineWidth = brushOptions.brushSize;
-              
-
               ctx.fillStyle = brushOptions.brushColor;
-              
-              
-              // ctx.lineCap = "round";
+              ctx.lineCap = "round";
               ctx.beginPath();
               ctx.moveTo(ongoingTouches[idx].screenX, ongoingTouches[idx].screenY);
               ctx.lineTo(evt.layerX, evt.layerY);
@@ -169,7 +156,6 @@ console.log(brushOptions.brushColor);
             ctx.save();
            
           }
-
 
         const clearLastLine = () => {
           ctx.clearRect(1, 1, canvas.width -1, canvas.height -1); 

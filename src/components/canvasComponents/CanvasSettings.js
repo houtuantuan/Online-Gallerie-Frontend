@@ -1,11 +1,13 @@
 import ColorWheel from "./ColorWheel";
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseBrushSize, decreaseBrushSize, changeBrushSize,selectBrushOptions,
-increaseBrushDensity, decreaseBrushDensity, changeBrushDensity } from '../../redux/brushSlice'
+increaseBrushDensity, decreaseBrushDensity, changeBrushDensity,changeMode } from '../../redux/brushSlice'
 import { Container, Grid, Popover, Button, Typography } from "@mui/material";
 import { useEffect,useState } from "react";
 
 export default ({setbrushOptions}) => {
+
+  const [modes,setModes] = useState(["pen","eraser"])
   const brushOptions = useSelector(selectBrushOptions);  
   const dispatch = useDispatch();
   const {brushSize,brushDensity} = brushOptions;
@@ -16,6 +18,7 @@ export default ({setbrushOptions}) => {
     return true;
   }
 useEffect(() =>{
+
 
 },[])
 
@@ -47,6 +50,10 @@ const changeDensity = () => {
  const value =   document.getElementById("brushDensity").value;
  const pass = validate(value);
  pass && dispatch(changeBrushDensity(value));
+}
+
+const switchMode = (mode) => {
+  dispatch(changeMode(mode));
 }
 
 const [anchorEl, setAnchorEl] = useState(null);
@@ -103,12 +110,13 @@ size:
         }}
       >
         <Typography sx={{ p: 2 }}>
-
         <h2>Brushes</h2>
-        <button>Normal</button>
-        <button>Normal</button>
-        <button>Normal</button>
        
+      {
+        modes.map((mode) => (
+          <button onClick={() => switchMode(mode)}>{mode}</button>
+        ))
+      }
         </Typography>
       </Popover>
   </Grid>

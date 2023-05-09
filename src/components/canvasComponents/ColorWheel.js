@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch , useSelector  } from 'react-redux'
-import { changeBrushColor, changeHueData,changeHue, selectHue } from '../../redux/brushSlice'
+import { changeBrushColor, changeHueData,changeHue, selectHue,selectMode} from '../../redux/brushSlice'
 import { Box, Container } from "@mui/material";
 
 
@@ -8,6 +8,8 @@ export default ({brushOptions}) => {
   // const [hue, setHue] = useState("rgba(1,180,255,1)");
   const dispatch = useDispatch();
   const hue = useSelector(selectHue);
+  const mode = useSelector(selectHue);
+
 
 useEffect(() => {
   
@@ -157,7 +159,8 @@ useEffect(() => {
 
 
   function pickHue(evt) {
-
+    evt.preventDefault();
+   
     const canvas = this;
     const ctx = canvas.getContext("2d");
     const idx = ongoingTouchIndexById(evt.pointerId);
@@ -194,6 +197,8 @@ useEffect(() => {
   }
 
     function pickColor(evt){
+      evt.preventDefault();
+   
         const canvas = this;
         const ctx = canvas.getContext("2d");
 
@@ -300,8 +305,6 @@ useEffect(() => {
    hueCanvas.addEventListener('pointercancel',handleCancel,false);
    hueCanvas.addEventListener('pointerup',handleEnd,false);
   
-
-
    return () => {
    spectrumCanvas.removeEventListener('pointerdown',handleStart,false);
    spectrumCanvas.removeEventListener('pointermove',pickColor,false);
