@@ -186,7 +186,7 @@ function Header (props) {
                   >
                     <Button
                       key={item.name}
-                      style={{ color: 'white', fontWeight: '1000' }}
+                      style={{ color: '#748c7e', fontWeight: '1000' }}
                     >
                       {item.name}
                     </Button>
@@ -211,7 +211,7 @@ function Header (props) {
             <Button
               onClick={goToSearchResult}
               variant='contained'
-              sx={{ marginLeft: '7px', color: '#539165' }}
+              sx={{ marginLeft: '7px', color: '#748c7e' }}
             >
               Search
             </Button>
