@@ -40,7 +40,7 @@ const createSpectrum = (hue) =>
     canvas.width= 212;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = hue;
+    ctx.fillStyle = "rgba(1,180,255,1)";
     ctx.fillRect(0,0,canvas.width, canvas.height);
 
     const whiteGradient = ctx.createLinearGradient(0,0,canvas.width, 0);
