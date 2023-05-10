@@ -17,20 +17,17 @@ export default function SearchResult () {
   const [items, setItems] = useState([])
 
   const searchInput = searchParams.get('q')
-  console.log(searchParams.get('q'))
 
   const getSearchResult = async () => {
     const res = await fetch(
       `${process.env.REACT_APP_BLOG_API}/gallery/search?q=${searchInput}`
     )
     const newItems = await res.json()
-    console.log(newItems)
 
     setItems(newItems)
   }
   useEffect(() => {
     getSearchResult()
-    console.log('searchResult')
   }, [searchInput])
   return (
     <>

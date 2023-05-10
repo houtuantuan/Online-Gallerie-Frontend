@@ -61,7 +61,7 @@ export default function SingleImage ({ token }) {
         setLiked(prevState => !prevState)
       }
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 
@@ -75,7 +75,7 @@ export default function SingleImage ({ token }) {
       dispatch(addImage(parseData || ''))
       
     } catch (error) {
-      console.log(error.message)
+      // console.log(error.message)
     }
   }
 
@@ -96,7 +96,7 @@ export default function SingleImage ({ token }) {
       }
     } catch (error) {
       setLiked(false)
-      console.log(error.message)
+      // console.log(error.message)
     }
   }
 
@@ -116,7 +116,7 @@ export default function SingleImage ({ token }) {
       const colorUrl = URL.createObjectURL(blob)
       setColorUrl(colorUrl)
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 
@@ -330,7 +330,6 @@ export default function SingleImage ({ token }) {
           <Grid item xs={12} md={6} lg={4} xl={3}>
             {/* <Color src={colorUrl} crossOrigin='Anonymous' format='hex'>
               {({ data, loading, error }) => {
-                console.log(error)
                 if (loading) return <Loading />
                 return (
                   <>

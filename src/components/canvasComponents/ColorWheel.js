@@ -67,7 +67,6 @@ useEffect(() => {
 
   const ongoingTouches = []; 
   function copyTouch(touch) {
-    // console.log(touch);
     return {
       identifier: touch.pointerId,
       pageX: touch.clientX,
