@@ -1,6 +1,5 @@
 export const registerUser = async credentials => {
     try {
-        console.log(process.env.REACT_APP_BLOG_API);
       const res = await fetch(`${process.env.REACT_APP_BLOG_API}/auth/signup`, {
         method: 'POST',
         headers: {
@@ -8,7 +7,6 @@ export const registerUser = async credentials => {
         },
         body: JSON.stringify(credentials)
       });
-      console.log(res);
       if (!res.ok) {
         const { error } = await res.json();
         throw new Error(error);
@@ -19,7 +17,6 @@ export const registerUser = async credentials => {
       return { error };
     }
 };
-console.log(process.env.REACT_APP_BLOG_API)
 export const loginUser = async credentials => {
     try {
       const res = await fetch(`${process.env.REACT_APP_BLOG_API}/auth/signin`, {

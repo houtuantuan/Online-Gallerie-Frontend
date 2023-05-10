@@ -21,14 +21,12 @@ export default function OverviewByTime ({ yearRange }) {
   const [items, setItems] = useState([])
   const [hasMore, setHasMore] = useState(true)
   const dispatch = useDispatch()
-  // console.log(yearRange)
 
   const getMorePost = async () => {
     const res = await fetch(
       `${process.env.REACT_APP_BLOG_API}/gallery?itemOffset=${items.length}&limit=20&beginYear=${yearRange.beginYear}&endYear=${yearRange.endYear}`
     )
     const newItems = await res.json()
-    console.log(newItems)
     if (!newItems.length) {
       setHasMore(false)
     }
@@ -37,7 +35,6 @@ export default function OverviewByTime ({ yearRange }) {
   }
   useEffect(() => {
     getMorePost()
-    console.log('here')
   }, [])
   return (
     <div>
