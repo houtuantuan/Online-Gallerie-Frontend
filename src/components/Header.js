@@ -141,7 +141,6 @@ function Header (props) {
     })
     document.getElementById('inputField').value = ''
   }
-  console.log(value)
 
   return (
     <Box sx={{ display: 'flex' }}>
