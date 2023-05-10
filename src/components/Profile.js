@@ -114,7 +114,7 @@ export default function Profile ({ token, setIsAuthenticated }) {
         <Tabs>
           <TabList>
             <Tab>
-              <Typography variant='h5' >My Account</Typography>
+              <Typography variant='h5'>My Account</Typography>
             </Tab>
 
             <Tab>
@@ -143,10 +143,12 @@ export default function Profile ({ token, setIsAuthenticated }) {
               </ListItem>
             </List>
 
-            <Button 
-            sx={{margin:"1em"}}
-            color='warning'
-            variant='outlined' onClick={handleClickOpen}>
+            <Button
+              sx={{ margin: '1em' }}
+              color='warning'
+              variant='outlined'
+              onClick={handleClickOpen}
+            >
               Delete your accout
             </Button>
             <Dialog
@@ -160,8 +162,10 @@ export default function Profile ({ token, setIsAuthenticated }) {
               </DialogTitle>
 
               <DialogActions>
-                <Button onClick={handleClose}>No</Button>
-                <Button onClick={deleteUser} autoFocus>
+                <Button onClick={handleClose} sx={{ color: 'black' }}>
+                  No
+                </Button>
+                <Button sx={{ color: 'black' }} onClick={deleteUser} autoFocus>
                   Yes
                 </Button>
               </DialogActions>
