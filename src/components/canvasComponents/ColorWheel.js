@@ -118,12 +118,12 @@ useEffect(() => {
         createSpectrum(hue);
         ctx.beginPath();
             ctx.arc(evt.layerX,evt.layerY, 5, 0, 2 * Math.PI);
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 1;
             ctx.strokeStyle = "#ffffff";
             ctx.stroke();
             ctx.beginPath();
             ctx.arc(evt.layerX,evt.layerY, 4, 0, 2 * Math.PI);
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 1;
             ctx.strokeStyle = "#000000";
             ctx.stroke();  
       }
@@ -155,7 +155,7 @@ useEffect(() => {
     const canvas = this;
     const ctx = canvas.getContext("2d");
     const idx = ongoingTouchIndexById(evt.pointerId);
-    ctx.lineWidth = 1.2;
+          
     ctx.strokeStyle = "#000000";
 
     if(idx >= 0){
@@ -193,12 +193,12 @@ useEffect(() => {
           createSpectrum(hue);
           ctx.beginPath();
           ctx.arc(evt.layerX,evt.layerY, 5, 0, 2 * Math.PI);
-          ctx.lineWidth = 2;
+          ctx.lineWidth = 1;
           ctx.strokeStyle = "#ffffff";
           ctx.stroke();
           ctx.beginPath();
           ctx.arc(evt.layerX,evt.layerY, 4, 0, 2 * Math.PI);
-          ctx.lineWidth = 2;
+          ctx.lineWidth = 1;
           ctx.strokeStyle = "#000000";
           ctx.stroke();
 
