@@ -1,3 +1,6 @@
+the backend of the project is deployed on the render.com
+since I use a free version, the pictures of the wersite will be loaded a little bit slower, sometime it takes over 20s.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
